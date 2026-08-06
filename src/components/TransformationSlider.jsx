@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HeartHandshake, ShieldCheck, Quote, ChevronLeft, ChevronRight, XCircle, CheckCircle2 } from 'lucide-react';
+import { HeartHandshake, ShieldCheck, Quote, ChevronLeft, ChevronRight, XCircle, CheckCircle2, Eye } from 'lucide-react';
 
 const STORIES = [
   {
@@ -8,6 +8,7 @@ const STORIES = [
     age: "42 años",
     role: "Abogado & Padre de 2 hijos",
     location: "Rosario",
+    image: "/caso-1-transformacion.jpg",
     highlight: "De abandonar cada 3 meses a entrenar 3 días/semana sin saltearse durante 1 año.",
     quote: "No buscaba abdominales marcados. Solo quería volver a jugar con mis hijos sin quedarme sin aire y dejar de sentirme culpable por abandonar el gimnasio. Tomás me enseñó a adaptar el entrenamiento a mi vida real.",
     metrics: [
@@ -30,6 +31,7 @@ const STORIES = [
     age: "36 años",
     role: "Arquitecta & Emprendedora",
     location: "Coaching Online",
+    image: "/caso-2-transformacion.jpg",
     highlight: "Transformó su relación con el cuerpo y la fuerza personal.",
     quote: "El gimnasio siempre fue para mí un castigo para 'quemar calorías'. Con Tomás entendí que es el lugar donde voy a cumplirme la palabra a mí misma. Hoy tengo más energía que a los 25 años.",
     metrics: [
@@ -52,6 +54,7 @@ const STORIES = [
     age: "48 años",
     role: "Director Comercial",
     location: "Rosario",
+    image: "/caso-3-transformacion.jpg",
     highlight: "De vivir contracturado por el estrés a sentirse fuerte y vital.",
     quote: "Por mi trabajo viajo constantemente. Tomás me diseñó una estructura que puedo hacer en cualquier gimnasio de hotel o en mi casa en 40 minutos. La constancia es total.",
     metrics: [
@@ -124,12 +127,27 @@ export default function TransformationSlider() {
           <span>{current.highlight}</span>
         </div>
 
+        {/* Before / After Photo Feature */}
+        <div className="transformation-image-container">
+          <div className="image-frame">
+            <img 
+              src={current.image} 
+              alt={`Transformación Antes y Después - ${current.name}`}
+              className="transformation-photo"
+            />
+            <div className="image-overlay-badge">
+              <Eye size={15} />
+              <span>Registro Real de Proceso</span>
+            </div>
+          </div>
+        </div>
+
         <blockquote className="story-quote">
           <Quote size={28} className="quote-icon" />
           <p>"{current.quote}"</p>
         </blockquote>
 
-        {/* Before & After Comparison */}
+        {/* Before & After Detailed Breakdown */}
         <div className="comparison-grid">
           <div className="comp-box comp-before">
             <span className="comp-tag tag-before">
@@ -290,7 +308,53 @@ export default function TransformationSlider() {
           font-size: 0.95rem;
           font-weight: 700;
           color: var(--color-creme);
-          margin-bottom: 1.75rem;
+          margin-bottom: 1.5rem;
+        }
+
+        /* Transformation Image Styling */
+        .transformation-image-container {
+          margin-bottom: 2rem;
+          border-radius: var(--radius-md);
+          overflow: hidden;
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .image-frame {
+          position: relative;
+          width: 100%;
+          overflow: hidden;
+          border-radius: var(--radius-md);
+          border: 1px solid rgba(245, 240, 232, 0.15);
+        }
+
+        .transformation-photo {
+          width: 100%;
+          height: auto;
+          max-height: 420px;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.4s ease;
+        }
+
+        .transformation-photo:hover {
+          transform: scale(1.02);
+        }
+
+        .image-overlay-badge {
+          position: absolute;
+          bottom: 1rem;
+          right: 1rem;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          background: rgba(28, 26, 23, 0.85);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(245, 240, 232, 0.2);
+          color: var(--color-creme);
+          padding: 0.4rem 0.85rem;
+          border-radius: var(--radius-full);
+          font-size: 0.8rem;
+          font-weight: 600;
         }
 
         .story-quote {
