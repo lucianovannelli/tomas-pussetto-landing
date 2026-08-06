@@ -1,0 +1,213 @@
+---
+import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
+---
+
+<footer class="footer">
+  <div class="container">
+    <!-- CTA Banner inside Footer -->
+    <div class="footer-cta-banner glass-card">
+      <div class="cta-content">
+        <span class="cta-badge">Tu próximo paso</span>
+        <h2 class="cta-title">
+          ¿Listo para dejar de empezar y abandonar?
+        </h2>
+        <p class="cta-desc">
+          Empezá a construir el hábito de fuerza que te acompañará para siempre. Sin culpa y adaptado a tu vida.
+        </p>
+      </div>
+
+      <a 
+        href="https://wa.me/5493410000000?text=Hola%20Tomás!%20Quiero%20comenzar%20mi%20proceso%20de%20entrenamiento%20y%20hábitos" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="btn btn-primary btn-lg"
+      >
+        <MessageCircle size={22} />
+        <span>Hablar directamente con Tomás</span>
+      </a>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="#" class="brand-logo">
+          <div class="logo-mark">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 4C8 4 5 7 5 12C5 17 8 20 12 20C16 20 19 17 19 12C19 7 16 4 12 4ZM12 18C8.7 18 7 15.3 7 12C7 8.7 8.7 6 12 6C15.3 6 17 8.7 17 12C17 15.3 15.3 18 12 18Z" fill="#00309C"/>
+              <path d="M7 12C7 9 9.5 6.5 12.5 6.5C15.5 6.5 18 9 18 12" stroke="#5676BF" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="logo-text-group">
+            <span class="logo-signature">Tomás Pussetto</span>
+            <span class="logo-tagline">Fuerza, hábitos y equilibrio</span>
+          </div>
+        </a>
+
+        <p class="footer-tagline-text">
+          "El gimnasio no es para cambiar tu cuerpo. Es el lugar donde aprendés a cumplirte la palabra a vos mismo."
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <a href="#filosofia">Filosofía</a>
+          <a href="#ciclo">El Ciclo de Culpa</a>
+          <a href="#quiz">Test de Adherencia</a>
+          <a href="#historias">Historias Reales</a>
+          <a href="#asesoria">Asesoría 1 a 1</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto & Redes</h4>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link">
+            <Instagram size={18} />
+            <span>Instagram</span>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link">
+            <Youtube size={18} />
+            <span>YouTube</span>
+          </a>
+          <a href="https://wa.me/5493410000000" target="_blank" rel="noopener noreferrer" class="social-link">
+            <MessageCircle size={18} />
+            <span>WhatsApp Directo</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© {new Date().getFullYear()} Tomás Pussetto. Todos los derechos reservados. Rosario, Argentina & Online Global.</p>
+      <a href="#" class="back-to-top" aria-label="Volver arriba">
+        <span>Volver arriba</span>
+        <ArrowUp size={16} />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    position: relative;
+    padding: 6rem 0 3rem;
+    background: var(--color-obsidian-dark);
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+  }
+
+  .footer-cta-banner {
+    padding: 3.5rem;
+    margin-bottom: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    background: linear-gradient(135deg, rgba(0, 48, 156, 0.25) 0%, rgba(38, 22, 13, 0.9) 100%);
+    border: 1px solid rgba(86, 118, 191, 0.35);
+  }
+
+  .cta-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #93C5FD;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0.4rem 0 0.5rem;
+  }
+
+  .cta-desc {
+    font-size: 1.05rem;
+    color: var(--color-creme-muted);
+    max-width: 580px;
+  }
+
+  .footer-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+  }
+
+  .footer-tagline-text {
+    margin-top: 1.25rem;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--color-creme-muted);
+    max-width: 380px;
+    line-height: 1.5;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .footer-col h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-creme);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-col a {
+    color: var(--color-creme-muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-col a:hover {
+    color: var(--color-creme);
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--color-creme-muted);
+  }
+
+  .back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-creme-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .back-to-top:hover {
+    color: #60A5FA;
+  }
+
+  @media (max-width: 900px) {
+    .footer-cta-banner {
+      flex-direction: column;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+    .footer-main {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>

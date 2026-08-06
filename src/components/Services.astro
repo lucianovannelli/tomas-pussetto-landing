@@ -1,0 +1,211 @@
+---
+import { CheckCircle2, MessageCircle, Star, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+
+const FEATURES = [
+  "Plan de Entrenamiento de Fuerza personalizado (Gimnasio o Casa)",
+  "Estructura adaptada a tus días disponibles (2, 3 o 4 días/semana)",
+  "Acompañamiento 1 a 1 directo por WhatsApp con Tomás Pussetto",
+  "Corrección técnica detallada mediante análisis de tus videos",
+  "Estrategia de psicología del hábito para mantener la continuidad",
+  "Flexibilidad ante viajes de trabajo, vacaciones o semanas de alto estrés",
+  "Revisión y ajuste semanal de cargas y progresiones"
+];
+---
+
+<section id="asesoria" class="section services-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <div class="badge badge-center">
+        <Star size={16} fill="#60A5FA" color="#60A5FA" />
+        <span>Servicios & Programas</span>
+      </div>
+      <h2 class="section-title">
+        Asesoría Integral <span class="text-gradient-blue">1 a 1 de Fuerza & Hábitos</span>
+      </h2>
+      <p class="section-subtitle">
+        Un acompañamiento cercano, estructurado y humano diseñado para que logres la constancia que nunca antes pudiste sostener.
+      </p>
+    </div>
+
+    <div class="services-wrapper">
+      <div class="service-card glass-card">
+        <div class="service-popular-badge">
+          <Zap size={14} />
+          <span>Programa Principal</span>
+        </div>
+
+        <div class="service-header">
+          <div>
+            <h3 class="service-title">Coaching 1 a 1 Personalizado</h3>
+            <p class="service-subtitle font-medium">Disponible en Rosario & Modalidad Online Global</p>
+          </div>
+          <div class="service-tag">
+            <span>Cupos Limitados</span>
+          </div>
+        </div>
+
+        <p class="service-desc">
+          No es una rutina genérica en PDF. Es un proceso de mentoría donde nos enfocamos en que aprendas a entrenar bien, progresar en fuerza y construir un estilo de vida sostenible a largo plazo.
+        </p>
+
+        <div class="features-grid">
+          {FEATURES.map((feature) => (
+            <div class="feature-item">
+              <CheckCircle2 size={20} class="feature-icon" />
+              <span>{feature}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="service-footer">
+          <div class="guarantee-badge">
+            <ShieldCheck size={20} color="#60A5FA" />
+            <span>Garantía de Método: Diseñado para encajar en tu rutina real</span>
+          </div>
+
+          <a 
+            href="https://wa.me/5493410000000?text=Hola%20Tomás!%20Quiero%20postular%20para%20un%20cupo%20de%20tu%20Asesoría%20Integral%201%20a%201" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="btn btn-primary btn-lg btn-service-cta"
+          >
+            <MessageCircle size={22} />
+            <span>Consultar Disponibilidad de Cupo</span>
+            <ArrowRight size={18} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    position: relative;
+    background: radial-gradient(circle at 50% 30%, rgba(0, 48, 156, 0.15) 0%, transparent 60%);
+  }
+
+  .services-wrapper {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    padding: 3.5rem;
+    position: relative;
+    background: linear-gradient(145deg, rgba(38, 22, 13, 0.85) 0%, rgba(28, 26, 23, 0.98) 100%);
+    border: 1px solid rgba(86, 118, 191, 0.35);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 50px rgba(0, 48, 156, 0.15);
+  }
+
+  .service-popular-badge {
+    position: absolute;
+    top: -14px;
+    left: 3.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 1rem;
+    background: linear-gradient(90deg, #00309C 0%, #5676BF 100%);
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .service-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+  }
+
+  .service-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-creme);
+  }
+
+  .service-subtitle {
+    font-size: 1rem;
+    color: #93C5FD;
+    margin-top: 0.25rem;
+  }
+
+  .service-tag {
+    background: rgba(245, 240, 232, 0.06);
+    border: 1px solid rgba(245, 240, 232, 0.12);
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-creme-muted);
+  }
+
+  .service-desc {
+    font-size: 1.1rem;
+    color: var(--color-creme-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 1.05rem;
+    color: var(--color-creme);
+  }
+
+  .feature-icon {
+    color: #60A5FA;
+    flex-shrink: 0;
+  }
+
+  .service-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+  }
+
+  .guarantee-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.92rem;
+    color: var(--color-creme-muted);
+  }
+
+  .btn-service-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 1.25rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .service-card {
+      padding: 2rem 1.5rem;
+    }
+    .service-popular-badge {
+      left: 1.5rem;
+    }
+    .service-title {
+      font-size: 1.6rem;
+    }
+  }
+</style>

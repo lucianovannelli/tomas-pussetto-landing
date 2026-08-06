@@ -1,0 +1,237 @@
+---
+import { MessageCircle, Menu, X } from 'lucide-react';
+---
+
+<header class="header">
+  <div class="container header-container">
+    <a href="#" class="brand-logo">
+      <div class="logo-mark">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4C8 4 5 7 5 12C5 17 8 20 12 20C16 20 19 17 19 12C19 7 16 4 12 4ZM12 18C8.7 18 7 15.3 7 12C7 8.7 8.7 6 12 6C15.3 6 17 8.7 17 12C17 15.3 15.3 18 12 18Z" fill="#00309C"/>
+          <path d="M7 12C7 9 9.5 6.5 12.5 6.5C15.5 6.5 18 9 18 12" stroke="#5676BF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logo-text-group">
+        <span class="logo-signature">Tomás Pussetto</span>
+        <span class="logo-tagline">Fuerza, hábitos y equilibrio</span>
+      </div>
+    </a>
+
+    <nav class="nav-desktop">
+      <a href="#filosofia" class="nav-link">Filosofía</a>
+      <a href="#ciclo" class="nav-link">El Ciclo</a>
+      <a href="#quiz" class="nav-link">Test Adherencia</a>
+      <a href="#historias" class="nav-link">Historias</a>
+      <a href="#asesoria" class="nav-link">Asesoría</a>
+    </nav>
+
+    <div class="header-actions">
+      <a 
+        href="https://wa.me/5493410000000?text=Hola%20Tomás,%20quiero%20información%20sobre%20tu%20asesoría%20integral" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="btn btn-primary btn-nav"
+      >
+        <MessageCircle size={18} />
+        <span>Hablar con Tomás</span>
+      </a>
+      
+      <button class="mobile-toggle" aria-label="Abrir menú" id="menuToggle">
+        <Menu size={24} />
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Nav -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <nav class="nav-mobile">
+      <a href="#filosofia" class="mobile-link">Filosofía</a>
+      <a href="#ciclo" class="mobile-link">El Ciclo</a>
+      <a href="#quiz" class="mobile-link">Test Adherencia</a>
+      <a href="#historias" class="mobile-link">Historias</a>
+      <a href="#asesoria" class="mobile-link">Asesoría</a>
+      <a 
+        href="https://wa.me/5493410000000?text=Hola%20Tomás,%20quiero%20información%20sobre%20tu%20asesoría%20integral" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="btn btn-primary btn-mobile-cta"
+      >
+        <MessageCircle size={20} />
+        <span>Hablar por WhatsApp</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const drawer = document.getElementById('mobileDrawer');
+  const links = document.querySelectorAll('.mobile-link');
+
+  if (toggle && drawer) {
+    toggle.addEventListener('click', () => {
+      drawer.classList.toggle('active');
+    });
+
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.remove('active');
+      });
+    });
+  }
+</script>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(28, 26, 23, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+  }
+
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    background: rgba(0, 48, 156, 0.15);
+    border: 1px solid rgba(86, 118, 191, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-text-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo-signature {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--color-creme);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    font-style: italic;
+  }
+
+  .logo-tagline {
+    font-size: 0.72rem;
+    color: var(--color-steel-blue);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    color: var(--color-creme-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-creme);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn-nav {
+    padding: 0.65rem 1.3rem;
+    font-size: 0.9rem;
+  }
+
+  .mobile-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--color-creme);
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--color-obsidian-dark);
+    border-bottom: 1px solid rgba(245, 240, 232, 0.1);
+    padding: 1.5rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .mobile-drawer.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .mobile-link {
+    color: var(--color-creme);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .btn-mobile-cta {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .nav-desktop {
+      display: none;
+    }
+    .mobile-toggle {
+      display: block;
+    }
+    .mobile-drawer {
+      display: block;
+    }
+    .btn-nav {
+      display: none;
+    }
+  }
+</style>

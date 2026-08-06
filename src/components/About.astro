@@ -1,0 +1,185 @@
+---
+import { Quote, Award, MapPin, Target, CheckCircle2 } from 'lucide-react';
+---
+
+<section class="section about-section">
+  <div class="container about-container">
+    <div class="about-image-wrapper">
+      <div class="about-card glass-card">
+        <div class="about-avatar-large">
+          <span>TP</span>
+        </div>
+        <div class="about-name-tag">
+          <h3>Tomás Pussetto</h3>
+          <p>Entrenador de Fuerza & Hábitos Sostenibles</p>
+          <div class="location-tag">
+            <MapPin size={14} />
+            <span>Rosario, Argentina & Online</span>
+          </div>
+        </div>
+
+        <div class="about-quotes-box">
+          <Quote size={24} color="#60A5FA" />
+          <p class="quote-text">
+            "El gimnasio no debería ser un lugar para sufrir ni para cambiar tu cuerpo por culpa. Debería ser el espacio donde aprendés a cumplirte la palabra a vos mismo."
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-content">
+      <div class="badge">
+        <span>Sobre Mi Propósito</span>
+      </div>
+
+      <h2 class="section-title">
+        No busco transformar cuerpos. <span class="text-gradient-blue">Transformo la relación que tenés con vos mismo.</span>
+      </h2>
+
+      <p class="about-paragraph">
+        Hola, soy <strong>Tomás Pussetto</strong>. Me dedico a ayudar a personas comunes, profesionales y emprendedores a romper el ciclo de empezar, sobreexigirse, abandonar y sentir culpa.
+      </p>
+
+      <p class="about-paragraph">
+        Entendí que la mayoría de la gente no abandona por falta de voluntad, sino porque intenta encajar en rutinas diseñadas para atletas sin vida personal. Mi propuesta es distinta: <strong>la fuerza como una herramienta para construir una vida más estable, hábitos sostenibles y autoconfianza real.</strong>
+      </p>
+
+      <div class="phrases-grid">
+        <div class="phrase-item">
+          <CheckCircle2 size={18} color="#60A5FA" />
+          <span>"No busques intensidad. Buscá continuidad."</span>
+        </div>
+        <div class="phrase-item">
+          <CheckCircle2 size={18} color="#60A5FA" />
+          <span>"Lo importante no es empezar. Es seguir."</span>
+        </div>
+        <div class="phrase-item">
+          <CheckCircle2 size={18} color="#60A5FA" />
+          <span>"Entrenar es una decisión que se toma muchas veces."</span>
+        </div>
+        <div class="phrase-item">
+          <CheckCircle2 size={18} color="#60A5FA" />
+          <span>"Los resultados llegan después de los hábitos."</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    position: relative;
+  }
+
+  .about-container {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-card {
+    padding: 2.5rem;
+    text-align: center;
+    background: linear-gradient(145deg, rgba(38, 22, 13, 0.75) 0%, rgba(28, 26, 23, 0.95) 100%);
+    border: 1px solid rgba(86, 118, 191, 0.3);
+  }
+
+  .about-avatar-large {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-royal-blue) 0%, var(--color-steel-blue) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 10px 30px var(--color-royal-blue-glow);
+  }
+
+  .about-name-tag h3 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+  }
+
+  .about-name-tag p {
+    font-size: 0.9rem;
+    color: var(--color-creme-muted);
+  }
+
+  .location-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    color: #93C5FD;
+    background: rgba(0, 48, 156, 0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--radius-full);
+  }
+
+  .about-quotes-box {
+    margin-top: 2rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+    text-align: left;
+  }
+
+  .quote-text {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--color-creme);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-paragraph {
+    font-size: 1.1rem;
+    color: var(--color-creme-muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-paragraph strong {
+    color: var(--color-creme);
+  }
+
+  .phrases-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+
+  .phrase-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--color-creme);
+    background: rgba(245, 240, 232, 0.04);
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(245, 240, 232, 0.06);
+  }
+
+  @media (max-width: 900px) {
+    .about-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+</style>

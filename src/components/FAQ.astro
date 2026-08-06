@@ -1,0 +1,114 @@
+---
+import { HelpCircle, ChevronDown } from 'lucide-react';
+
+const FAQS = [
+  {
+    q: "¿Qué pasa si tengo una agenda de trabajo exigente y muy poco tiempo libre?",
+    a: "Precisamente el método está pensado para personas con tu ritmo de vida. Diseñamos planes eficientes de 2 o 3 sesiones semanales de 45 a 50 minutos. Es infinitamente mejor hacer 2 días sostenidos durante todo el año que exigirte 5 días y abandonar al mes."
+  },
+  {
+    q: "¿Es necesario tener experiencia previa levantando pesas o entrenando fuerza?",
+    a: "Para nada. Si nunca pisaste un gimnasio o hace años que no entrenás, empezamos desde cero absoluto. Te enseño la ejecución correcta y segura de cada movimiento fundamental paso a paso."
+  },
+  {
+    q: "¿Cómo funciona el seguimiento si soy de Rosario o si vivo en otra ciudad/país?",
+    a: "Si estás en Rosario tenemos cercanía directa. Si estás en otra ciudad o país, la Asesoría Online funciona de forma impecable: mantenemos contacto directo por WhatsApp, me enviás tus videos de ejercicios para corrección técnica y ajustamos la planificación semanalmente según tu evolución."
+  },
+  {
+    q: "¿Qué sucede si viajo por trabajo o tengo una semana complicada y salteo entrenamientos?",
+    a: "Cero culpa ni vergüenza. Parte central del método es enseñarte a manejar la flexibilidad. Si tenés una semana complicada, ajustamos el volumen o reprogramamos las sesiones. Lo único que no está permitido es abandonar por sentir que 'ya fallaste'."
+  },
+  {
+    q: "¿Tengo que seguir una dieta estricta o pesando la comida?",
+    a: "No. Nos enfocamos en la nutrición como un hábito de salud y rendimiento, no en la obsesión. Te enseño pautas de alimentación reales y sostenibles que acompañen tu progreso en fuerza sin quitarte la libertad social."
+  }
+];
+---
+
+<section class="section faq-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <div class="badge badge-center">
+        <HelpCircle size={16} />
+        <span>Dudas Frecuentes</span>
+      </div>
+      <h2 class="section-title">
+        Preguntas <span class="text-gradient-blue">Frecuentes</span>
+      </h2>
+      <p class="section-subtitle">
+        Todo lo que necesitas saber antes de dar el paso hacia una vida más fuerte y constante.
+      </p>
+    </div>
+
+    <div class="faq-list">
+      {FAQS.map((faq, idx) => (
+        <details class="faq-item glass-card" open={idx === 0}>
+          <summary class="faq-question">
+            <span>{faq.q}</span>
+            <ChevronDown size={20} class="faq-icon" />
+          </summary>
+          <div class="faq-answer">
+            <p>{faq.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    position: relative;
+  }
+
+  .faq-list {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .faq-item {
+    padding: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .faq-question {
+    padding: 1.5rem 1.75rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-creme);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    color: #60A5FA;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.75rem 1.5rem;
+    color: var(--color-creme-muted);
+    font-size: 1rem;
+    line-height: 1.65;
+    border-top: 1px solid rgba(245, 240, 232, 0.06);
+    margin-top: 0.25rem;
+    padding-top: 1rem;
+  }
+</style>

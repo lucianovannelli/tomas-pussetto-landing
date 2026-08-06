@@ -1,0 +1,184 @@
+---
+import { Brain, Dumbbell, Users, Compass, Check } from 'lucide-react';
+
+const PILLARS = [
+  {
+    icon: Brain,
+    title: "1. Psicología del Hábito & Mentalidad",
+    badge: "40% del Enfoque",
+    desc: "Desmontamos el mito de la motivación pasajera. Te enseño qué hacer cuando no tenés ganas de entrenar, cómo gestionar la ansiedad y cómo construir disciplina real que se sostenga en el tiempo.",
+    bullets: [
+      "Qué hacer cuando perdés el ritmo",
+      "Cómo eliminar la culpa por saltearte una sesión",
+      "Creación de sistemas de constancia"
+    ]
+  },
+  {
+    icon: Dumbbell,
+    title: "2. Entrenamiento de Fuerza Simple",
+    badge: "Sin Complicaciones",
+    desc: "Explicamos el porqué de cada movimiento. No buscamos que hagas piruetas, sino dominar los patrones fundamentales para llegar fuerte, vital y funcional a los 70 años.",
+    bullets: [
+      "Técnica pulida y eficiente",
+      "Progreso adaptado a tus horarios",
+      "Prevención de lesiones y molestias"
+    ]
+  },
+  {
+    icon: Users,
+    title: "3. Historias Reales de Personas",
+    badge: "Casos Reales",
+    desc: "No mostramos números ni físicos inalcanzables. Celebramos a padres de familia, profesionales y emprendedores que lograron integrar la fuerza en sus vidas cotidianas.",
+    bullets: [
+      "Ejemplos de adherencia en agendas ocupadas",
+      "Conversaciones reales de progreso",
+      "Foco en la calidad de vida y energía"
+    ]
+  },
+  {
+    icon: Compass,
+    title: "4. Equilibrio & Estilo de Vida",
+    badge: "Visión Integral",
+    desc: "La fuerza es una herramienta para construir una vida más estable. El gimnasio es el lugar donde aprendés a cumplirte la palabra a vos mismo para luego aplicarlo en tu trabajo y familia.",
+    bullets: [
+      "Entrenamiento + Trabajo + Familia",
+      "Salud integral sin obsesiones",
+      "Construcción de autoconfianza"
+    ]
+  }
+];
+---
+
+<section id="filosofia" class="section pillars-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <div class="badge badge-center">
+        <span>Fundamentos del Método</span>
+      </div>
+      <h2 class="section-title">
+        Los 4 Pilares de <span class="text-gradient-blue">Fuerza & Adherencia</span>
+      </h2>
+      <p class="section-subtitle">
+        Una estructura pensada para transformar la relación que tenés con el entrenamiento y con vos mismo.
+      </p>
+    </div>
+
+    <div class="pillars-grid">
+      {PILLARS.map((pillar) => {
+        const IconComponent = pillar.icon;
+        return (
+          <div class="pillar-card glass-card">
+            <div class="pillar-card-header">
+              <div class="pillar-icon-box">
+                <IconComponent size={24} />
+              </div>
+              <span class="pillar-badge">{pillar.badge}</span>
+            </div>
+
+            <h3 class="pillar-title">{pillar.title}</h3>
+            <p class="pillar-desc">{pillar.desc}</p>
+
+            <ul class="pillar-bullets">
+              {pillar.bullets.map((item) => (
+                <li>
+                  <Check size={16} class="bullet-check" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pillars-section {
+    position: relative;
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .pillar-card {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pillar-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .pillar-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: rgba(0, 48, 156, 0.2);
+    border: 1px solid rgba(86, 118, 191, 0.3);
+    color: #60A5FA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pillar-badge {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #93C5FD;
+    background: rgba(245, 240, 232, 0.06);
+    padding: 0.35rem 0.8rem;
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(245, 240, 232, 0.1);
+  }
+
+  .pillar-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--color-creme);
+  }
+
+  .pillar-desc {
+    font-size: 1rem;
+    color: var(--color-creme-muted);
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  .pillar-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+  }
+
+  .pillar-bullets li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--color-creme);
+  }
+
+  .bullet-check {
+    color: #60A5FA;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

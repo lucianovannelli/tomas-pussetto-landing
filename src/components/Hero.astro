@@ -1,0 +1,295 @@
+---
+import { ArrowRight, ShieldCheck, Zap, Award, CheckCircle2 } from 'lucide-react';
+---
+
+<section class="hero-section">
+  <!-- Glowing Background Orbs -->
+  <div class="glow-blob glow-blue" style="top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 400px;"></div>
+  
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>Rosario & Coaching Online 🌎</span>
+      </div>
+
+      <h1 class="hero-title">
+        El gimnasio no es para cambiar tu cuerpo.
+        <span class="hero-highlight">Es donde aprendés a cumplirte la palabra.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Te enseño a convertir el entrenamiento de fuerza en un hábito sostenible que <strong>no abandones nunca más</strong>. Sin vivir a culpa, sin sobreexigencia absurda y pensado para personas reales con rutinas exigentes.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#quiz" class="btn btn-primary btn-lg">
+          <span>Hacer Test de Adherencia (1 min)</span>
+          <ArrowRight size={20} />
+        </a>
+        <a 
+          href="https://wa.me/5493410000000?text=Hola%20Tomás,%20quiero%20conocer%20tu%20método%20de%20entrenamiento%20y%20hábitos" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-secondary btn-lg"
+        >
+          <span>Agendar por WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="hero-proof-list">
+        <div class="proof-item">
+          <CheckCircle2 size={18} class="proof-icon" />
+          <span>Sin rutinas imposibles</span>
+        </div>
+        <div class="proof-item">
+          <CheckCircle2 size={18} class="proof-icon" />
+          <span>Foco en sostener el proceso</span>
+        </div>
+        <div class="proof-item">
+          <CheckCircle2 size={18} class="proof-icon" />
+          <span>Acompañamiento 1 a 1 directo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Visual / Card Showcase -->
+    <div class="hero-visual">
+      <div class="hero-card glass-card">
+        <div class="card-header-badge">
+          <Zap size={18} color="#60A5FA" />
+          <span>Manifiesto de Marca</span>
+        </div>
+        
+        <blockquote class="card-quote">
+          "No busques intensidad desmedida en la primera semana. Buscá la continuidad que vas a sostener dentro de 5 años."
+        </blockquote>
+
+        <div class="card-author">
+          <div class="author-avatar">
+            <span>TP</span>
+          </div>
+          <div class="author-info">
+            <span class="author-name">Tomás Pussetto</span>
+            <span class="author-role">Entrenador de Fuerza & Hábitos Sostenibles</span>
+          </div>
+        </div>
+
+        <div class="card-stats-grid">
+          <div class="stat-box">
+            <span class="stat-num">+100</span>
+            <span class="stat-label">Alumnos asistidos</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">4 Pilares</span>
+            <span class="stat-label">Método Integral</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Adherencia Real</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    position: relative;
+    padding: 5rem 0 6rem;
+    overflow: hidden;
+  }
+
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 1.5rem 0 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-highlight {
+    display: block;
+    background: linear-gradient(135deg, #93C5FD 0%, #00309C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 0.3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--color-creme-muted);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 620px;
+  }
+
+  .hero-subtitle strong {
+    color: var(--color-creme);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-proof-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+    width: 100%;
+  }
+
+  .proof-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--color-creme-muted);
+  }
+
+  .proof-icon {
+    color: #60A5FA;
+  }
+
+  /* Visual Card */
+  .hero-visual {
+    position: relative;
+  }
+
+  .hero-card {
+    padding: 2.5rem;
+    background: linear-gradient(145deg, rgba(38, 22, 13, 0.7) 0%, rgba(28, 26, 23, 0.9) 100%);
+    border: 1px solid rgba(86, 118, 191, 0.25);
+    position: relative;
+  }
+
+  .card-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    background: rgba(0, 48, 156, 0.2);
+    border: 1px solid rgba(86, 118, 191, 0.3);
+    border-radius: var(--radius-full);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #93C5FD;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-quote {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-creme);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .card-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+    margin-bottom: 1.5rem;
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-royal-blue) 0%, var(--color-steel-blue) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 1.1rem;
+  }
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .author-name {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-creme);
+  }
+
+  .author-role {
+    font-size: 0.8rem;
+    color: var(--color-creme-muted);
+  }
+
+  .card-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .stat-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-num {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #60A5FA;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--color-creme-muted);
+    margin-top: 2px;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-title {
+      font-size: 1.9rem;
+    }
+    
+    .hero-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn-lg {
+      width: 100%;
+    }
+  }
+</style>

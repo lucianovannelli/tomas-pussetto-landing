@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import CycleBreak from '../components/CycleBreak.astro';
+import QuizInteractive from '../components/QuizInteractive.jsx';
+import Pillars from '../components/Pillars.astro';
+import TransformationSlider from '../components/TransformationSlider.jsx';
+import Services from '../components/Services.astro';
+import About from '../components/About.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+import { Sparkles, HeartHandshake } from 'lucide-react';
+---
+
+<Layout 
+  title="Tomás Pussetto | Entrenador de Fuerza & Hábitos Sostenibles — Rosario" 
+  description="Convertí el entrenamiento de fuerza en un hábito que no abandones nunca más. Asesoría de entrenamiento y psicología del hábito en Rosario y Coaching Online."
+>
+  <Header />
+
+  <main>
+    <Hero />
+    
+    <CycleBreak />
+
+    <!-- Quiz Interactive Section -->
+    <section class="section quiz-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge badge-center">
+            <Sparkles size={16} />
+            <span>Diagnóstico en 1 minuto</span>
+          </div>
+          <h2 class="section-title">
+            ¿Por qué estuviste <span class="text-gradient-blue">abandonando el gimnasio?</span>
+          </h2>
+          <p class="section-subtitle">
+            Respondé estas 4 preguntas para descubrir tu nivel de adherencia y el camino exacto para romper el estancamiento.
+          </p>
+        </div>
+
+        <QuizInteractive client:visible />
+      </div>
+    </section>
+
+    <Pillars />
+
+    <!-- Real Client Stories & Transformations -->
+    <section id="historias" class="section stories-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="badge badge-center">
+            <HeartHandshake size={16} />
+            <span>Historias de Personas Reales</span>
+          </div>
+          <h2 class="section-title">
+            De la culpa y la frustración a <span class="text-gradient-blue">cumplirse la palabra</span>
+          </h2>
+          <p class="section-subtitle">
+            Conocé a alumnos reales de Tomás que lograron integrar el entrenamiento de fuerza en sus vidas ocupadas.
+          </p>
+        </div>
+
+        <TransformationSlider client:visible />
+      </div>
+    </section>
+
+    <Services />
+
+    <About />
+
+    <FAQ />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .quiz-section {
+    position: relative;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 48, 156, 0.1) 0%, transparent 60%);
+  }
+
+  .stories-section {
+    position: relative;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .badge-center {
+    margin: 0 auto 1rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-creme-muted);
+    max-width: 680px;
+    margin: 0 auto 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+</style>

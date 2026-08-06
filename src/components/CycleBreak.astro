@@ -1,0 +1,255 @@
+---
+import { XCircle, CheckCircle2, ArrowRight, RefreshCw } from 'lucide-react';
+---
+
+<section id="ciclo" class="section cycle-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <div class="badge badge-center">
+        <RefreshCw size={16} />
+        <span>Rompé el patrón</span>
+      </div>
+      <h2 class="section-title">
+        Basta de vivir en el ciclo de <span class="text-gradient-blue">empezar y abandonar</span>
+      </h2>
+      <p class="section-subtitle">
+        La mayoría de los programas fracasan porque exigen una intensidad insostenible en lugar de construir adherencia real.
+      </p>
+    </div>
+
+    <div class="cycle-grid">
+      <!-- Old Broken Cycle -->
+      <div class="cycle-card broken-card glass-card">
+        <div class="cycle-card-header">
+          <div class="status-icon status-broken">
+            <XCircle size={24} />
+          </div>
+          <div>
+            <h3 class="cycle-card-title">El Viejo Ciclo de Culpa</h3>
+            <span class="cycle-card-sub">Lo que viviste hasta hoy</span>
+          </div>
+        </div>
+
+        <ul class="cycle-steps">
+          <li class="step-item step-broken">
+            <span class="step-num">1</span>
+            <div>
+              <strong>Empiezas por motivación pasajera</strong>
+              <p>Arrancas al 200% esperando resultados en 7 días.</p>
+            </div>
+          </li>
+          <li class="step-item step-broken">
+            <span class="step-num">2</span>
+            <div>
+              <strong>Sobreexigencia y restricciones</strong>
+              <p>Rutinas interminables y restricciones drásticas.</p>
+            </div>
+          </li>
+          <li class="step-item step-broken">
+            <span class="step-num">3</span>
+            <div>
+              <strong>Surge la primera complicación</strong>
+              <p>Trabajo, viajes o cansancio rompen el plan perfecto.</p>
+            </div>
+          </li>
+          <li class="step-item step-broken">
+            <span class="step-num">4</span>
+            <div>
+              <strong>Abandono y frustración</strong>
+              <p>Aparece la culpa y la sensación de haber fallado.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- New Sustainable Cycle -->
+      <div class="cycle-card sustainable-card glass-card">
+        <div class="cycle-card-header">
+          <div class="status-icon status-sustainable">
+            <CheckCircle2 size={24} />
+          </div>
+          <div>
+            <h3 class="cycle-card-title">El Método Tomás Pussetto</h3>
+            <span class="cycle-card-sub">Adherencia y Hábitos Sostenibles</span>
+          </div>
+        </div>
+
+        <ul class="cycle-steps">
+          <li class="step-item step-sustainable">
+            <span class="step-num">1</span>
+            <div>
+              <strong>Empiezas con un plan adaptado a tu vida</strong>
+              <p>Diseñado acorde a tus horarios reales y nivel inicial.</p>
+            </div>
+          </li>
+          <li class="step-item step-sustainable">
+            <span class="step-num">2</span>
+            <div>
+              <strong>Foco en la continuidad, no en la intensidad</strong>
+              <p>Entrenamiento de fuerza simple y efectivo.</p>
+            </div>
+          </li>
+          <li class="step-item step-sustainable">
+            <span class="step-num">3</span>
+            <div>
+              <strong>Flexibilidad ante imprevistos</strong>
+              <p>Si la rutina cambia, ajustamos sin culpa ni abandono.</p>
+            </div>
+          </li>
+          <li class="step-item step-sustainable">
+            <span class="step-num">4</span>
+            <div>
+              <strong>Resultados sólidos y autoconfianza</strong>
+              <p>Aprendés a cumplirte la palabra a vos mismo.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cycle-section {
+    background: radial-gradient(circle at 50% 50%, rgba(38, 22, 13, 0.4) 0%, transparent 70%);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .badge-center {
+    margin: 0 auto 1rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-creme-muted);
+    max-width: 680px;
+    margin: 0 auto 3.5rem;
+  }
+
+  .cycle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .cycle-card {
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .broken-card {
+    border-color: rgba(239, 68, 68, 0.2);
+    background: linear-gradient(180deg, rgba(38, 22, 13, 0.6) 0%, rgba(28, 26, 23, 0.8) 100%);
+  }
+
+  .sustainable-card {
+    border-color: rgba(0, 48, 156, 0.4);
+    background: linear-gradient(180deg, rgba(0, 48, 156, 0.12) 0%, rgba(28, 26, 23, 0.9) 100%);
+    box-shadow: 0 0 40px rgba(0, 48, 156, 0.15);
+  }
+
+  .cycle-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+    margin-bottom: 1.75rem;
+  }
+
+  .status-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .status-broken {
+    background: rgba(239, 68, 68, 0.15);
+    color: #F87171;
+  }
+
+  .status-sustainable {
+    background: rgba(0, 48, 156, 0.25);
+    color: #60A5FA;
+  }
+
+  .cycle-card-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  .cycle-card-sub {
+    font-size: 0.85rem;
+    color: var(--color-creme-muted);
+  }
+
+  .cycle-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-broken .step-num {
+    background: rgba(239, 68, 68, 0.15);
+    color: #F87171;
+  }
+
+  .step-sustainable .step-num {
+    background: rgba(0, 48, 156, 0.3);
+    color: #93C5FD;
+  }
+
+  .step-item strong {
+    display: block;
+    font-size: 1rem;
+    color: var(--color-creme);
+    margin-bottom: 0.2rem;
+  }
+
+  .step-item p {
+    font-size: 0.9rem;
+    color: var(--color-creme-muted);
+  }
+
+  @media (max-width: 900px) {
+    .cycle-grid {
+      grid-template-columns: 1fr;
+    }
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+</style>
