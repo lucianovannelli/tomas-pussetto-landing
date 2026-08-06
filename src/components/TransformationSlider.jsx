@@ -99,7 +99,7 @@ export default function TransformationSlider() {
       </div>
 
       {/* Active Story Card */}
-      <div className="story-main-card glass-card">
+      <div className="story-main-card">
         <div className="story-header">
           <div className="user-meta">
             <div className="user-avatar">{current.name[0]}</div>
@@ -120,7 +120,7 @@ export default function TransformationSlider() {
         </div>
 
         <div className="story-highlight-badge">
-          <ShieldCheck size={18} color="#60A5FA" />
+          <ShieldCheck size={18} color="#F5F0E8" />
           <span>{current.highlight}</span>
         </div>
 
@@ -170,8 +170,8 @@ export default function TransformationSlider() {
           flex: 1;
           min-width: 200px;
           padding: 1rem 1.25rem;
-          background: rgba(245, 240, 232, 0.04);
-          border: 1px solid rgba(245, 240, 232, 0.08);
+          background: rgba(245, 240, 232, 0.05);
+          border: 1px solid rgba(245, 240, 232, 0.1);
           border-radius: var(--radius-md);
           display: flex;
           flex-direction: column;
@@ -183,14 +183,14 @@ export default function TransformationSlider() {
         }
 
         .story-tab-btn:hover {
-          background: rgba(0, 48, 156, 0.15);
-          border-color: rgba(86, 118, 191, 0.3);
+          background: rgba(245, 240, 232, 0.1);
+          border-color: var(--color-creme-muted);
         }
 
         .story-tab-btn.active {
-          background: linear-gradient(135deg, rgba(0, 48, 156, 0.3) 0%, rgba(38, 22, 13, 0.6) 100%);
-          border-color: #60A5FA;
-          color: var(--color-creme);
+          background: var(--color-creme);
+          border-color: var(--color-creme);
+          color: var(--color-obsidian);
         }
 
         .tab-name {
@@ -207,8 +207,8 @@ export default function TransformationSlider() {
         /* Main Card */
         .story-main-card {
           padding: 2.5rem;
-          background: linear-gradient(145deg, rgba(38, 22, 13, 0.75) 0%, rgba(28, 26, 23, 0.95) 100%);
-          border: 1px solid rgba(86, 118, 191, 0.3);
+          background: #26160D;
+          border: 1px solid rgba(245, 240, 232, 0.15);
           border-radius: var(--radius-lg);
         }
 
@@ -229,13 +229,13 @@ export default function TransformationSlider() {
           width: 52px;
           height: 52px;
           border-radius: 50%;
-          background: linear-gradient(135deg, #00309C 0%, #5676BF 100%);
+          background: var(--color-creme);
           display: flex;
           align-items: center;
           justify-content: center;
           font-weight: 800;
           font-size: 1.3rem;
-          color: #ffffff;
+          color: var(--color-obsidian);
         }
 
         .user-name {
@@ -269,8 +269,8 @@ export default function TransformationSlider() {
         }
 
         .control-btn:hover {
-          background: var(--color-royal-blue);
-          border-color: var(--color-royal-blue);
+          background: var(--color-creme);
+          color: var(--color-obsidian);
         }
 
         .story-highlight-badge {
@@ -278,12 +278,12 @@ export default function TransformationSlider() {
           align-items: center;
           gap: 0.6rem;
           padding: 0.5rem 1rem;
-          background: rgba(0, 48, 156, 0.2);
-          border: 1px solid rgba(86, 118, 191, 0.3);
+          background: rgba(245, 240, 232, 0.08);
+          border: 1px solid rgba(245, 240, 232, 0.15);
           border-radius: var(--radius-full);
           font-size: 0.95rem;
           font-weight: 700;
-          color: #93C5FD;
+          color: var(--color-creme);
           margin-bottom: 1.75rem;
         }
 
@@ -301,7 +301,8 @@ export default function TransformationSlider() {
           position: absolute;
           left: 0;
           top: 0;
-          color: rgba(86, 118, 191, 0.4);
+          color: var(--color-creme-muted);
+          opacity: 0.5;
         }
 
         .comparison-grid {
@@ -325,8 +326,8 @@ export default function TransformationSlider() {
         }
 
         .comp-after {
-          background: rgba(0, 48, 156, 0.15);
-          border: 1px solid rgba(86, 118, 191, 0.35);
+          background: rgba(245, 240, 232, 0.08);
+          border: 1px solid rgba(245, 240, 232, 0.2);
           color: var(--color-creme);
         }
 
@@ -342,14 +343,14 @@ export default function TransformationSlider() {
         }
 
         .tag-after {
-          color: #60A5FA;
+          color: var(--color-creme);
         }
 
         .metrics-row {
           display: flex;
           gap: 1rem;
           padding-top: 1.5rem;
-          border-top: 1px solid rgba(245, 240, 232, 0.08);
+          border-top: 1px solid rgba(245, 240, 232, 0.1);
         }
 
         .metric-badge {
@@ -367,7 +368,7 @@ export default function TransformationSlider() {
         .m-val {
           font-size: 1.1rem;
           font-weight: 800;
-          color: #60A5FA;
+          color: var(--color-creme);
         }
 
         .m-lbl {

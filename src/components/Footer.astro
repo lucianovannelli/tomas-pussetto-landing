@@ -5,7 +5,7 @@ import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
 <footer class="footer">
   <div class="container">
     <!-- CTA Banner inside Footer -->
-    <div class="footer-cta-banner glass-card">
+    <div class="footer-cta-banner brand-card-dark">
       <div class="cta-content">
         <span class="cta-badge">Tu próximo paso</span>
         <h2 class="cta-title">
@@ -29,17 +29,13 @@ import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
 
     <div class="footer-main">
       <div class="footer-brand">
-        <a href="#" class="brand-logo">
-          <div class="logo-mark">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 4C8 4 5 7 5 12C5 17 8 20 12 20C16 20 19 17 19 12C19 7 16 4 12 4ZM12 18C8.7 18 7 15.3 7 12C7 8.7 8.7 6 12 6C15.3 6 17 8.7 17 12C17 15.3 15.3 18 12 18Z" fill="#00309C"/>
-              <path d="M7 12C7 9 9.5 6.5 12.5 6.5C15.5 6.5 18 9 18 12" stroke="#5676BF" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="logo-text-group">
-            <span class="logo-signature">Tomás Pussetto</span>
-            <span class="logo-tagline">Fuerza, hábitos y equilibrio</span>
-          </div>
+        <a href="#" class="brand-logo-link">
+          <img 
+            src="/logo-signature-creme.png" 
+            alt="Tomás Pussetto" 
+            class="footer-signature-logo"
+          />
+          <span class="footer-tagline-small">Fuerza, hábitos y equilibrio</span>
         </a>
 
         <p class="footer-tagline-text">
@@ -88,9 +84,9 @@ import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
 <style>
   .footer {
     position: relative;
-    padding: 6rem 0 3rem;
+    padding: 5rem 0 3rem;
     background: var(--color-obsidian-dark);
-    border-top: 1px solid rgba(245, 240, 232, 0.08);
+    border-top: 1px solid var(--border-warm);
   }
 
   .footer-cta-banner {
@@ -100,14 +96,14 @@ import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    background: linear-gradient(135deg, rgba(0, 48, 156, 0.25) 0%, rgba(38, 22, 13, 0.9) 100%);
-    border: 1px solid rgba(86, 118, 191, 0.35);
+    background: var(--color-espresso);
+    border: 1px solid var(--border-warm);
   }
 
   .cta-badge {
     font-size: 0.8rem;
     font-weight: 700;
-    color: #93C5FD;
+    color: var(--color-creme-muted);
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
@@ -129,7 +125,28 @@ import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     padding-bottom: 4rem;
-    border-bottom: 1px solid rgba(245, 240, 232, 0.08);
+    border-bottom: 1px solid var(--border-warm);
+  }
+
+  .brand-logo-link {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+  }
+
+  .footer-signature-logo {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .footer-tagline-small {
+    font-size: 0.7rem;
+    color: var(--color-creme-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 3px;
   }
 
   .footer-tagline-text {
@@ -196,7 +213,7 @@ import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
   }
 
   .back-to-top:hover {
-    color: #60A5FA;
+    color: var(--color-creme);
   }
 
   @media (max-width: 900px) {

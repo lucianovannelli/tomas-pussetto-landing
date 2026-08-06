@@ -56,7 +56,7 @@ const PILLARS = [
         <span>Fundamentos del Método</span>
       </div>
       <h2 class="section-title">
-        Los 4 Pilares de <span class="text-gradient-blue">Fuerza & Adherencia</span>
+        Los 4 Pilares de <span class="text-creme">Fuerza & Adherencia</span>
       </h2>
       <p class="section-subtitle">
         Una estructura pensada para transformar la relación que tenés con el entrenamiento y con vos mismo.
@@ -67,7 +67,7 @@ const PILLARS = [
       {PILLARS.map((pillar) => {
         const IconComponent = pillar.icon;
         return (
-          <div class="pillar-card glass-card">
+          <div class="pillar-card brand-card-dark">
             <div class="pillar-card-header">
               <div class="pillar-icon-box">
                 <IconComponent size={24} />
@@ -98,6 +98,27 @@ const PILLARS = [
     position: relative;
   }
 
+  .text-center {
+    text-align: center;
+  }
+
+  .badge-center {
+    margin: 0 auto 1rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-creme-muted);
+    max-width: 680px;
+    margin: 0 auto 3.5rem;
+  }
+
   .pillars-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -105,7 +126,7 @@ const PILLARS = [
   }
 
   .pillar-card {
-    padding: 2.5rem;
+    padding: 2.25rem;
     display: flex;
     flex-direction: column;
   }
@@ -121,9 +142,9 @@ const PILLARS = [
     width: 48px;
     height: 48px;
     border-radius: var(--radius-md);
-    background: rgba(0, 48, 156, 0.2);
-    border: 1px solid rgba(86, 118, 191, 0.3);
-    color: #60A5FA;
+    background: rgba(245, 240, 232, 0.08);
+    border: 1px solid rgba(245, 240, 232, 0.15);
+    color: var(--color-creme);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,7 +153,7 @@ const PILLARS = [
   .pillar-badge {
     font-size: 0.78rem;
     font-weight: 700;
-    color: #93C5FD;
+    color: var(--color-creme-muted);
     background: rgba(245, 240, 232, 0.06);
     padding: 0.35rem 0.8rem;
     border-radius: var(--radius-full);
@@ -160,7 +181,7 @@ const PILLARS = [
     gap: 0.65rem;
     margin-top: auto;
     padding-top: 1.25rem;
-    border-top: 1px solid rgba(245, 240, 232, 0.08);
+    border-top: 1px solid var(--border-warm);
   }
 
   .pillar-bullets li {
@@ -172,7 +193,7 @@ const PILLARS = [
   }
 
   .bullet-check {
-    color: #60A5FA;
+    color: var(--color-creme);
     flex-shrink: 0;
   }
 

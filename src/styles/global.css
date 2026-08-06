@@ -1,46 +1,40 @@
 /* ==========================================================================
-   TOMÁS PUSSETTO - SISTEMA DE DISEÑO Y ESTILOS GLOBALES
+   TOMÁS PUSSETTO - GUÍA DE MARCA OFICIAL
    Fuerza, Hábitos y Equilibrio
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-  /* Brand Color Tokens */
-  --color-obsidian: #1C1A17;
-  --color-obsidian-dark: #12100E;
-  --color-espresso: #26160D;
-  --color-espresso-light: #3A2316;
-  --color-creme: #F5F0E8;
-  --color-creme-muted: #E2DBD0;
-  --color-royal-blue: #00309C;
-  --color-royal-blue-hover: #002273;
-  --color-royal-blue-glow: rgba(0, 48, 156, 0.4);
-  --color-steel-blue: #5676BF;
-  --color-steel-blue-muted: rgba(86, 118, 191, 0.15);
+  /* Official Brand Colors */
+  --color-obsidian: #1C1A17;         /* Primary Dark Background */
+  --color-obsidian-dark: #141210;    /* Deep Background / Footer */
+  --color-espresso: #26160D;         /* Deep Warm Brown Surface */
+  --color-espresso-light: #3D2619;   /* Border / Hover Accent */
   
-  /* Status & Accents */
-  --color-success: #10B981;
-  --color-danger: #EF4444;
+  --color-creme: #F5F0E8;            /* Warm Off-White / Light Text / Cards */
+  --color-creme-muted: #D8CEC0;      /* Muted Subtext */
+  --color-creme-dark: #2C2823;       /* Dark Text for Creme Cards */
 
-  /* Glassmorphism Tokens */
-  --glass-bg: rgba(38, 22, 13, 0.55);
-  --glass-border: rgba(245, 240, 232, 0.08);
-  --glass-border-hover: rgba(86, 118, 191, 0.35);
-  --glass-glow: rgba(0, 48, 156, 0.12);
-  --glass-blur: blur(16px);
+  --color-royal-blue: #00309C;       /* Accent Blue (Used selectively) */
+  --color-steel-blue: #5676BF;       /* Secondary Accent Blue */
+
+  /* Glassmorphism & Card Tokens (Warm Vibe) */
+  --card-bg-dark: rgba(38, 22, 13, 0.75);
+  --card-bg-creme: #F5F0E8;
+  --border-warm: rgba(245, 240, 232, 0.12);
+  --border-warm-hover: rgba(245, 240, 232, 0.3);
 
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   
   /* Layout & Spacing */
-  --max-width: 1200px;
-  --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --max-width: 1180px;
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
-  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Reset & Base Styles */
@@ -65,15 +59,14 @@ body {
   overflow-x: hidden;
   position: relative;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(0, 48, 156, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 90% 70%, rgba(38, 22, 13, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 50% 0%, rgba(38, 22, 13, 0.8) 0%, transparent 60%),
     var(--color-obsidian);
 }
 
 /* Selection */
 ::selection {
-  background-color: var(--color-royal-blue);
-  color: #ffffff;
+  background-color: var(--color-creme);
+  color: var(--color-obsidian);
 }
 
 /* Custom Scrollbar */
@@ -88,32 +81,31 @@ body {
   border-radius: var(--radius-full);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-steel-blue);
+  background: var(--color-creme-muted);
 }
 
 /* Typography Utilities */
 h1, h2, h3, h4, h5, h6 {
   color: var(--color-creme);
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: 0.04em;
+  line-height: 1.18;
+  letter-spacing: 0.03em;
 }
 
-.text-gradient {
-  background: linear-gradient(135deg, var(--color-creme) 30%, var(--color-steel-blue) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.text-creme {
+  color: var(--color-creme);
 }
 
-.text-gradient-blue {
-  background: linear-gradient(135deg, #60A5FA 0%, #00309C 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.text-espresso {
+  color: var(--color-espresso);
 }
 
 .text-muted {
   color: var(--color-creme-muted);
-  opacity: 0.8;
+}
+
+.text-accent-blue {
+  color: var(--color-steel-blue);
 }
 
 /* Layout Utilities */
@@ -135,24 +127,35 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Glassmorphism Card Utility */
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
+/* Cards (Warm Brand Aesthetic) */
+.brand-card-dark {
+  background: var(--color-espresso);
+  border: 1px solid var(--border-warm);
   border-radius: var(--radius-md);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(245, 240, 232, 0.05);
-  transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+  padding: 2.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transition: border-color var(--transition), transform var(--transition);
 }
 
-.glass-card:hover {
-  border-color: var(--glass-border-hover);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px var(--glass-glow);
-  transform: translateY(-3px);
+.brand-card-dark:hover {
+  border-color: var(--border-warm-hover);
+  transform: translateY(-2px);
 }
 
-/* Buttons */
+.brand-card-creme {
+  background: var(--color-creme);
+  color: var(--color-creme-dark);
+  border-radius: var(--radius-md);
+  padding: 2.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  transition: transform var(--transition);
+}
+
+.brand-card-creme:hover {
+  transform: translateY(-2px);
+}
+
+/* Buttons (Warm & Elegant) */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -166,39 +169,51 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-full);
   text-decoration: none;
   cursor: pointer;
-  transition: all var(--transition-normal);
+  transition: all var(--transition);
   border: none;
   outline: none;
 }
 
+/* Primary Button: Warm Creme background with Obsidian Text (High Contrast & Elegance) */
 .btn-primary {
-  background: var(--color-royal-blue);
-  color: #ffffff;
-  box-shadow: 0 8px 24px var(--color-royal-blue-glow);
+  background: var(--color-creme);
+  color: var(--color-obsidian);
+  box-shadow: 0 6px 20px rgba(245, 240, 232, 0.15);
 }
 
 .btn-primary:hover {
-  background: var(--color-royal-blue-hover);
+  background: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(0, 48, 156, 0.6);
+  box-shadow: 0 10px 28px rgba(245, 240, 232, 0.25);
 }
 
+/* Secondary Button: Dark Espresso background with Warm Creme Border */
 .btn-secondary {
-  background: rgba(245, 240, 232, 0.08);
+  background: rgba(38, 22, 13, 0.8);
   color: var(--color-creme);
-  border: 1px solid rgba(245, 240, 232, 0.15);
-  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-warm);
 }
 
 .btn-secondary:hover {
-  background: rgba(245, 240, 232, 0.15);
-  border-color: var(--color-steel-blue);
+  background: var(--color-espresso-light);
+  border-color: var(--color-creme-muted);
+  transform: translateY(-2px);
+}
+
+/* Blue Accent Button (Used selectively for primary action) */
+.btn-blue {
+  background: var(--color-royal-blue);
   color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 48, 156, 0.3);
+}
+
+.btn-blue:hover {
+  background: #00257A;
   transform: translateY(-2px);
 }
 
 .btn-lg {
-  padding: 1.15rem 2.2rem;
+  padding: 1.1rem 2.2rem;
   font-size: 1.05rem;
 }
 
@@ -209,41 +224,16 @@ h1, h2, h3, h4, h5, h6 {
   gap: 0.5rem;
   padding: 0.4rem 1rem;
   border-radius: var(--radius-full);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+  background: rgba(38, 22, 13, 0.9);
+  border: 1px solid var(--border-warm);
+  color: var(--color-creme);
+}
+
+.badge-blue {
   background: rgba(0, 48, 156, 0.15);
   border: 1px solid rgba(86, 118, 191, 0.3);
   color: #93C5FD;
-}
-
-.badge-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #3B82F6;
-  box-shadow: 0 0 10px #3B82F6;
-  animation: pulse-dot 2s infinite;
-}
-
-@keyframes pulse-dot {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.3); opacity: 0.7; }
-}
-
-/* Visual Glow Blobs */
-.glow-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.glow-blue {
-  background: rgba(0, 48, 156, 0.25);
-}
-
-.glow-espresso {
-  background: rgba(38, 22, 13, 0.8);
 }

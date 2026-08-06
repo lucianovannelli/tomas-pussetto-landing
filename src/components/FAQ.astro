@@ -33,7 +33,7 @@ const FAQS = [
         <span>Dudas Frecuentes</span>
       </div>
       <h2 class="section-title">
-        Preguntas <span class="text-gradient-blue">Frecuentes</span>
+        Preguntas <span class="text-creme">Frecuentes</span>
       </h2>
       <p class="section-subtitle">
         Todo lo que necesitas saber antes de dar el paso hacia una vida más fuerte y constante.
@@ -42,7 +42,7 @@ const FAQS = [
 
     <div class="faq-list">
       {FAQS.map((faq, idx) => (
-        <details class="faq-item glass-card" open={idx === 0}>
+        <details class="faq-item brand-card-dark" open={idx === 0}>
           <summary class="faq-question">
             <span>{faq.q}</span>
             <ChevronDown size={20} class="faq-icon" />
@@ -59,6 +59,27 @@ const FAQS = [
 <style>
   .faq-section {
     position: relative;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .badge-center {
+    margin: 0 auto 1rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.15rem;
+    color: var(--color-creme-muted);
+    max-width: 680px;
+    margin: 0 auto 3.5rem;
   }
 
   .faq-list {
@@ -93,7 +114,7 @@ const FAQS = [
   }
 
   .faq-icon {
-    color: #60A5FA;
+    color: var(--color-creme);
     transition: transform 0.3s ease;
     flex-shrink: 0;
   }
@@ -107,7 +128,7 @@ const FAQS = [
     color: var(--color-creme-muted);
     font-size: 1rem;
     line-height: 1.65;
-    border-top: 1px solid rgba(245, 240, 232, 0.06);
+    border-top: 1px solid var(--border-warm);
     margin-top: 0.25rem;
     padding-top: 1rem;
   }

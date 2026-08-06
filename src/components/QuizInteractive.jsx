@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, CheckCircle, ArrowRight, RotateCcw, MessageCircle, Sparkles } from 'lucide-react';
+import { CheckCircle, RotateCcw, MessageCircle, Sparkles } from 'lucide-react';
 
 const QUESTIONS = [
   {
@@ -71,7 +71,7 @@ export default function QuizInteractive() {
 
   return (
     <div id="quiz" className="quiz-container">
-      <div className="quiz-card glass-card">
+      <div className="quiz-card">
         {!isCompleted ? (
           <div>
             <div className="quiz-progress-bar">
@@ -114,12 +114,12 @@ export default function QuizInteractive() {
         ) : (
           <div className="quiz-result">
             <div className="result-badge">
-              <CheckCircle size={28} color="#60A5FA" />
+              <CheckCircle size={28} color="#F5F0E8" />
               <span>Diagnóstico Completado</span>
             </div>
 
             <h3 className="result-title">
-              Estás listo para romper el ciclo y construir <span className="text-gradient-blue">Adherencia Real</span>
+              Estás listo para romper el ciclo y construir <span>Adherencia Real</span>
             </h3>
 
             <p className="result-desc">
@@ -163,8 +163,8 @@ export default function QuizInteractive() {
 
         .quiz-card {
           padding: 3rem;
-          background: linear-gradient(145deg, rgba(38, 22, 13, 0.8) 0%, rgba(28, 26, 23, 0.95) 100%);
-          border: 1px solid rgba(86, 118, 191, 0.3);
+          background: #26160D;
+          border: 1px solid rgba(245, 240, 232, 0.15);
           border-radius: var(--radius-lg);
           position: relative;
         }
@@ -172,7 +172,7 @@ export default function QuizInteractive() {
         .quiz-progress-bar {
           width: 100%;
           height: 6px;
-          background: rgba(245, 240, 232, 0.08);
+          background: rgba(245, 240, 232, 0.1);
           border-radius: 999px;
           overflow: hidden;
           margin-bottom: 2rem;
@@ -180,7 +180,7 @@ export default function QuizInteractive() {
 
         .quiz-progress-fill {
           height: 100%;
-          background: linear-gradient(90deg, #60A5FA 0%, #00309C 100%);
+          background: var(--color-creme);
           transition: width 0.35s ease;
         }
 
@@ -194,11 +194,12 @@ export default function QuizInteractive() {
           gap: 0.4rem;
           font-size: 0.85rem;
           font-weight: 600;
-          color: #93C5FD;
-          background: rgba(0, 48, 156, 0.2);
-          padding: 0.3rem 0.8rem;
+          color: var(--color-creme);
+          background: rgba(245, 240, 232, 0.08);
+          padding: 0.35rem 0.85rem;
           border-radius: 999px;
           margin-bottom: 0.75rem;
+          border: 1px solid rgba(245, 240, 232, 0.15);
         }
 
         .quiz-question {
@@ -219,7 +220,7 @@ export default function QuizInteractive() {
           align-items: center;
           gap: 1rem;
           padding: 1.15rem 1.35rem;
-          background: rgba(245, 240, 232, 0.04);
+          background: rgba(245, 240, 232, 0.05);
           border: 1px solid rgba(245, 240, 232, 0.1);
           border-radius: var(--radius-md);
           color: var(--color-creme);
@@ -231,8 +232,8 @@ export default function QuizInteractive() {
         }
 
         .quiz-option-btn:hover {
-          background: rgba(0, 48, 156, 0.2);
-          border-color: rgba(86, 118, 191, 0.5);
+          background: rgba(245, 240, 232, 0.12);
+          border-color: var(--color-creme-muted);
           transform: translateX(4px);
         }
 
@@ -240,14 +241,14 @@ export default function QuizInteractive() {
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          border: 2px solid rgba(245, 240, 232, 0.3);
+          border: 2px solid rgba(245, 240, 232, 0.4);
           flex-shrink: 0;
           transition: all 0.2s ease;
         }
 
         .quiz-option-btn:hover .option-radio {
-          border-color: #60A5FA;
-          background: rgba(0, 48, 156, 0.4);
+          border-color: var(--color-creme);
+          background: rgba(245, 240, 232, 0.2);
         }
 
         .quiz-back-btn {
@@ -275,7 +276,7 @@ export default function QuizInteractive() {
           gap: 0.6rem;
           font-size: 1rem;
           font-weight: 700;
-          color: #93C5FD;
+          color: var(--color-creme);
           margin-bottom: 1rem;
         }
 
@@ -283,6 +284,7 @@ export default function QuizInteractive() {
           font-size: 1.85rem;
           font-weight: 800;
           margin-bottom: 1rem;
+          color: var(--color-creme);
         }
 
         .result-desc {
@@ -293,8 +295,8 @@ export default function QuizInteractive() {
         }
 
         .result-box {
-          background: rgba(0, 48, 156, 0.12);
-          border: 1px solid rgba(86, 118, 191, 0.3);
+          background: rgba(245, 240, 232, 0.06);
+          border: 1px solid rgba(245, 240, 232, 0.12);
           border-radius: var(--radius-md);
           padding: 1.5rem;
           text-align: left;
