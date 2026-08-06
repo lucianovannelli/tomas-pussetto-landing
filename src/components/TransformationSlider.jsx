@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HeartHandshake, ShieldCheck, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import { HeartHandshake, ShieldCheck, Quote, ChevronLeft, ChevronRight, XCircle, CheckCircle2 } from 'lucide-react';
 
 const STORIES = [
   {
@@ -132,11 +132,17 @@ export default function TransformationSlider() {
         {/* Before & After Comparison */}
         <div className="comparison-grid">
           <div className="comp-box comp-before">
-            <span className="comp-tag tag-before">❌ {current.before.status}</span>
+            <span className="comp-tag tag-before">
+              <XCircle size={15} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
+              {current.before.status}
+            </span>
             <p>{current.before.desc}</p>
           </div>
           <div className="comp-box comp-after">
-            <span className="comp-tag tag-after">✅ {current.after.status}</span>
+            <span className="comp-tag tag-after">
+              <CheckCircle2 size={15} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
+              {current.after.status}
+            </span>
             <p>{current.after.desc}</p>
           </div>
         </div>
