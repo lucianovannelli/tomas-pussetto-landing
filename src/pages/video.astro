@@ -15,13 +15,13 @@ import { Sparkles, HeartHandshake } from 'lucide-react';
 ---
 
 <Layout 
-  title="Tomás Pussetto | Entrenador de Fuerza & Hábitos Sostenibles — Rosario" 
-  description="Convertí el entrenamiento de fuerza en un hábito que no abandones nunca más. Asesoría de entrenamiento y psicología del hábito en Rosario y Coaching Online."
+  title="Tomás Pussetto | Video Presentación — Fuerza & Hábitos Sostenibles" 
+  description="Video mensaje especial de Tomás Pussetto para Instagram. Descubrí cómo convertir el entrenamiento en un hábito que no abandones nunca más."
 >
   <Header />
 
-  <!-- Video Modal (Triggers on /video, ?v=1, or ?video=true) -->
-  <VideoModal client:only="react" />
+  <!-- Fullscreen Vertical Video Modal (Auto Opens on /video) -->
+  <VideoModal client:only="react" autoOpen={true} />
 
   <main>
     <Hero />
@@ -37,7 +37,7 @@ import { Sparkles, HeartHandshake } from 'lucide-react';
             <span>Diagnóstico en 1 minuto</span>
           </div>
           <h2 class="section-title">
-            ¿Por qué estuviste <span class="text-gradient-blue">abandonando el gimnasio?</span>
+            ¿Por qué estuviste <span class="text-creme">abandonando el gimnasio?</span>
           </h2>
           <p class="section-subtitle">
             Respondé estas 4 preguntas para descubrir tu nivel de adherencia y el camino exacto para romper el estancamiento.
@@ -59,7 +59,7 @@ import { Sparkles, HeartHandshake } from 'lucide-react';
             <span>Historias de Personas Reales</span>
           </div>
           <h2 class="section-title">
-            De la culpa y la frustración a <span class="text-gradient-blue">cumplirse la palabra</span>
+            De la culpa y la frustración a <span class="text-creme">cumplirse la palabra</span>
           </h2>
           <p class="section-subtitle">
             Conocé a alumnos reales de Tomás que lograron integrar el entrenamiento de fuerza en sus vidas ocupadas.
@@ -83,7 +83,6 @@ import { Sparkles, HeartHandshake } from 'lucide-react';
 <style>
   .quiz-section {
     position: relative;
-    background: radial-gradient(circle at 50% 50%, rgba(0, 48, 156, 0.1) 0%, transparent 60%);
   }
 
   .stories-section {
