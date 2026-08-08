@@ -1,29 +1,32 @@
 /* ==========================================================================
    TOMÁS PUSSETTO - GUÍA DE MARCA OFICIAL
-   Fuerza, Hábitos y Equilibrio
+   Predominio: Tonos Crudos / Creme (#F5F0E8)
+   Secundario: Marrón Espresso (#26160D) & Obsidian (#1C1A17)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-  /* Official Brand Colors */
-  --color-obsidian: #1C1A17;         /* Primary Dark Background */
-  --color-obsidian-dark: #141210;    /* Deep Background / Footer */
-  --color-espresso: #26160D;         /* Deep Warm Brown Surface */
-  --color-espresso-light: #3D2619;   /* Border / Hover Accent */
-  
-  --color-creme: #F5F0E8;            /* Warm Off-White / Light Text / Cards */
-  --color-creme-muted: #D8CEC0;      /* Muted Subtext */
-  --color-creme-dark: #2C2823;       /* Dark Text for Creme Cards */
+  /* Official Brand Colors - Light Theme Dominant */
+  --color-creme: #F5F0E8;            /* Primary Predominant Background */
+  --color-creme-light: #FAF7F2;      /* Pure Light Surface / Cards */
+  --color-creme-dark: #E6DDD0;       /* Secondary Raw Accent / Borders */
+  --color-creme-muted: #6B6257;      /* Muted Subtext on Light Background */
 
+  --color-obsidian: #1C1A17;         /* Primary Dark Text & Header Elements */
+  --color-obsidian-dark: #141210;    /* Footer Background */
+  --color-espresso: #26160D;         /* Secondary Accent Surface / Dark Cards */
+  --color-espresso-light: #3D2619;   /* Hover Accent for Dark Cards */
+  
   --color-royal-blue: #00309C;       /* Accent Blue (Used selectively) */
   --color-steel-blue: #5676BF;       /* Secondary Accent Blue */
 
-  /* Glassmorphism & Card Tokens (Warm Vibe) */
-  --card-bg-dark: rgba(38, 22, 13, 0.75);
-  --card-bg-creme: #F5F0E8;
-  --border-warm: rgba(245, 240, 232, 0.12);
-  --border-warm-hover: rgba(245, 240, 232, 0.3);
+  /* Card & Border Tokens */
+  --card-bg-light: #FFFFFF;
+  --card-bg-dark: #26160D;
+  --border-light: rgba(38, 22, 13, 0.12);
+  --border-light-hover: rgba(38, 22, 13, 0.28);
+  --border-dark: rgba(245, 240, 232, 0.15);
 
   /* Typography */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -47,8 +50,8 @@
 html {
   scroll-behavior: smooth;
   font-family: var(--font-family);
-  background-color: var(--color-obsidian);
-  color: var(--color-creme);
+  background-color: var(--color-creme);
+  color: var(--color-obsidian);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -58,15 +61,14 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
-  background: 
-    radial-gradient(circle at 50% 0%, rgba(38, 22, 13, 0.8) 0%, transparent 60%),
-    var(--color-obsidian);
+  background-color: var(--color-creme);
+  color: var(--color-obsidian);
 }
 
 /* Selection */
 ::selection {
-  background-color: var(--color-creme);
-  color: var(--color-obsidian);
+  background-color: var(--color-espresso);
+  color: var(--color-creme);
 }
 
 /* Custom Scrollbar */
@@ -74,19 +76,19 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-obsidian-dark);
+  background: var(--color-creme-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-espresso-light);
+  background: var(--color-espresso);
   border-radius: var(--radius-full);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-creme-muted);
+  background: var(--color-obsidian);
 }
 
 /* Typography Utilities */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--color-creme);
+  color: var(--color-obsidian);
   font-weight: 800;
   line-height: 1.18;
   letter-spacing: 0.03em;
@@ -96,16 +98,16 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-creme);
 }
 
+.text-obsidian {
+  color: var(--color-obsidian);
+}
+
 .text-espresso {
   color: var(--color-espresso);
 }
 
 .text-muted {
   color: var(--color-creme-muted);
-}
-
-.text-accent-blue {
-  color: var(--color-steel-blue);
 }
 
 /* Layout Utilities */
@@ -127,35 +129,38 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Cards (Warm Brand Aesthetic) */
-.brand-card-dark {
-  background: var(--color-espresso);
-  border: 1px solid var(--border-warm);
+/* Cards System */
+.brand-card-light {
+  background: var(--card-bg-light);
+  color: var(--color-obsidian);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 2.25rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  transition: border-color var(--transition), transform var(--transition);
+  box-shadow: 0 10px 30px rgba(38, 22, 13, 0.05);
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
-.brand-card-dark:hover {
-  border-color: var(--border-warm-hover);
+.brand-card-light:hover {
+  border-color: var(--border-light-hover);
   transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(38, 22, 13, 0.1);
 }
 
-.brand-card-creme {
-  background: var(--color-creme);
-  color: var(--color-creme-dark);
+.brand-card-dark {
+  background: var(--color-espresso);
+  color: var(--color-creme);
+  border: 1px solid var(--border-dark);
   border-radius: var(--radius-md);
   padding: 2.25rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   transition: transform var(--transition);
 }
 
-.brand-card-creme:hover {
+.brand-card-dark:hover {
   transform: translateY(-2px);
 }
 
-/* Buttons (Warm & Elegant) */
+/* Buttons System */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -174,47 +179,31 @@ h1, h2, h3, h4, h5, h6 {
   outline: none;
 }
 
-/* Primary Button: Warm Creme background with Obsidian Text (High Contrast & Elegance) */
+/* Primary Button: Dark Espresso Background with Warm Creme Text */
 .btn-primary {
-  background: var(--color-creme);
-  color: var(--color-obsidian);
-  box-shadow: 0 6px 20px rgba(245, 240, 232, 0.15);
+  background: var(--color-espresso);
+  color: var(--color-creme);
+  box-shadow: 0 6px 20px rgba(38, 22, 13, 0.2);
 }
 
 .btn-primary:hover {
-  background: #ffffff;
+  background: var(--color-obsidian);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(245, 240, 232, 0.25);
+  box-shadow: 0 10px 28px rgba(38, 22, 13, 0.35);
 }
 
-/* Secondary Button: Dark Espresso background with Warm Creme Border */
+/* Secondary Button: Creme Light Background with Espresso Border & Text */
 .btn-secondary {
-  background: rgba(38, 22, 13, 0.8);
-  color: var(--color-creme);
-  border: 1px solid var(--border-warm);
+  background: var(--card-bg-light);
+  color: var(--color-espresso);
+  border: 1px solid var(--border-light);
 }
 
 .btn-secondary:hover {
-  background: var(--color-espresso-light);
-  border-color: var(--color-creme-muted);
+  background: var(--color-creme-dark);
+  border-color: var(--color-espresso);
   transform: translateY(-2px);
-}
-
-/* Blue Accent Button (Used selectively for primary action) */
-.btn-blue {
-  background: var(--color-royal-blue);
-  color: #ffffff;
-  box-shadow: 0 8px 24px rgba(0, 48, 156, 0.3);
-}
-
-.btn-blue:hover {
-  background: #00257A;
-  transform: translateY(-2px);
-}
-
-.btn-lg {
-  padding: 1.1rem 2.2rem;
-  font-size: 1.05rem;
 }
 
 /* Badges */
@@ -225,15 +214,16 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.4rem 1rem;
   border-radius: var(--radius-full);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.04em;
-  background: rgba(38, 22, 13, 0.9);
-  border: 1px solid var(--border-warm);
-  color: var(--color-creme);
+  background: var(--color-creme-dark);
+  border: 1px solid var(--border-light);
+  color: var(--color-espresso);
 }
 
-.badge-blue {
-  background: rgba(0, 48, 156, 0.15);
-  border: 1px solid rgba(86, 118, 191, 0.3);
-  color: #93C5FD;
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-espresso);
 }

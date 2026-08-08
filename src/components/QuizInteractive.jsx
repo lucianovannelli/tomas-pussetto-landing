@@ -71,7 +71,7 @@ export default function QuizInteractive() {
 
   return (
     <div id="quiz" className="quiz-container">
-      <div className="quiz-card">
+      <div className="quiz-card brand-card-light">
         {!isCompleted ? (
           <div>
             <div className="quiz-progress-bar">
@@ -114,7 +114,7 @@ export default function QuizInteractive() {
         ) : (
           <div className="quiz-result">
             <div className="result-badge">
-              <CheckCircle size={28} color="#F5F0E8" />
+              <CheckCircle size={28} color="#26160D" />
               <span>Diagnóstico Completado</span>
             </div>
 
@@ -163,16 +163,17 @@ export default function QuizInteractive() {
 
         .quiz-card {
           padding: 3rem;
-          background: #26160D;
-          border: 1px solid rgba(245, 240, 232, 0.15);
+          background: #FFFFFF;
+          border: 1px solid rgba(38, 22, 13, 0.12);
           border-radius: var(--radius-lg);
           position: relative;
+          box-shadow: 0 15px 35px rgba(38, 22, 13, 0.06);
         }
 
         .quiz-progress-bar {
           width: 100%;
           height: 6px;
-          background: rgba(245, 240, 232, 0.1);
+          background: rgba(38, 22, 13, 0.08);
           border-radius: 999px;
           overflow: hidden;
           margin-bottom: 2rem;
@@ -180,7 +181,7 @@ export default function QuizInteractive() {
 
         .quiz-progress-fill {
           height: 100%;
-          background: var(--color-creme);
+          background: var(--color-espresso);
           transition: width 0.35s ease;
         }
 
@@ -193,19 +194,19 @@ export default function QuizInteractive() {
           align-items: center;
           gap: 0.4rem;
           font-size: 0.85rem;
-          font-weight: 600;
-          color: var(--color-creme);
-          background: rgba(245, 240, 232, 0.08);
+          font-weight: 700;
+          color: var(--color-espresso);
+          background: var(--color-creme-dark);
           padding: 0.35rem 0.85rem;
           border-radius: 999px;
           margin-bottom: 0.75rem;
-          border: 1px solid rgba(245, 240, 232, 0.15);
+          border: 1px solid rgba(38, 22, 13, 0.1);
         }
 
         .quiz-question {
           font-size: 1.45rem;
           font-weight: 800;
-          color: var(--color-creme);
+          color: var(--color-obsidian);
           line-height: 1.3;
         }
 
@@ -220,11 +221,12 @@ export default function QuizInteractive() {
           align-items: center;
           gap: 1rem;
           padding: 1.15rem 1.35rem;
-          background: rgba(245, 240, 232, 0.05);
-          border: 1px solid rgba(245, 240, 232, 0.1);
+          background: var(--color-creme-light);
+          border: 1px solid rgba(38, 22, 13, 0.12);
           border-radius: var(--radius-md);
-          color: var(--color-creme);
+          color: var(--color-obsidian);
           font-size: 1rem;
+          font-weight: 600;
           text-align: left;
           cursor: pointer;
           transition: all 0.25s ease;
@@ -232,8 +234,8 @@ export default function QuizInteractive() {
         }
 
         .quiz-option-btn:hover {
-          background: rgba(245, 240, 232, 0.12);
-          border-color: var(--color-creme-muted);
+          background: var(--color-creme-dark);
+          border-color: var(--color-espresso);
           transform: translateX(4px);
         }
 
@@ -241,14 +243,14 @@ export default function QuizInteractive() {
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          border: 2px solid rgba(245, 240, 232, 0.4);
+          border: 2px solid rgba(38, 22, 13, 0.3);
           flex-shrink: 0;
           transition: all 0.2s ease;
         }
 
         .quiz-option-btn:hover .option-radio {
-          border-color: var(--color-creme);
-          background: rgba(245, 240, 232, 0.2);
+          border-color: var(--color-espresso);
+          background: var(--color-espresso);
         }
 
         .quiz-back-btn {
@@ -257,12 +259,13 @@ export default function QuizInteractive() {
           border: none;
           color: var(--color-creme-muted);
           font-size: 0.875rem;
+          font-weight: 600;
           cursor: pointer;
           transition: color 0.2s ease;
         }
 
         .quiz-back-btn:hover {
-          color: var(--color-creme);
+          color: var(--color-obsidian);
         }
 
         /* Result Styles */
@@ -276,7 +279,7 @@ export default function QuizInteractive() {
           gap: 0.6rem;
           font-size: 1rem;
           font-weight: 700;
-          color: var(--color-creme);
+          color: var(--color-espresso);
           margin-bottom: 1rem;
         }
 
@@ -284,7 +287,7 @@ export default function QuizInteractive() {
           font-size: 1.85rem;
           font-weight: 800;
           margin-bottom: 1rem;
-          color: var(--color-creme);
+          color: var(--color-obsidian);
         }
 
         .result-desc {
@@ -295,8 +298,8 @@ export default function QuizInteractive() {
         }
 
         .result-box {
-          background: rgba(245, 240, 232, 0.06);
-          border: 1px solid rgba(245, 240, 232, 0.12);
+          background: var(--color-creme);
+          border: 1px solid rgba(38, 22, 13, 0.12);
           border-radius: var(--radius-md);
           padding: 1.5rem;
           text-align: left;
@@ -305,8 +308,9 @@ export default function QuizInteractive() {
 
         .result-box h4 {
           font-size: 1.05rem;
-          color: var(--color-creme);
+          color: var(--color-obsidian);
           margin-bottom: 0.85rem;
+          font-weight: 800;
         }
 
         .result-box ul {
@@ -318,7 +322,8 @@ export default function QuizInteractive() {
 
         .result-box li {
           font-size: 0.95rem;
-          color: var(--color-creme-muted);
+          color: var(--color-obsidian);
+          font-weight: 500;
         }
 
         .result-actions {
@@ -340,6 +345,7 @@ export default function QuizInteractive() {
           border: none;
           color: var(--color-creme-muted);
           font-size: 0.875rem;
+          font-weight: 600;
           cursor: pointer;
         }
 

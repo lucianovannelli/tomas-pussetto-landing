@@ -56,7 +56,7 @@ const PILLARS = [
         <span>Fundamentos del Método</span>
       </div>
       <h2 class="section-title">
-        Los 4 Pilares de <span class="text-creme">Fuerza & Adherencia</span>
+        Los 4 Pilares de <span class="text-espresso">Fuerza & Adherencia</span>
       </h2>
       <p class="section-subtitle">
         Una estructura pensada para transformar la relación que tenés con el entrenamiento y con vos mismo.
@@ -67,7 +67,7 @@ const PILLARS = [
       {PILLARS.map((pillar) => {
         const IconComponent = pillar.icon;
         return (
-          <div class="pillar-card brand-card-dark">
+          <div class="pillar-card brand-card-light">
             <div class="pillar-card-header">
               <div class="pillar-icon-box">
                 <IconComponent size={24} />
@@ -96,6 +96,7 @@ const PILLARS = [
 <style>
   .pillars-section {
     position: relative;
+    background-color: var(--color-creme);
   }
 
   .text-center {
@@ -110,6 +111,7 @@ const PILLARS = [
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
+    color: var(--color-obsidian);
   }
 
   .section-subtitle {
@@ -129,6 +131,8 @@ const PILLARS = [
     padding: 2.25rem;
     display: flex;
     flex-direction: column;
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
   }
 
   .pillar-card-header {
@@ -142,9 +146,9 @@ const PILLARS = [
     width: 48px;
     height: 48px;
     border-radius: var(--radius-md);
-    background: rgba(245, 240, 232, 0.08);
-    border: 1px solid rgba(245, 240, 232, 0.15);
-    color: var(--color-creme);
+    background: var(--color-creme);
+    border: 1px solid var(--border-light);
+    color: var(--color-espresso);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -153,18 +157,18 @@ const PILLARS = [
   .pillar-badge {
     font-size: 0.78rem;
     font-weight: 700;
-    color: var(--color-creme-muted);
-    background: rgba(245, 240, 232, 0.06);
+    color: var(--color-espresso);
+    background: var(--color-creme-dark);
     padding: 0.35rem 0.8rem;
     border-radius: var(--radius-full);
-    border: 1px solid rgba(245, 240, 232, 0.1);
+    border: 1px solid var(--border-light);
   }
 
   .pillar-title {
     font-size: 1.35rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    color: var(--color-creme);
+    color: var(--color-obsidian);
   }
 
   .pillar-desc {
@@ -181,7 +185,7 @@ const PILLARS = [
     gap: 0.65rem;
     margin-top: auto;
     padding-top: 1.25rem;
-    border-top: 1px solid var(--border-warm);
+    border-top: 1px solid var(--border-light);
   }
 
   .pillar-bullets li {
@@ -189,11 +193,12 @@ const PILLARS = [
     align-items: center;
     gap: 0.6rem;
     font-size: 0.9rem;
-    color: var(--color-creme);
+    color: var(--color-obsidian);
+    font-weight: 600;
   }
 
   .bullet-check {
-    color: var(--color-creme);
+    color: var(--color-espresso);
     flex-shrink: 0;
   }
 

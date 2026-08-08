@@ -6,7 +6,7 @@ import { MessageCircle, Menu } from 'lucide-react';
   <div class="container header-container">
     <a href="#" class="brand-logo-link">
       <img 
-        src="/logo-signature-creme.png" 
+        src="/logo-signature-dark-clean.png" 
         alt="Tomás Pussetto - Fuerza, hábitos y equilibrio" 
         class="header-signature-logo"
       />
@@ -83,10 +83,10 @@ import { MessageCircle, Menu } from 'lucide-react';
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(28, 26, 23, 0.92);
+    background: rgba(245, 240, 232, 0.95);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-warm);
+    border-bottom: 1px solid var(--border-light);
   }
 
   .header-container {
@@ -98,8 +98,7 @@ import { MessageCircle, Menu } from 'lucide-react';
 
   .brand-logo-link {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     text-decoration: none;
   }
 
@@ -109,14 +108,6 @@ import { MessageCircle, Menu } from 'lucide-react';
     object-fit: contain;
   }
 
-  .header-tagline {
-    font-size: 0.68rem;
-    color: var(--color-creme-muted);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-
   .nav-desktop {
     display: flex;
     align-items: center;
@@ -124,15 +115,15 @@ import { MessageCircle, Menu } from 'lucide-react';
   }
 
   .nav-link {
-    color: var(--color-creme-muted);
+    color: var(--color-espresso);
     text-decoration: none;
     font-size: 0.95rem;
-    font-weight: 500;
-    transition: color 0.2s ease;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
   }
 
   .nav-link:hover {
-    color: var(--color-creme);
+    opacity: 0.7;
   }
 
   .header-actions {
@@ -150,7 +141,7 @@ import { MessageCircle, Menu } from 'lucide-react';
     display: none;
     background: transparent;
     border: none;
-    color: var(--color-creme);
+    color: var(--color-espresso);
     cursor: pointer;
     padding: 0.5rem;
   }
@@ -161,8 +152,8 @@ import { MessageCircle, Menu } from 'lucide-react';
     top: 85px;
     left: 0;
     right: 0;
-    background: var(--color-obsidian-dark);
-    border-bottom: 1px solid var(--border-warm);
+    background: var(--color-creme);
+    border-bottom: 1px solid var(--border-light);
     padding: 1.5rem;
     transform: translateY(-100%);
     opacity: 0;
@@ -183,10 +174,10 @@ import { MessageCircle, Menu } from 'lucide-react';
   }
 
   .mobile-link {
-    color: var(--color-creme);
+    color: var(--color-obsidian);
     text-decoration: none;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 700;
   }
 
   .btn-mobile-cta {

@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Globe } from 'lucide-react';
 ---
 
 <section class="hero-section">
@@ -51,7 +51,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react'
       </div>
     </div>
 
-    <!-- Hero Visual / Brand Manifesto Card -->
+    <!-- Hero Visual / Brand Manifesto Accent Card (Dark Espresso Contrast) -->
     <div class="hero-visual">
       <div class="hero-card brand-card-dark">
         <div class="card-brand-header">
@@ -89,7 +89,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react'
   .hero-section {
     position: relative;
     padding: 4.5rem 0 5.5rem;
-    overflow: hidden;
+    background-color: var(--color-creme);
   }
 
   .hero-container {
@@ -105,25 +105,19 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react'
     align-items: flex-start;
   }
 
-  .badge-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--color-creme);
-  }
-
   .hero-title {
     font-size: 2.9rem;
     font-weight: 800;
     line-height: 1.16;
     margin: 1.5rem 0 1.25rem;
     letter-spacing: -0.01em;
+    color: var(--color-obsidian);
   }
 
   .hero-highlight {
     display: block;
-    color: var(--color-creme-muted);
-    font-weight: 700;
+    color: var(--color-espresso);
+    font-weight: 800;
     margin-top: 0.3rem;
   }
 
@@ -136,7 +130,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react'
   }
 
   .hero-subtitle strong {
-    color: var(--color-creme);
+    color: var(--color-obsidian);
   }
 
   .hero-actions {
@@ -151,7 +145,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react'
     flex-wrap: wrap;
     gap: 1.5rem;
     padding-top: 1.25rem;
-    border-top: 1px solid var(--border-warm);
+    border-top: 1px solid var(--border-light);
     width: 100%;
   }
 
@@ -160,14 +154,15 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react'
     align-items: center;
     gap: 0.5rem;
     font-size: 0.95rem;
-    color: var(--color-creme-muted);
+    color: var(--color-obsidian);
+    font-weight: 600;
   }
 
   .proof-icon {
-    color: var(--color-creme);
+    color: var(--color-espresso);
   }
 
-  /* Visual Card */
+  /* Visual Card (Espresso Accent) */
   .hero-visual {
     position: relative;
   }
@@ -175,7 +170,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react'
   .hero-card {
     padding: 2.5rem;
     background: var(--color-espresso);
-    border: 1px solid var(--border-warm);
+    border: 1px solid var(--border-dark);
   }
 
   .card-brand-header {
@@ -183,7 +178,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react'
     flex-direction: column;
     margin-bottom: 1.75rem;
     padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--border-warm);
+    border-bottom: 1px solid var(--border-dark);
   }
 
   .card-signature-img {
@@ -191,14 +186,6 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react'
     width: auto;
     object-fit: contain;
     align-self: flex-start;
-  }
-
-  .card-tagline {
-    font-size: 0.72rem;
-    color: var(--color-creme-muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 4px;
   }
 
   .card-quote {
@@ -215,7 +202,7 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Zap, Globe } from 'lucide-react'
     gap: 1rem;
     text-align: center;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--border-warm);
+    border-top: 1px solid var(--border-dark);
   }
 
   .stat-box {

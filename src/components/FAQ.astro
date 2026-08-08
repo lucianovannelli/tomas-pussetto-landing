@@ -33,7 +33,7 @@ const FAQS = [
         <span>Dudas Frecuentes</span>
       </div>
       <h2 class="section-title">
-        Preguntas <span class="text-creme">Frecuentes</span>
+        Preguntas <span class="text-espresso">Frecuentes</span>
       </h2>
       <p class="section-subtitle">
         Todo lo que necesitas saber antes de dar el paso hacia una vida más fuerte y constante.
@@ -42,7 +42,7 @@ const FAQS = [
 
     <div class="faq-list">
       {FAQS.map((faq, idx) => (
-        <details class="faq-item brand-card-dark" open={idx === 0}>
+        <details class="faq-item brand-card-light" open={idx === 0}>
           <summary class="faq-question">
             <span>{faq.q}</span>
             <ChevronDown size={20} class="faq-icon" />
@@ -59,6 +59,7 @@ const FAQS = [
 <style>
   .faq-section {
     position: relative;
+    background-color: var(--color-creme);
   }
 
   .text-center {
@@ -73,6 +74,7 @@ const FAQS = [
     font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
+    color: var(--color-obsidian);
   }
 
   .section-subtitle {
@@ -93,6 +95,8 @@ const FAQS = [
   .faq-item {
     padding: 0;
     overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
     transition: all 0.3s ease;
   }
 
@@ -100,7 +104,7 @@ const FAQS = [
     padding: 1.5rem 1.75rem;
     font-size: 1.1rem;
     font-weight: 700;
-    color: var(--color-creme);
+    color: var(--color-obsidian);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -114,7 +118,7 @@ const FAQS = [
   }
 
   .faq-icon {
-    color: var(--color-creme);
+    color: var(--color-espresso);
     transition: transform 0.3s ease;
     flex-shrink: 0;
   }
@@ -128,7 +132,7 @@ const FAQS = [
     color: var(--color-creme-muted);
     font-size: 1rem;
     line-height: 1.65;
-    border-top: 1px solid var(--border-warm);
+    border-top: 1px solid var(--border-light);
     margin-top: 0.25rem;
     padding-top: 1rem;
   }
