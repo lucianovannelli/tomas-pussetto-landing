@@ -4,38 +4,38 @@ import { CheckCircle, RotateCcw, MessageCircle, Sparkles } from 'lucide-react';
 const QUESTIONS = [
   {
     id: 1,
-    title: "¿Cuál ha sido tu principal obstáculo al intentar entrenar?",
+    title: "¿Cuál es tu mayor obstáculo actualmente con tu cuerpo y energía?",
     options: [
-      { label: "Empiezo motivado pero a las 3 o 4 semanas el trabajo o los compromisos me desbordan y dejo.", value: "abandono_frecuente" },
-      { label: "Voy al gimnasio pero no sé bien qué hacer ni cómo progresar en los ejercicios de fuerza.", value: "falta_estructura" },
-      { label: "Siento culpa cada vez que me salteo una sesión y eso me lleva a abandonar por completo.", value: "ciclo_culpa" }
+      { label: "Siento agotamiento, inflamación constante y la ansiedad me lleva al picoteo de tarde/noche.", value: "ansiedad_inflamacion" },
+      { label: "Mi jornada laboral y familiar es caótica; empiezo motivada pero a las semanas abandono por falta de tiempo.", value: "agenda_caotica" },
+      { label: "Tengo miedo a lastimarme en el gimnasio o no saber cómo entrenar fuerza correctamente.", value: "miedo_lesiones" }
     ]
   },
   {
     id: 2,
-    title: "¿Cuántas veces iniciaste y abandonaste en los últimos 2 años?",
+    title: "¿Cómo afecta tu rutina actual a cómo te ves y te sientes?",
     options: [
-      { label: "Entre 1 y 2 veces.", value: "pocas_veces" },
-      { label: "Entre 3 y 5 veces (vivo en el ciclo de empezar y dejar).", value: "ciclo_constante" },
-      { label: "Perdí la cuenta, me cuesta muchísimo sostener la continuidad.", value: "alta_frustracion" }
+      { label: "La ropa no me entra cómodamente y evito exponerme en eventos o sacar fotos.", value: "inseguridad_ropa" },
+      { label: "Siento que el cansancio y el peso me restan seguridad en mi ámbito profesional.", value: "seguridad_laboral" },
+      { label: "Vivo en un sube y baja de peso debido a dietas estrictas con efecto rebote.", value: "efecto_rebote" }
     ]
   },
   {
     id: 3,
-    title: "¿De cuánto tiempo semanal dispones de forma realista?",
+    title: "¿De cuánto tiempo semanal dispones de forma realista para entrenar?",
     options: [
-      { label: "2 a 3 días por semana (45 a 60 minutos por sesión).", value: "tiempo_medio" },
+      { label: "2 a 3 días por semana (45 a 50 minutos por sesión).", value: "tiempo_medio" },
       { label: "3 a 4 días por semana.", value: "tiempo_optimo" },
-      { label: "Tengo una agenda impredecible y necesito flexibilidad total.", value: "tiempo_flexible" }
+      { label: "Mi agenda profesional cambia día a día y necesito máxima flexibilidad.", value: "agenda_impredecible" }
     ]
   },
   {
     id: 4,
-    title: "¿Qué significaría para vos 'cumplirte la palabra' en los próximos 6 meses?",
+    title: "¿Cuál es tu deseo principal de transformación para los próximos 6 meses?",
     options: [
-      { label: "Convertir la fuerza en un hábito natural que disfrute y no abandone nunca más.", value: "habito_definitivo" },
-      { label: "Ganar fuerza real, energía y sentirme en paz con mi cuerpo sin dietas extremas.", value: "fuerza_equilibrio" },
-      { label: "Dejar de sentir culpa y construir disciplina sostenible para la vida.", value: "disciplina_vida" }
+      { label: "Perder grasa/inflamación, ganar tono muscular y sentirme fuerte y atractiva como antes.", value: "deshinchazon_fuerza" },
+      { label: "Eliminar la ansiedad con la comida y construir hábitos sostenibles sin pasar hambre.", value: "habito_sin_dieta" },
+      { label: "Volver a sentirme orgullosa, segura y proyectar vitalidad en mi trabajo y familia.", value: "autoestima_energia" }
     ]
   }
 ];
@@ -64,7 +64,7 @@ export default function QuizInteractive() {
 
   const getWhatsAppMessage = () => {
     const text = encodeURIComponent(
-      `Hola Tomás! Realicé el Test de Adherencia en tu web.\nMis respuestas:\n- Obstáculo: ${answers[1] || ''}\n- Reintentos: ${answers[2] || ''}\n- Tiempo: ${answers[3] || ''}\n- Meta: ${answers[4] || ''}\nQuiero coordinar una charla para empezar mi plan.`
+      `Hola Tomás! Completé el Test de Adherencia en tu web.\nMis respuestas:\n- Desafío principal: ${answers[1] || ''}\n- Impacto actual: ${answers[2] || ''}\n- Disponibilidad: ${answers[3] || ''}\n- Meta de transformación: ${answers[4] || ''}\nQuiero consultar disponibilidad para mi plan personalizado.`
     );
     return `https://wa.me/5493410000000?text=${text}`;
   };
@@ -119,19 +119,19 @@ export default function QuizInteractive() {
             </div>
 
             <h3 className="result-title">
-              Estás listo para romper el ciclo y construir <span>Adherencia Real</span>
+              Estás lista para construir <span>Adherencia Real & Salud Hormonal</span>
             </h3>
 
             <p className="result-desc">
-              Tu perfil encaja perfectamente con el método de <strong>Tomás Pussetto</strong>. Tu problema no es la falta de voluntad, sino haber intentado seguir programas rígidos que no contemplan tu rutina diaria.
+              Tu perfil coincide exactamente con las mujeres profesionales que asesora <strong>Tomás Pussetto</strong>. Tu problema no es la falta de voluntad, sino haber intentado encajar en dietas restrictivas y rutinas rígidas que no se adaptan a tu ritmo de vida real.
             </p>
 
             <div className="result-box">
-              <h4>Lo que vamos a trabajar juntos:</h4>
+              <h4>Lo que vamos a lograr juntas en tu plan:</h4>
               <ul>
-                <li>✓ Un plan de fuerza ajustado a tus horarios reales sin sobrecargas.</li>
-                <li>✓ Eliminación del sentimiento de culpa si surge una semana complicada.</li>
-                <li>✓ Estrategias de psicología del hábito para sostener la constancia todo el año.</li>
+                <li>✓ Plan de fuerza seguro (2 o 3 días/semana) adaptado a tus horarios.</li>
+                <li>✓ Eliminación de la ansiedad por picoteo y desinflamación progresiva.</li>
+                <li>✓ Estrategia para ganar tono muscular y recuperar tu seguridad y ropa favorita.</li>
               </ul>
             </div>
 

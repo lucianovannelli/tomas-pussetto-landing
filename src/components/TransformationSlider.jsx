@@ -4,71 +4,71 @@ import { HeartHandshake, ShieldCheck, Quote, ChevronLeft, ChevronRight, XCircle,
 const STORIES = [
   {
     id: 1,
-    name: "Martín R.",
-    age: "42 años",
-    role: "Abogado & Padre de 2 hijos",
+    name: "Natalia M.",
+    age: "41 años",
+    role: "Escribana & Madre de 2 hijos",
     location: "Rosario",
     image: "/caso-1-transformacion.jpg",
-    highlight: "De abandonar cada 3 meses a entrenar 3 días/semana sin saltearse durante 1 año.",
-    quote: "No buscaba abdominales marcados. Solo quería volver a jugar con mis hijos sin quedarme sin aire y dejar de sentirme culpable por abandonar el gimnasio. Tomás me enseñó a adaptar el entrenamiento a mi vida real.",
+    highlight: "De vivir inflamada y con dietas estrictas a perder 9 kg de grasa sosteniendo 3 días/semana.",
+    quote: "Tenía dos jornadas superpuestas (trabajo + hijos) y vivía cansada, deshinchada a base de café y picoteando por ansiedad. Tomás me armó un plan de fuerza de 3 días que se adapta a mi caos. Eliminé la ansiedad y volví a ponerme la ropa que tenía guardada con total seguridad.",
     metrics: [
-      { label: "Continuidad", value: "+12 Meses" },
-      { label: "Sensación", value: "Cero Culpa" },
+      { label: "Grasa & Inflamación", value: "-9 kg" },
+      { label: "Ansiedad Picoteo", value: "Eliminada" },
       { label: "Frecuencia", value: "3 Días/Sem" }
     ],
     before: {
-      status: "Antes (Ciclo de Culpa)",
-      desc: "Arrancaba 5 días por semana con dietas estrictas. A la tercera semana se le complicaba el estudio de abogados, faltaba 2 días seguidos, sentía culpa y abandonaba 4 meses."
+      status: "Antes (Ciclo de Culpa & Restricción)",
+      desc: "Hacía dietas de hambre y cardio agotador. A las 3 semanas la carga laboral la desbordaba, sentía culpa por no cumplir, comía por ansiedad de noche y abandonaba 4 meses."
     },
     after: {
-      status: "Hoy (Adherencia Real)",
-      desc: "Entrena 3 sesiones semanales de 50 minutos con foco en ejercicios de fuerza básicos. Si un día laboral se satura, ajustamos sin culpa y retomamos al día siguiente."
+      status: "Hoy (Adherencia & Fuerza)",
+      desc: "Entrena 3 sesiones semanales de 50 minutos adaptadas a su agenda cambiante. Come de forma equilibrada sin culpa y recuperó su tono muscular, postura e imagen profesional."
     }
   },
   {
     id: 2,
+    name: "Dra. Andrea L.",
+    age: "47 años",
+    role: "Bioquímica & Directora de Instituto",
+    location: "Coaching Online",
+    image: "/caso-2-transformacion.jpg",
+    highlight: "Superó el miedo a lesionarse y logró abdomen plano y energía total.",
+    quote: "Le tenía miedo a las pesas por temor a lesionarme la espalda. Tomás me enseñó la técnica segura de cada ejercicio paso a paso. Se me fue la inflamación constante, gané fuerza real y volví a sentirme atractiva y con postura erguida en mi trabajo.",
+    metrics: [
+      { label: "Miedo a Pesas", value: "Superado" },
+      { label: "Inflamación", value: "Cero" },
+      { label: "Energía Diaria", value: "100% Vital" }
+    ],
+    before: {
+      status: "Antes (Ciclo de Culpa & Restricción)",
+      desc: "Le daba vergüenza ir al gimnasio por no saber qué hacer. Vivía contracturada por el estrés profesional y con desgano constante."
+    },
+    after: {
+      status: "Hoy (Adherencia & Fuerza)",
+      desc: "Entrena fuerza estructurada y simple. Logró tonicidad muscular, eliminó la celulitis e hinchazón y proyecta máxima seguridad en sus reuniones laborales."
+    }
+  },
+  {
+    id: 3,
     name: "Carolina V.",
     age: "36 años",
     role: "Arquitecta & Emprendedora",
-    location: "Coaching Online",
+    location: "Rosario",
     image: "/caso-2-transformacion.jpg",
     highlight: "Transformó su relación con el cuerpo y la fuerza personal.",
-    quote: "El gimnasio siempre fue para mí un castigo para 'quemar calorías'. Con Tomás entendí que es el lugar donde voy a cumplirme la palabra a mí misma. Hoy tengo más energía que a los 25 años.",
+    quote: "El gimnasio siempre fue para mí un castigo para 'quemar calorías' por culpa. Con Tomás entendí que es el lugar donde voy a cumplirme la palabra a mí misma. Hoy tengo más energía que a los 25 años.",
     metrics: [
       { label: "Hábito", value: "100% Sostenible" },
       { label: "Fuerza Peso Muerto", value: "+35 kg" },
       { label: "Nivel de Estrés", value: "-60%" }
     ],
     before: {
-      status: "Antes (Ciclo de Culpa)",
+      status: "Antes (Ciclo de Culpa & Restricción)",
       desc: "Hacía rutinas infinitas de cardio agotador. No lograba masa muscular ni fuerza, y vivía con miedo a los carbohidratos."
     },
     after: {
-      status: "Hoy (Adherencia Real)",
+      status: "Hoy (Adherencia & Fuerza)",
       desc: "Entrena fuerza simple y estructurada. Come de forma equilibrada sin culpa y ve el entrenamiento como su momento inviolable de desconexión."
-    }
-  },
-  {
-    id: 3,
-    name: "Gonzalo S.",
-    age: "48 años",
-    role: "Director Comercial",
-    location: "Rosario",
-    image: "/caso-3-transformacion.jpg",
-    highlight: "De vivir contracturado por el estrés a sentirse fuerte y vital.",
-    quote: "Por mi trabajo viajo constantemente. Tomás me diseñó una estructura que puedo hacer en cualquier gimnasio de hotel o en mi casa en 40 minutos. La constancia es total.",
-    metrics: [
-      { label: "Viajes de trabajo", value: "Adaptados" },
-      { label: "Dolor lumbar", value: "Eliminado" },
-      { label: "Adherencia", value: "14 Meses" }
-    ],
-    before: {
-      status: "Antes (Ciclo de Culpa)",
-      desc: "Consideraba que si no entrenaba 2 horas diarias no valía la pena. Como no tenía ese tiempo, terminaba no haciendo nada."
-    },
-    after: {
-      status: "Hoy (Adherencia Real)",
-      desc: "Entrena con estímulos cortos y efectivos de fuerza. Entendió que 40 minutos constantes valen más que 2 horas esporádicas."
     }
   }
 ];
