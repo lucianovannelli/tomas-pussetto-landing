@@ -1,292 +1,291 @@
 ---
-import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, PlayCircle, MessageCircle } from 'lucide-react';
 ---
 
-<section id="programa" class="hero-section">
-  <div class="container hero-container">
-    <div class="hero-content">
-      <div class="badge">
-        <Sparkles size={15} />
-        <span>Coaching Online 100% Personalizado</span>
+<section id="programa" class="hero-vsl-section">
+  <div class="container hero-vsl-container">
+    
+    <!-- Top Announcement Badge -->
+    <div class="vsl-badge">
+      <PlayCircle size={16} class="vsl-badge-icon" />
+      <span>Atención Mujeres Profesionales +30 • Video Explicativo 2 min</span>
+    </div>
+
+    <!-- Main VSL Headline -->
+    <h1 class="vsl-title">
+      Bajá entre 8 y 10 kg de grasa, recuperá tu energía y volvé a
+      <span class="vsl-highlight">sentirte segura con tu cuerpo en 90 Días.</span>
+    </h1>
+
+    <p class="vsl-subtitle">
+      Sin dietas de hambre, sin matarte a cardio y entrenando solo <strong>3 horas por semana</strong>. Mirá el video a continuación para entender exactamente cómo funciona el método:
+    </p>
+
+    <!-- VSL Video Centerpiece -->
+    <div class="vsl-video-wrapper brand-card-dark">
+      <div class="video-header-bar">
+        <div class="video-bar-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="video-bar-title">VSL • Método Tomás Pussetto (2 min)</span>
       </div>
 
-      <h1 class="hero-title">
-        Bajá entre 8 y 10 kg de grasa, recuperá tu energía y volvé a
-        <span class="hero-highlight">sentirte segura con tu cuerpo en 90 Días.</span>
-      </h1>
-
-      <p class="hero-subtitle">
-        Entrenando solo <strong>3 horas por semana</strong>, sin privarte de los alimentos que te gustan ni matarte a cardio. Un programa diseñado exclusivamente para mujeres profesionales con agendas exigentes.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#quiz" class="btn btn-primary btn-lg">
-          <span>Hacer Test de Adherencia (1 min)</span>
-          <ArrowRight size={20} />
-        </a>
-        <a 
-          href="https://wa.me/5493410000000?text=Hola%20Tomás!%20Soy%20mujer%20profesional%20y%20quiero%20conocer%20tu%20Programa%20Online%20de%2090%20Días" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="btn btn-secondary btn-lg"
+      <div class="video-container">
+        <video 
+          controls 
+          preload="metadata" 
+          playsinline 
+          class="vsl-video-element"
         >
-          <span>Consultar Cupos por WhatsApp</span>
-        </a>
+          <source src="/vsl-tomas-pussetto.mp4" type="video/mp4" />
+          Tu navegador no soporta el reproductor de video.
+        </video>
       </div>
 
-      <div class="hero-proof-list">
-        <div class="proof-item">
-          <CheckCircle2 size={18} class="proof-icon" />
-          <span>Sin dietas de hambre</span>
-        </div>
-        <div class="proof-item">
-          <CheckCircle2 size={18} class="proof-icon" />
-          <span>Solo 3 hs/semana de fuerza</span>
-        </div>
-        <div class="proof-item">
-          <CheckCircle2 size={18} class="proof-icon" />
-          <span>Garantía de Resultado en 90 Días</span>
-        </div>
+      <div class="video-footer-banner">
+        <ShieldCheck size={20} color="#F5F0E8" />
+        <span>Garantía Incondicional: Lográs tu meta en 90 días o seguimos trabajando GRATIS.</span>
       </div>
     </div>
 
-    <!-- Hero Visual / Offer Guarantee Card (Dark Espresso Contrast) -->
-    <div class="hero-visual">
-      <div class="hero-card brand-card-dark">
-        <div class="card-brand-header">
-          <img 
-            src="/logo-signature-creme.png" 
-            alt="Tomás Pussetto" 
-            class="card-signature-img"
-          />
-        </div>
+    <!-- Action Buttons below VSL Video -->
+    <div class="vsl-actions-wrapper">
+      <a href="#quiz" class="btn btn-primary btn-lg vsl-btn-main">
+        <span>Hacer Test de Adherencia (1 min)</span>
+        <ArrowRight size={22} />
+      </a>
+      
+      <a 
+        href="https://wa.me/5493410000000?text=Hola%20Tomás!%20Vi%20tu%20video%20VSL%20y%20quiero%20información%20sobre%20tu%20Programa%20Online%20de%2090%20Días" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn btn-secondary btn-lg vsl-btn-sub"
+      >
+        <MessageCircle size={20} />
+        <span>Postular por WhatsApp Directo</span>
+      </a>
+    </div>
 
-        <div class="offer-guarantee-box">
-          <ShieldCheck size={26} color="#F5F0E8" class="guarantee-shield" />
-          <div>
-            <h3 class="guarantee-title">Garantía Incondicional</h3>
-            <p class="guarantee-text">
-              Lográs tu resultado en 90 días o seguimos trabajando <strong>GRATIS</strong> hasta que lo consigas. Sin preguntas ni letra chica.
-            </p>
-          </div>
-        </div>
-        
-        <blockquote class="card-quote">
-          "No te falta fuerza de voluntad. Te falta un plan que no te haga pasar hambre y se adapte al caos de tu rutina profesional."
-        </blockquote>
-
-        <div class="card-stats-grid">
-          <div class="stat-box">
-            <span class="stat-num">90 Días</span>
-            <span class="stat-label">Programa Intensivo</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">8-10 kg</span>
-            <span class="stat-label">Menos de Grasa</span>
-          </div>
-          <div class="stat-box">
-            <span class="stat-num">3 hs/sem</span>
-            <span class="stat-label">Fuerza Eficiente</span>
-          </div>
-        </div>
+    <!-- Proof Bullets Row -->
+    <div class="vsl-proof-row">
+      <div class="proof-chip">
+        <CheckCircle2 size={16} class="proof-chip-icon" />
+        <span>Sin dietas restrictivas ni rebote</span>
+      </div>
+      <div class="proof-chip">
+        <CheckCircle2 size={16} class="proof-chip-icon" />
+        <span>Solo 3 hs/semana de fuerza</span>
+      </div>
+      <div class="proof-chip">
+        <CheckCircle2 size={16} class="proof-chip-icon" />
+        <span>Seguimiento 1 a 1 diario 24/7</span>
       </div>
     </div>
+
   </div>
 </section>
 
 <style>
-  .hero-section {
+  .hero-vsl-section {
     position: relative;
-    padding: 4.5rem 0 5.5rem;
+    padding: 3.5rem 0 5rem;
     background-color: var(--color-creme);
+    text-align: center;
   }
 
-  .hero-container {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 4rem;
+  .hero-vsl-container {
+    max-width: 920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
   }
 
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  .vsl-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.1rem;
+    border-radius: var(--radius-full);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: var(--color-creme-dark);
+    border: 1px solid var(--border-light);
+    color: var(--color-espresso);
+    margin-bottom: 1.25rem;
   }
 
-  .hero-title {
+  .vsl-badge-icon {
+    color: var(--color-espresso);
+  }
+
+  .vsl-title {
     font-size: 2.8rem;
     font-weight: 800;
-    line-height: 1.16;
-    margin: 1.5rem 0 1.25rem;
-    letter-spacing: -0.01em;
+    line-height: 1.18;
     color: var(--color-obsidian);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
   }
 
-  .hero-highlight {
+  .vsl-highlight {
     display: block;
     color: var(--color-espresso);
     font-weight: 800;
     margin-top: 0.3rem;
   }
 
-  .hero-subtitle {
+  .vsl-subtitle {
     font-size: 1.18rem;
     color: var(--color-creme-muted);
     line-height: 1.6;
-    margin-bottom: 2rem;
-    max-width: 620px;
+    margin-bottom: 2.5rem;
+    max-width: 720px;
   }
 
-  .hero-subtitle strong {
+  .vsl-subtitle strong {
     color: var(--color-obsidian);
   }
 
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+  /* VSL Video Wrapper */
+  .vsl-video-wrapper {
+    width: 100%;
+    max-width: 860px;
+    background: var(--color-espresso);
+    border: 2px solid var(--color-espresso);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 25px 60px rgba(38, 22, 13, 0.25);
     margin-bottom: 2.5rem;
   }
 
-  .hero-proof-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--border-light);
-    width: 100%;
-  }
-
-  .proof-item {
+  .video-header-bar {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.95rem;
-    color: var(--color-obsidian);
-    font-weight: 600;
-  }
-
-  .proof-icon {
-    color: var(--color-espresso);
-  }
-
-  /* Visual Card (Espresso Accent) */
-  .hero-visual {
-    position: relative;
-  }
-
-  .hero-card {
-    padding: 2.5rem;
-    background: var(--color-espresso);
-    border: 1px solid var(--border-dark);
-  }
-
-  .card-brand-header {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background: #1C1A17;
     border-bottom: 1px solid var(--border-dark);
   }
 
-  .card-signature-img {
-    height: 64px;
-    width: auto;
-    object-fit: contain;
-    align-self: flex-start;
-  }
-
-  .offer-guarantee-box {
+  .video-bar-dots {
     display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    background: rgba(245, 240, 232, 0.08);
-    border: 1px solid var(--border-dark);
-    padding: 1.25rem;
-    border-radius: var(--radius-md);
-    margin-bottom: 1.5rem;
+    gap: 0.4rem;
   }
 
-  .guarantee-shield {
-    flex-shrink: 0;
-    margin-top: 2px;
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
   }
 
-  .guarantee-title {
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: var(--color-creme);
-    margin-bottom: 0.2rem;
-  }
+  .dot-red { background: #FF5F56; }
+  .dot-yellow { background: #FFBD2E; }
+  .dot-green { background: #27C93F; }
 
-  .guarantee-text {
-    font-size: 0.88rem;
+  .video-bar-title {
+    font-size: 0.8rem;
+    font-weight: 700;
     color: var(--color-creme-muted);
-    line-height: 1.45;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
-  .guarantee-text strong {
+  .video-container {
+    position: relative;
+    width: 100%;
+    background: #000000;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vsl-video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    outline: none;
+  }
+
+  .video-footer-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.25rem;
+    background: var(--color-espresso);
     color: var(--color-creme);
-  }
-
-  .card-quote {
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--color-creme);
-    line-height: 1.5;
-    margin-bottom: 1.75rem;
-  }
-
-  .card-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    text-align: center;
-    padding-top: 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
     border-top: 1px solid var(--border-dark);
   }
 
-  .stat-box {
+  /* Actions below VSL */
+  .vsl-actions-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    width: 100%;
+    margin-bottom: 2rem;
   }
 
-  .stat-num {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--color-creme);
+  .vsl-btn-main {
+    padding: 1.15rem 2.2rem;
+    font-size: 1.15rem;
+    box-shadow: 0 10px 30px rgba(38, 22, 13, 0.3);
   }
 
-  .stat-label {
-    font-size: 0.75rem;
-    color: var(--color-creme-muted);
-    margin-top: 2px;
+  .vsl-btn-sub {
+    padding: 1.15rem 2rem;
+    font-size: 1.05rem;
   }
 
-  @media (max-width: 1024px) {
-    .hero-container {
-      grid-template-columns: 1fr;
-      gap: 3rem;
+  /* Proof Row */
+  .vsl-proof-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .proof-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1rem;
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-full);
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-obsidian);
+  }
+
+  .proof-chip-icon {
+    color: var(--color-espresso);
+  }
+
+  @media (max-width: 768px) {
+    .vsl-title {
+      font-size: 2rem;
     }
-
-    .hero-title {
-      font-size: 2.3rem;
+    .vsl-subtitle {
+      font-size: 1.05rem;
     }
-  }
-
-  @media (max-width: 640px) {
-    .hero-title {
-      font-size: 1.9rem;
-    }
-    
-    .hero-actions {
+    .vsl-actions-wrapper {
       flex-direction: column;
       width: 100%;
     }
-
-    .btn-lg {
+    .vsl-btn-main, .vsl-btn-sub {
       width: 100%;
+      justify-content: center;
     }
   }
 </style>

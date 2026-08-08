@@ -13,3 +13,4 @@ src/env.d.ts
 .vscode/
 .idea/
 *.log
+node_modules
