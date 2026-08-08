@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { VolumeX, X, ArrowRight, MessageCircle, PlayCircle, ShieldCheck } from 'lucide-react';
+import { Volume2, VolumeX, X, ArrowRight, MessageCircle, PlayCircle, ShieldCheck } from 'lucide-react';
 
 export default function VSLModalOverlay() {
   const [isOpen, setIsOpen] = useState(true);
@@ -7,22 +7,43 @@ export default function VSLModalOverlay() {
   const videoRef = useRef(null);
 
   useEffect(() => {
-    // Autoplay when mounted
+    // Attempt autoplay with sound first; fallback to muted autoplay if blocked by browser
     if (videoRef.current) {
-      videoRef.current.play().catch((err) => {
-        console.log("Autoplay interrupted:", err);
-      });
+      videoRef.current.muted = false;
+      videoRef.current.play()
+        .then(() => {
+          setIsMuted(false);
+        })
+        .catch(() => {
+          // Browser blocked unmuted autoplay -> Fallback to muted autoplay
+          if (videoRef.current) {
+            videoRef.current.muted = true;
+            setIsMuted(true);
+            videoRef.current.play().catch((e) => console.log("Autoplay failed:", e));
+          }
+        });
     }
   }, []);
 
-  const toggleMute = () => {
+  const enableAudio = () => {
     if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
+      videoRef.current.muted = false;
+      setIsMuted(false);
+      videoRef.current.play().catch(() => {});
     }
   };
 
-  const handleClose = () => {
+  const toggleMute = (e) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      const nextMuted = !isMuted;
+      videoRef.current.muted = nextMuted;
+      setIsMuted(nextMuted);
+    }
+  };
+
+  const handleClose = (e) => {
+    e.stopPropagation();
     if (videoRef.current) {
       videoRef.current.pause();
     }
@@ -32,8 +53,8 @@ export default function VSLModalOverlay() {
   if (!isOpen) return null;
 
   return (
-    <div className="vsl-backdrop">
-      <div className="vsl-modal-container">
+    <div className="vsl-backdrop" onClick={enableAudio}>
+      <div className="vsl-modal-container" onClick={(e) => e.stopPropagation()}>
         
         {/* Header Bar with Close Button */}
         <div className="vsl-modal-header">
@@ -47,23 +68,22 @@ export default function VSLModalOverlay() {
         </div>
 
         {/* Video Player Frame */}
-        <div className="vsl-video-frame">
+        <div className="vsl-video-frame" onClick={enableAudio}>
           <video
             ref={videoRef}
             src="/vsl-tomas-pussetto.mp4"
             autoPlay
-            muted={isMuted}
             loop
             playsInline
             controls
             className="vsl-video-player-modal"
           />
 
-          {/* Sound Overlay Button */}
+          {/* Sound Overlay Banner if muted */}
           {isMuted && (
             <button onClick={toggleMute} className="vsl-sound-overlay-btn">
-              <VolumeX size={20} />
-              <span>Tocar para activar sonido</span>
+              <VolumeX size={22} class="animate-bounce-icon" />
+              <span>Tocar aquí para Activar Audio 🔊</span>
             </button>
           )}
         </div>
@@ -189,6 +209,7 @@ export default function VSLModalOverlay() {
           width: 100%;
           background: #000000;
           aspect-ratio: 16 / 9;
+          cursor: pointer;
         }
 
         .vsl-video-player-modal {
@@ -200,28 +221,28 @@ export default function VSLModalOverlay() {
 
         .vsl-sound-overlay-btn {
           position: absolute;
-          top: 1rem;
+          top: 50%;
           left: 50%;
-          transform: translateX(-50%);
+          transform: translate(-50%, -50%);
           display: inline-flex;
           align-items: center;
-          gap: 0.5rem;
-          padding: 0.6rem 1.2rem;
-          background: rgba(38, 22, 13, 0.92);
-          border: 1px solid rgba(245, 240, 232, 0.3);
+          gap: 0.6rem;
+          padding: 0.85rem 1.6rem;
+          background: var(--color-espresso);
+          border: 2px solid var(--color-creme);
           border-radius: var(--radius-full);
-          color: #FFFFFF;
-          font-size: 0.85rem;
-          font-weight: 700;
+          color: var(--color-creme);
+          font-size: 0.95rem;
+          font-weight: 800;
           cursor: pointer;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-          animation: pulseSound 2s infinite;
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+          animation: pulseBtn 1.8s infinite;
           z-index: 10;
         }
 
-        @keyframes pulseSound {
-          0%, 100% { transform: translateX(-50%) scale(1); }
-          50% { transform: translateX(-50%) scale(1.05); }
+        @keyframes pulseBtn {
+          0%, 100% { transform: translate(-50%, -50%) scale(1); }
+          50% { transform: translate(-50%, -50%) scale(1.06); }
         }
 
         /* Body & Actions */
