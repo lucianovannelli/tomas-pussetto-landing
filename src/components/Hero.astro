@@ -1,23 +1,22 @@
 ---
-import { ArrowRight, CheckCircle2, Globe } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
 ---
 
-<section class="hero-section">
+<section id="programa" class="hero-section">
   <div class="container hero-container">
     <div class="hero-content">
       <div class="badge">
-        <span class="badge-dot"></span>
-        <span>Rosario & Coaching Online</span>
-        <Globe size={15} class="inline-badge-icon" />
+        <Sparkles size={15} />
+        <span>Coaching Online 100% Personalizado</span>
       </div>
 
       <h1 class="hero-title">
-        Para mujeres profesionales que quieren volver a sentirse
-        <span class="hero-highlight">fuertes, seguras y en paz con su cuerpo.</span>
+        Bajá entre 8 y 10 kg de grasa, recuperá tu energía y volvé a
+        <span class="hero-highlight">sentirte segura con tu cuerpo en 90 Días.</span>
       </h1>
 
       <p class="hero-subtitle">
-        Te enseño a convertir el entrenamiento de fuerza y los hábitos en un estilo de vida sostenible que <strong>no abandones nunca más</strong>. Sin dietas de hambre, sin culpas y adaptado al caos de tu agenda laboral y familiar.
+        Entrenando solo <strong>3 horas por semana</strong>, sin privarte de los alimentos que te gustan ni matarte a cardio. Un programa diseñado exclusivamente para mujeres profesionales con agendas exigentes.
       </p>
 
       <div class="hero-actions">
@@ -26,32 +25,32 @@ import { ArrowRight, CheckCircle2, Globe } from 'lucide-react';
           <ArrowRight size={20} />
         </a>
         <a 
-          href="https://wa.me/5493410000000?text=Hola%20Tomás,%20soy%20profesional%20y%20quiero%20conocer%20tu%20método%20de%20fuerza%20y%20hábitos" 
+          href="https://wa.me/5493410000000?text=Hola%20Tomás!%20Soy%20mujer%20profesional%20y%20quiero%20conocer%20tu%20Programa%20Online%20de%2090%20Días" 
           target="_blank" 
           rel="noopener noreferrer" 
           class="btn btn-secondary btn-lg"
         >
-          <span>Agendar por WhatsApp</span>
+          <span>Consultar Cupos por WhatsApp</span>
         </a>
       </div>
 
       <div class="hero-proof-list">
         <div class="proof-item">
           <CheckCircle2 size={18} class="proof-icon" />
-          <span>Chao ansiedad y picoteo</span>
+          <span>Sin dietas de hambre</span>
         </div>
         <div class="proof-item">
           <CheckCircle2 size={18} class="proof-icon" />
-          <span>Deshinchazón y fuerza real</span>
+          <span>Solo 3 hs/semana de fuerza</span>
         </div>
         <div class="proof-item">
           <CheckCircle2 size={18} class="proof-icon" />
-          <span>Acompañamiento 1 a 1 cercano</span>
+          <span>Garantía de Resultado en 90 Días</span>
         </div>
       </div>
     </div>
 
-    <!-- Hero Visual / Brand Manifesto Accent Card (Dark Espresso Contrast) -->
+    <!-- Hero Visual / Offer Guarantee Card (Dark Espresso Contrast) -->
     <div class="hero-visual">
       <div class="hero-card brand-card-dark">
         <div class="card-brand-header">
@@ -61,23 +60,33 @@ import { ArrowRight, CheckCircle2, Globe } from 'lucide-react';
             class="card-signature-img"
           />
         </div>
+
+        <div class="offer-guarantee-box">
+          <ShieldCheck size={26} color="#F5F0E8" class="guarantee-shield" />
+          <div>
+            <h3 class="guarantee-title">Garantía Incondicional</h3>
+            <p class="guarantee-text">
+              Lográs tu resultado en 90 días o seguimos trabajando <strong>GRATIS</strong> hasta que lo consigas. Sin preguntas ni letra chica.
+            </p>
+          </div>
+        </div>
         
         <blockquote class="card-quote">
-          "El plan no te pide que tu vida sea perfecta. Te da una estructura de fuerza y hábitos que se adapta al caos de tu rutina profesional y familiar."
+          "No te falta fuerza de voluntad. Te falta un plan que no te haga pasar hambre y se adapte al caos de tu rutina profesional."
         </blockquote>
 
         <div class="card-stats-grid">
           <div class="stat-box">
-            <span class="stat-num">+100</span>
-            <span class="stat-label">Vidas transformadas</span>
+            <span class="stat-num">90 Días</span>
+            <span class="stat-label">Programa Intensivo</span>
           </div>
           <div class="stat-box">
-            <span class="stat-num">4 Pilares</span>
-            <span class="stat-label">Método Integral</span>
+            <span class="stat-num">8-10 kg</span>
+            <span class="stat-label">Menos de Grasa</span>
           </div>
           <div class="stat-box">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">Adherencia Real</span>
+            <span class="stat-num">3 hs/sem</span>
+            <span class="stat-label">Fuerza Eficiente</span>
           </div>
         </div>
       </div>
@@ -176,8 +185,8 @@ import { ArrowRight, CheckCircle2, Globe } from 'lucide-react';
   .card-brand-header {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1.75rem;
-    padding-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid var(--border-dark);
   }
 
@@ -188,12 +197,45 @@ import { ArrowRight, CheckCircle2, Globe } from 'lucide-react';
     align-self: flex-start;
   }
 
+  .offer-guarantee-box {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: rgba(245, 240, 232, 0.08);
+    border: 1px solid var(--border-dark);
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 1.5rem;
+  }
+
+  .guarantee-shield {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .guarantee-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-creme);
+    margin-bottom: 0.2rem;
+  }
+
+  .guarantee-text {
+    font-size: 0.88rem;
+    color: var(--color-creme-muted);
+    line-height: 1.45;
+  }
+
+  .guarantee-text strong {
+    color: var(--color-creme);
+  }
+
   .card-quote {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-style: italic;
     color: var(--color-creme);
-    line-height: 1.55;
-    margin-bottom: 2rem;
+    line-height: 1.5;
+    margin-bottom: 1.75rem;
   }
 
   .card-stats-grid {

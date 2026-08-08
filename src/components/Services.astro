@@ -1,79 +1,99 @@
 ---
-import { CheckCircle2, MessageCircle, Star, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { CheckCircle2, MessageCircle, Star, ArrowRight, ShieldCheck, Smartphone, Utensils, PhoneCall, RefreshCw } from 'lucide-react';
 
-const FEATURES = [
-  "Plan de Entrenamiento de Fuerza personalizado (Gimnasio o Casa)",
-  "Estructura adaptada a tus días disponibles (2, 3 o 4 días/semana)",
-  "Acompañamiento 1 a 1 directo por WhatsApp con Tomás Pussetto",
-  "Corrección técnica detallada mediante análisis de tus videos",
-  "Estrategia de psicología del hábito para mantener la continuidad",
-  "Flexibilidad ante viajes de trabajo, vacaciones o semanas de alto estrés",
-  "Revisión y ajuste semanal de cargas y progresiones"
+const DELIVERABLES = [
+  {
+    icon: Smartphone,
+    title: "1. Rutina a Medida en App Exclusiva",
+    desc: "Planes de fuerza progresiva de 3 horas por semana. Videos de ejecución técnica paso a paso para entrenar con total seguridad en el gimnasio o en tu casa."
+  },
+  {
+    icon: Utensils,
+    title: "2. Plan de Alimentación Flexible (Hecho por Nutricionista)",
+    desc: "Sin dietas de hambre ni 'dos rodajas de manzana'. Alimentación real para desinflamar, perder grasa y nutrir tus músculos sin renunciar a tus comidas favoritas ni salidas sociales."
+  },
+  {
+    icon: MessageCircle,
+    title: "3. Seguimiento 1 a 1 Diario 24/7",
+    desc: "Contacto directo por WhatsApp con Tomás Pussetto. Si tu jornada laboral se complica o surge un viaje, reajustamos el plan en minutos sin culpas ni abandonos."
+  },
+  {
+    icon: PhoneCall,
+    title: "4. Llamadas de Seguimiento Semanales",
+    desc: "Revisión constante de progresos, análisis de tus videos de entrenamiento, control de medidas/fotos y mentoría en psicología del hábito."
+  },
+  {
+    icon: ShieldCheck,
+    title: "5. Garantía Incondicional de Resultado (90 Días)",
+    desc: "Si aplicás el programa y no bajás entre 8 y 10 kg de grasa ni recuperás tu energía en 90 días, seguimos trabajando totalmente GRATIS hasta que lo logres."
+  }
 ];
 ---
 
-<section id="asesoria" class="section services-section">
+<section id="entregables" class="section services-section">
   <div class="container">
     <div class="section-header text-center">
       <div class="badge badge-center">
         <Star size={16} fill="#26160D" color="#26160D" />
-        <span>Servicios & Programas</span>
+        <span>Entregables del Programa 90 Días</span>
       </div>
       <h2 class="section-title">
-        Asesoría Integral <span class="text-espresso">1 a 1 de Fuerza & Hábitos</span>
+        Todo lo que incluye la <span class="text-espresso">Asesoría Online 1 a 1</span>
       </h2>
       <p class="section-subtitle">
-        Un acompañamiento cercano, estructurado y humano diseñado para que logres la constancia que nunca antes pudiste sostener.
+        Una estructura de acompañamiento integral diseñada exclusivamente para mujeres profesionales que necesitan orden, claridad y resultados reales.
       </p>
     </div>
 
-    <div class="services-wrapper">
-      <div class="service-card brand-card-dark">
-        <div class="service-popular-badge">
-          <Zap size={14} />
-          <span>Programa Principal</span>
-        </div>
-
-        <div class="service-header">
-          <div>
-            <h3 class="service-title">Coaching 1 a 1 Personalizado</h3>
-            <p class="service-subtitle">Disponible en Rosario & Modalidad Online Global</p>
-          </div>
-          <div class="service-tag">
-            <span>Cupos Limitados</span>
-          </div>
-        </div>
-
-        <p class="service-desc">
-          No es una rutina genérica en PDF. Es un proceso de mentoría donde nos enfocamos en que aprendas a entrenar bien, progresar en fuerza y construir un estilo de vida sostenible a largo plazo.
-        </p>
-
-        <div class="features-grid">
-          {FEATURES.map((feature) => (
-            <div class="feature-item">
-              <CheckCircle2 size={20} class="feature-icon" />
-              <span>{feature}</span>
+    <div class="deliverables-grid">
+      {DELIVERABLES.map((del) => {
+        const IconComponent = del.icon;
+        return (
+          <div class="deliverable-card brand-card-light">
+            <div class="del-header">
+              <div class="del-icon-box">
+                <IconComponent size={22} />
+              </div>
             </div>
-          ))}
-        </div>
-
-        <div class="service-footer">
-          <div class="guarantee-badge">
-            <ShieldCheck size={20} color="#F5F0E8" />
-            <span>Garantía de Método: Diseñado para encajar en tu rutina real</span>
+            <h3 class="del-title">{del.title}</h3>
+            <p class="del-desc">{del.desc}</p>
           </div>
+        );
+      })}
+    </div>
 
-          <a 
-            href="https://wa.me/5493410000000?text=Hola%20Tomás!%20Quiero%20postular%20para%20un%20cupo%20de%20tu%20Asesoría%20Integral%201%20a%201" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            class="btn btn-primary btn-lg btn-service-cta"
-          >
-            <MessageCircle size={22} />
-            <span>Consultar Disponibilidad de Cupo</span>
-            <ArrowRight size={18} />
-          </a>
+    <!-- Main Offer CTA Card -->
+    <div id="garantia" class="main-offer-card brand-card-dark">
+      <div class="offer-header">
+        <div>
+          <span class="offer-badge">Cupos Limitados por Mes</span>
+          <h3 class="offer-card-title">Programa de Coaching Online de 90 Días</h3>
+          <p class="offer-card-subtitle">Exclusivo para mujeres profesionales +30</p>
         </div>
+        <div class="offer-guarantee-tag">
+          <ShieldCheck size={20} color="#F5F0E8" />
+          <span>Garantía de Resultado Incluida</span>
+        </div>
+      </div>
+
+      <p class="offer-summary-text">
+        Fuiste a mil nutris en serie y a entrenadores que no entendieron lo que te pasa en tu rutina real. Este programa no busca darte un PDF genérico: es una mentoría directa con Tomás Pussetto para transformar tu cuerpo y hábitos para siempre.
+      </p>
+
+      <div class="offer-action-box">
+        <a 
+          href="https://wa.me/5493410000000?text=Hola%20Tomás!%20Soy%20mujer%20profesional%20y%20quiero%20postular%20para%20un%20cupo%20de%20tu%20Programa%20Online%20de%2090%20Días" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-lg btn-offer-cta"
+        >
+          <MessageCircle size={22} />
+          <span>Postular para mi Cupo de 90 Días</span>
+          <ArrowRight size={20} />
+        </a>
+        <p class="guarantee-microtext">
+          🔒 Trabajo con un número limitado de alumnas en paralelo para garantizar seguimiento diario 1 a 1 de máxima calidad.
+        </p>
       </div>
     </div>
   </div>
@@ -107,37 +127,58 @@ const FEATURES = [
     margin: 0 auto 3.5rem;
   }
 
-  .services-wrapper {
-    max-width: 860px;
-    margin: 0 auto;
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
   }
 
-  .service-card {
-    padding: 3.5rem;
-    position: relative;
+  .deliverable-card {
+    padding: 2rem;
+    background: #FFFFFF;
+    border: 1px solid var(--border-light);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .del-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--color-creme);
+    border: 1px solid var(--border-light);
+    color: var(--color-espresso);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .del-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    color: var(--color-obsidian);
+  }
+
+  .del-desc {
+    font-size: 0.95rem;
+    color: var(--color-creme-muted);
+    line-height: 1.55;
+  }
+
+  /* Main Offer CTA Card */
+  .main-offer-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem;
     background: var(--color-espresso);
     border: 1px solid var(--border-dark);
-    box-shadow: 0 30px 60px rgba(38, 22, 13, 0.25);
+    box-shadow: 0 25px 50px rgba(38, 22, 13, 0.2);
   }
 
-  .service-popular-badge {
-    position: absolute;
-    top: -14px;
-    left: 3.5rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.35rem 1rem;
-    background: var(--color-creme);
-    border-radius: var(--radius-full);
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: var(--color-obsidian);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .service-header {
+  .offer-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -147,87 +188,80 @@ const FEATURES = [
     border-bottom: 1px solid var(--border-dark);
   }
 
-  .service-title {
-    font-size: 2rem;
+  .offer-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--color-obsidian);
+    background: var(--color-creme);
+    padding: 0.3rem 0.85rem;
+    border-radius: var(--radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+  }
+
+  .offer-card-title {
+    font-size: 1.85rem;
     font-weight: 800;
     color: var(--color-creme);
   }
 
-  .service-subtitle {
+  .offer-card-subtitle {
     font-size: 1rem;
     color: var(--color-creme-muted);
-    margin-top: 0.25rem;
+    margin-top: 0.2rem;
   }
 
-  .service-tag {
+  .offer-guarantee-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     background: rgba(245, 240, 232, 0.08);
     border: 1px solid var(--border-dark);
-    padding: 0.4rem 0.9rem;
+    padding: 0.5rem 1rem;
     border-radius: var(--radius-full);
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--color-creme-muted);
+    color: var(--color-creme);
   }
 
-  .service-desc {
+  .offer-summary-text {
     font-size: 1.1rem;
     color: var(--color-creme-muted);
     line-height: 1.6;
     margin-bottom: 2rem;
   }
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .feature-item {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    font-size: 1.05rem;
-    color: var(--color-creme);
-  }
-
-  .feature-icon {
-    color: var(--color-creme);
-    flex-shrink: 0;
-  }
-
-  .service-footer {
+  .offer-action-box {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-dark);
-  }
-
-  .guarantee-badge {
-    display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 0.92rem;
-    color: var(--color-creme-muted);
   }
 
-  .btn-service-cta {
+  .btn-offer-cta {
     width: 100%;
     justify-content: center;
     padding: 1.25rem 2rem;
     font-size: 1.1rem;
   }
 
-  @media (max-width: 768px) {
-    .service-card {
+  .guarantee-microtext {
+    font-size: 0.85rem;
+    color: var(--color-creme-muted);
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .deliverables-grid {
+      grid-template-columns: 1fr;
+    }
+    .offer-header {
+      flex-direction: column;
+    }
+    .main-offer-card {
       padding: 2rem 1.5rem;
-    }
-    .service-popular-badge {
-      left: 1.5rem;
-    }
-    .service-title {
-      font-size: 1.6rem;
     }
   }
 </style>
