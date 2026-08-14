@@ -7,13 +7,13 @@ import { MessageCircle, Menu } from 'lucide-react';
     <a href="#" class="brand-logo-link">
       <img 
         src="/logotipo-bajada-clean.png" 
-        alt="Tomás Pussetto - Fuerza, Hábitos y Equilibrio" 
+        alt="Tomás Pussetto - Método ENDS" 
         class="header-signature-logo"
       />
     </a>
 
     <nav class="nav-desktop">
-      <a href="#programa" class="nav-link">Programa 90 Días</a>
+      <a href="#programa" class="nav-link">Programa</a>
       <a href="#entregables" class="nav-link">Qué Incluye</a>
       <a href="#quiz" class="nav-link">Test Adherencia</a>
       <a href="#historias" class="nav-link">Casos Reales</a>
@@ -94,16 +94,18 @@ import { MessageCircle, Menu } from 'lucide-react';
     align-items: center;
     justify-content: space-between;
     height: 85px;
+    gap: 1.5rem;
   }
 
   .brand-logo-link {
     display: flex;
     align-items: center;
     text-decoration: none;
+    flex-shrink: 0;
   }
 
   .header-signature-logo {
-    height: 58px;
+    height: 48px;
     width: auto;
     object-fit: contain;
   }
@@ -111,14 +113,15 @@ import { MessageCircle, Menu } from 'lucide-react';
   .nav-desktop {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.25rem;
   }
 
   .nav-link {
     color: var(--color-espresso);
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
+    white-space: nowrap;
     transition: opacity 0.2s ease;
   }
 
@@ -130,11 +133,13 @@ import { MessageCircle, Menu } from 'lucide-react';
     display: flex;
     align-items: center;
     gap: 1rem;
+    flex-shrink: 0;
   }
 
   .btn-nav {
-    padding: 0.65rem 1.3rem;
-    font-size: 0.9rem;
+    padding: 0.65rem 1.2rem;
+    font-size: 0.88rem;
+    white-space: nowrap;
   }
 
   .mobile-toggle {
@@ -185,7 +190,7 @@ import { MessageCircle, Menu } from 'lucide-react';
     margin-top: 0.5rem;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1080px) {
     .nav-desktop {
       display: none;
     }
@@ -199,7 +204,7 @@ import { MessageCircle, Menu } from 'lucide-react';
       display: none;
     }
     .header-signature-logo {
-      height: 48px;
+      height: 44px;
     }
   }
 </style>
