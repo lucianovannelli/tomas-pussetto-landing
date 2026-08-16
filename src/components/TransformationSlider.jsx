@@ -9,7 +9,7 @@ const STORIES = [
     role: "Escribana & Madre",
     location: "Coaching Online",
     image: "/casos_exito/caso1.jpeg",
-    highlight: "De vivir inflamada y con dietas estrictas a perder 9 kg de grasa sosteniendo 3 días/semana.",
+    highlight: "De vivir inflamada y con dietas strictly a perder 9 kg de grasa sosteniendo 3 días/semana.",
     quote: "Tenía dos jornadas superpuestas (trabajo + hijos) y vivía cansada, deshinchada a base de café y picoteando por ansiedad. Tomás me armó un plan de fuerza de 3 días que se adapta a mi caos. Eliminé la ansiedad y volví a ponerme la ropa que tenía guardada con total seguridad.",
     metrics: [
       { label: "Grasa & Inflamación", value: "-9 kg" },
@@ -513,28 +513,28 @@ export default function TransformationSlider() {
           display: block;
         }
 
-        /* Face Privacy Mask Overlay */
+        /* Frosted Glass Face Blur Overlay */
         .face-privacy-mask {
           position: absolute;
-          top: 6%;
+          top: 3%;
           left: 50%;
           transform: translateX(-50%);
           width: 48%;
           height: 18%;
-          background: rgba(28, 26, 23, 0.95);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(245, 240, 232, 0.3);
-          border-radius: var(--radius-sm);
-          color: #F5F0E8;
+          background: rgba(245, 240, 232, 0.35);
+          backdrop-filter: blur(28px) saturate(180%) brightness(1.1);
+          -webkit-backdrop-filter: blur(28px) saturate(180%) brightness(1.1);
+          border: 1.5px solid rgba(255, 255, 255, 0.7);
+          border-radius: var(--radius-full);
+          color: var(--color-obsidian);
           display: flex;
           align-items: center;
           justify-content: center;
           gap: 0.35rem;
           font-size: 0.72rem;
-          font-weight: 700;
+          font-weight: 800;
           z-index: 5;
-          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
         }
 
         .grid-highlight {
