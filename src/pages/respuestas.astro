@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AdminLeadsDashboard from '../components/AdminLeadsDashboard.jsx';
+---
+
+<Layout title="Panel de Respuestas | Tomás Pussetto" description="Base de datos y visualización de diagnósticos del test de adherencia.">
+  <Header />
+  
+  <main style="min-height: 80vh; background-color: var(--color-creme);">
+    <AdminLeadsDashboard client:only="react" />
+  </main>
+
+  <Footer />
+</Layout>

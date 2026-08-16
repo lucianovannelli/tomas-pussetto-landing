@@ -1,41 +1,91 @@
 import React, { useState } from 'react';
-import { CheckCircle, RotateCcw, MessageCircle, Sparkles } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, MessageCircle, Sparkles, ShieldCheck, ArrowRight, User, Phone } from 'lucide-react';
+import { evaluateLeadQualification, saveQuizLead } from '../utils/leadStorage';
 
 const QUESTIONS = [
   {
     id: 1,
-    title: "¿Cuál es tu mayor obstáculo actualmente con tu cuerpo y energía?",
+    key: 'duracion',
+    title: "¿Cuánto tiempo hace que venís queriendo bajar esos kilos que te molestan y no podés lograrlo?",
     options: [
-      { label: "Siento agotamiento, inflamación constante y la ansiedad me lleva al picoteo de tarde/noche.", value: "ansiedad_inflamacion" },
-      { label: "Mi jornada laboral y familiar es caótica; empiezo motivada pero a las semanas abandono por falta de tiempo.", value: "agenda_caotica" },
-      { label: "Tengo miedo a lastimarme en el gimnasio o no saber cómo entrenar fuerza correctamente.", value: "miedo_lesiones" }
+      { label: "Hace algunos meses", value: "algunos_meses", text: "Hace algunos meses" },
+      { label: "Hace más de un año", value: "mas_de_un_ano", text: "Hace más de un año" },
+      { label: "Hace más de 3 años", value: "mas_de_tres_anos", text: "Hace más de 3 años" }
     ]
   },
   {
     id: 2,
-    title: "¿Cómo afecta tu rutina actual a cómo te ves y te sientes?",
+    key: 'urgencia',
+    title: "¿Qué importancia tiene para vos bajar esos kg de grasa y sentirte mejor con tu cuerpo actualmente?",
     options: [
-      { label: "La ropa no me entra cómodamente y evito exponerme en eventos o sacar fotos.", value: "inseguridad_ropa" },
-      { label: "Siento que el cansancio y el peso me restan seguridad en mi ámbito profesional.", value: "seguridad_laboral" },
-      { label: "Vivo en un sube y baja de peso debido a dietas estrictas con efecto rebote.", value: "efecto_rebote" }
+      { 
+        label: "Es un objetivo impostergable, realmente necesito resolverlo AHORA.", 
+        value: "impostergable", 
+        text: "Es un objetivo impostergable (Alta Urgencia)",
+        isDisqualifying: false 
+      },
+      { 
+        label: "Es algo que me gustaría lograr, pero no es mi prioridad principal actualmente.", 
+        value: "no_prioridad", 
+        text: "No es mi prioridad actualmente",
+        isDisqualifying: true 
+      },
+      { 
+        label: "Pienso en hacerlo cuando esté algo más liberada de mis obligaciones profesionales y personales.", 
+        value: "mas_adelante", 
+        text: "Pienso hacerlo más adelante",
+        isDisqualifying: true 
+      }
     ]
   },
   {
     id: 3,
-    title: "¿De cuánto tiempo semanal dispones de forma realista para entrenar?",
+    key: 'tiempo',
+    title: "¿De cuánto tiempo disponés de forma realista en tu rutina para entrenar y cumplir con el plan?",
     options: [
-      { label: "2 a 3 días por semana (45 a 50 minutos por sesión).", value: "tiempo_medio" },
-      { label: "3 a 4 días por semana.", value: "tiempo_optimo" },
-      { label: "Mi agenda profesional cambia día a día y necesito máxima flexibilidad.", value: "agenda_impredecible" }
+      { 
+        label: "Dispongo de 3 hs semanales (45 a 50 min/sesión) para dedicarle a mi transformación personal.", 
+        value: "dispongo_3hs", 
+        text: "Dispongo de 3 hs semanales",
+        isDisqualifying: false 
+      },
+      { 
+        label: "Creo que puedo organizar mi rutina y obligaciones para entrenar 2/3 hs semanales y cumplir con el plan.", 
+        value: "puedo_organizar", 
+        text: "Puedo organizar 2/3 hs semanales",
+        isDisqualifying: false 
+      },
+      { 
+        label: "No dispongo en este momento del tiempo necesario para hacerlo.", 
+        value: "sin_tiempo", 
+        text: "No dispongo del tiempo en este momento",
+        isDisqualifying: true 
+      }
     ]
   },
   {
     id: 4,
-    title: "¿Cuál es tu deseo principal de transformación para los próximos 6 meses?",
+    key: 'inversion',
+    title: "El programa de Tomás Pussetto es una Asesoría 1 a 1 de Alto Valor (Coaching diario 24/7, Nutricionista y Garantía). ¿Estás dispuesta a invertir en un servicio profesional personalizado para asegurar tu resultado?",
     options: [
-      { label: "Perder grasa/inflamación, ganar tono muscular y sentirme fuerte y atractiva como antes.", value: "deshinchazon_fuerza" },
-      { label: "Eliminar la ansiedad con la comida y construir hábitos sostenibles sin pasar hambre.", value: "habito_sin_dieta" },
-      { label: "Volver a sentirme orgullosa, segura y proyectar vitalidad en mi trabajo y familia.", value: "autoestima_energia" }
+      { 
+        label: "Sí, estoy lista para invertir en mí misma y tener el acompañamiento profesional adecuado.", 
+        value: "lista_para_invertir", 
+        text: "Lista para invertir en acompañamiento profesional",
+        isDisqualifying: false 
+      },
+      { 
+        label: "Si el programa se adapta a mi vida y me garantiza resultados, sí puedo invertir en el plan.", 
+        value: "invertir_con_garantia", 
+        text: "Puedo invertir si me garantiza resultados",
+        isDisqualifying: false 
+      },
+      { 
+        label: "No dispongo de presupuesto para invertir en un programa profesional por el momento.", 
+        value: "sin_presupuesto", 
+        text: "No dispongo de presupuesto por el momento",
+        isDisqualifying: true 
+      }
     ]
   }
 ];
@@ -43,7 +93,10 @@ const QUESTIONS = [
 export default function QuizInteractive() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState({});
+  const [contactName, setContactName] = useState('');
+  const [contactPhone, setContactPhone] = useState('');
   const [isCompleted, setIsCompleted] = useState(false);
+  const [qualification, setQualification] = useState(null);
 
   const handleSelectOption = (optionValue) => {
     const nextAnswers = { ...answers, [QUESTIONS[currentStep].id]: optionValue };
@@ -52,19 +105,64 @@ export default function QuizInteractive() {
     if (currentStep < QUESTIONS.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      setIsCompleted(true);
+      // Move to Contact step (Step 4 -> Contact)
+      setCurrentStep(QUESTIONS.length);
     }
+  };
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    if (!contactName.trim() || !contactPhone.trim()) return;
+
+    // Evaluate qualification criteria
+    const qualResult = evaluateLeadQualification(answers);
+    setQualification(qualResult);
+
+    // Get readable option text for storage
+    const getOptionText = (qId) => {
+      const q = QUESTIONS.find(item => item.id === qId);
+      const opt = q?.options.find(o => o.value === answers[qId]);
+      return opt ? opt.text : answers[qId];
+    };
+
+    const leadPayload = {
+      name: contactName,
+      phone: contactPhone,
+      isQualified: qualResult.isQualified,
+      reason: qualResult.reason,
+      badgeText: qualResult.badgeText,
+      answers: {
+        duracion: getOptionText(1),
+        urgencia: getOptionText(2),
+        tiempo: getOptionText(3),
+        inversion: getOptionText(4)
+      },
+      rawAnswers: answers
+    };
+
+    // Save lead to Database / Storage
+    saveQuizLead(leadPayload);
+    setIsCompleted(true);
   };
 
   const handleReset = () => {
     setCurrentStep(0);
     setAnswers({});
+    setContactName('');
+    setContactPhone('');
     setIsCompleted(false);
+    setQualification(null);
   };
 
   const getWhatsAppMessage = () => {
+    const getOptionText = (qId) => {
+      const q = QUESTIONS.find(item => item.id === qId);
+      const opt = q?.options.find(o => o.value === answers[qId]);
+      return opt ? opt.text : answers[qId];
+    };
+
     const text = encodeURIComponent(
-      `Hola Tomás! Completé el Test de Adherencia en tu web.\nMis respuestas:\n- Desafío principal: ${answers[1] || ''}\n- Impacto actual: ${answers[2] || ''}\n- Disponibilidad: ${answers[3] || ''}\n- Meta de transformación: ${answers[4] || ''}\nQuiero consultar disponibilidad para mi plan personalizado.`
+      `Hola Tomás! Mi nombre es ${contactName}.\nRealicé el Test de Calificación en tu web:\n\n- Antigüedad: ${getOptionText(1)}\n- Prioridad / Urgencia: ${getOptionText(2)}\n- Disponibilidad Tiempo: ${getOptionText(3)}\n- Disposición Inversión: ${getOptionText(4)}\n\nMi perfil fue Calificado como APTO y quiero consultar disponibilidad de cupo.`
     );
     return `https://wa.me/5493410000000?text=${text}`;
   };
@@ -77,87 +175,196 @@ export default function QuizInteractive() {
             <div className="quiz-progress-bar">
               <div 
                 className="quiz-progress-fill" 
-                style={{ width: `${((currentStep + 1) / QUESTIONS.length) * 100}%` }}
+                style={{ width: `${((currentStep + 1) / (QUESTIONS.length + 1)) * 100}%` }}
               />
             </div>
 
-            <div className="quiz-header">
-              <span className="quiz-badge">
-                <Sparkles size={14} />
-                Paso {currentStep + 1} de {QUESTIONS.length}
-              </span>
-              <h3 className="quiz-question">{QUESTIONS[currentStep].title}</h3>
-            </div>
+            {currentStep < QUESTIONS.length ? (
+              /* Question Step */
+              <div>
+                <div className="quiz-header">
+                  <span className="quiz-badge">
+                    <Sparkles size={14} />
+                    Paso {currentStep + 1} de {QUESTIONS.length + 1}
+                  </span>
+                  <h3 className="quiz-question">{QUESTIONS[currentStep].title}</h3>
+                </div>
 
-            <div className="quiz-options-list">
-              {QUESTIONS[currentStep].options.map((opt, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleSelectOption(opt.value)}
-                  className="quiz-option-btn"
-                >
-                  <div className="option-radio" />
-                  <span>{opt.label}</span>
-                </button>
-              ))}
-            </div>
+                <div className="quiz-options-list">
+                  {QUESTIONS[currentStep].options.map((opt, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleSelectOption(opt.value)}
+                      className="quiz-option-btn"
+                    >
+                      <div className="option-radio" />
+                      <span>{opt.label}</span>
+                    </button>
+                  ))}
+                </div>
 
-            {currentStep > 0 && (
-              <button 
-                onClick={() => setCurrentStep(currentStep - 1)}
-                className="quiz-back-btn"
-              >
-                ← Volver a la pregunta anterior
-              </button>
+                {currentStep > 0 && (
+                  <button 
+                    onClick={() => setCurrentStep(currentStep - 1)}
+                    className="quiz-back-btn"
+                  >
+                    ← Volver a la pregunta anterior
+                  </button>
+                )}
+              </div>
+            ) : (
+              /* Contact Step */
+              <form onSubmit={handleContactSubmit} className="quiz-contact-step">
+                <div className="quiz-header">
+                  <span className="quiz-badge">
+                    <Sparkles size={14} />
+                    Último Paso • Contacto Directo
+                  </span>
+                  <h3 className="quiz-question">Ingresá tus datos para procesar tu diagnóstico</h3>
+                  <p className="quiz-contact-sub">
+                    Analizaremos tus respuestas para evaluar la compatibilidad de tu perfil con el Programa de 90 Días.
+                  </p>
+                </div>
+
+                <div className="contact-form-grid">
+                  <div className="form-group">
+                    <label>Nombre y Apellido *</label>
+                    <div className="input-icon-wrapper">
+                      <User size={18} className="input-icon" />
+                      <input 
+                        type="text" 
+                        required
+                        placeholder="Ej: Natalia Martinez"
+                        value={contactName}
+                        onChange={(e) => setContactName(e.target.value)}
+                        className="form-input"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label>WhatsApp de contacto *</label>
+                    <div className="input-icon-wrapper">
+                      <Phone size={18} className="input-icon" />
+                      <input 
+                        type="tel" 
+                        required
+                        placeholder="Ej: +54 9 341 1234567"
+                        value={contactPhone}
+                        onChange={(e) => setContactPhone(e.target.value)}
+                        className="form-input"
+                      />
+                    </div>
+                  </div>
+
+                  <button type="submit" className="btn btn-primary btn-lg btn-submit-quiz">
+                    <span>Ver Resultado de mi Diagnóstico</span>
+                    <ArrowRight size={20} />
+                  </button>
+
+                  <button 
+                    type="button"
+                    onClick={() => setCurrentStep(QUESTIONS.length - 1)}
+                    className="quiz-back-btn"
+                  >
+                    ← Modificar mis respuestas
+                  </button>
+                </div>
+              </form>
             )}
           </div>
         ) : (
-          <div className="quiz-result">
-            <div className="result-badge">
-              <CheckCircle size={28} color="#26160D" />
-              <span>Diagnóstico Completado</span>
-            </div>
+          /* Result Screen */
+          <div>
+            {qualification?.isQualified ? (
+              /* QUALIFIED SCREEN */
+              <div className="quiz-result result-qualified">
+                <div className="result-badge badge-success">
+                  <CheckCircle size={28} color="#26160D" />
+                  <span>Perfil Calificado • Apto y Prioritario</span>
+                </div>
 
-            <h3 className="result-title">
-              Estás lista para construir <span>Adherencia Real & Salud Hormonal</span>
-            </h3>
+                <h3 className="result-title">
+                  ¡Felicitaciones, <span>{contactName}</span>! Estás lista para el Programa de 90 Días
+                </h3>
 
-            <p className="result-desc">
-              Tu perfil coincide exactamente con las mujeres profesionales que asesora <strong>Tomás Pussetto</strong>. Tu problema no es la falta de voluntad, sino haber intentado encajar en dietas restrictivas y rutinas rígidas que no se adaptan a tu ritmo de vida real.
-            </p>
+                <p className="result-desc">
+                  Hemos verificado tus respuestas. Cumplís con el nivel de <strong>urgencia, tiempo disponible y compromiso de inversión</strong> necesario para acceder al acompañamiento 1 a 1 de Tomás Pussetto.
+                </p>
 
-            <div className="result-box">
-              <h4>Lo que vamos a lograr juntas en tu plan:</h4>
-              <ul>
-                <li>✓ Plan de fuerza seguro (2 o 3 días/semana) adaptado a tus horarios.</li>
-                <li>✓ Eliminación de la ansiedad por picoteo y desinflamación progresiva.</li>
-                <li>✓ Estrategia para ganar tono muscular y recuperar tu seguridad y ropa favorita.</li>
-              </ul>
-            </div>
+                <div className="result-box">
+                  <h4>Resumen de tu diagnóstico:</h4>
+                  <ul>
+                    <li>✓ Prioridad Alta: Lista para resolver tu cambio sin procrastinar.</li>
+                    <li>✓ Disponibilidad: Horarios organizados para 3 hs semanales de fuerza.</li>
+                    <li>✓ Inversión: Comprometida con un servicio profesional con garantía.</li>
+                  </ul>
+                </div>
 
-            <div className="result-actions">
-              <a 
-                href={getWhatsAppMessage()} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="btn btn-primary btn-lg btn-whatsapp-quiz"
-              >
-                <MessageCircle size={20} />
-                <span>Enviar mi diagnóstico a Tomás por WhatsApp</span>
-              </a>
+                <div className="result-actions">
+                  <a 
+                    href={getWhatsAppMessage()} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-lg btn-whatsapp-quiz"
+                  >
+                    <MessageCircle size={22} />
+                    <span>Enviar mi diagnóstico a Tomás por WhatsApp</span>
+                  </a>
 
-              <button onClick={handleReset} className="quiz-reset-btn">
-                <RotateCcw size={16} />
-                <span>Reiniciar Test</span>
-              </button>
-            </div>
+                  <button onClick={handleReset} className="quiz-reset-btn">
+                    <RotateCcw size={16} />
+                    <span>Reiniciar Test</span>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              /* DISQUALIFIED SCREEN (No Apto por el Momento) */
+              <div className="quiz-result result-disqualified">
+                <div className="result-badge badge-warning">
+                  <XCircle size={28} color="#DC2626" />
+                  <span>Perfil No Apto por el Momento</span>
+                </div>
+
+                <h3 className="result-title text-disqualified">
+                  Gracias por tu interés, <span>{contactName}</span>
+                </h3>
+
+                <p className="result-desc">
+                  Según tus respuestas actuales (<strong>{qualification?.reason}</strong>), entendemos que en este momento no contás con el nivel de urgencia, tiempo o presupuesto indispensable para el Programa 1 a 1.
+                </p>
+
+                <div className="result-box box-disqualified">
+                  <h4>¿Por qué realizamos este filtro?</h4>
+                  <p className="text-disqualified-sub">
+                    Tomás Pussetto trabaja con un cupo reducido de alumnas para garantizar un seguimiento diario 24/7 de máxima calidad. Para asegurar que tengas éxito, el programa exige que el entrenamiento sea una prioridad real e impostergable en tu vida.
+                  </p>
+                </div>
+
+                <div className="result-actions">
+                  <a 
+                    href="https://instagram.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary btn-lg"
+                  >
+                    <span>Seguir a Tomás en Instagram (Contenido Gratuito)</span>
+                  </a>
+
+                  <button onClick={handleReset} className="quiz-reset-btn">
+                    <RotateCcw size={16} />
+                    <span>Volver a intentar el Test</span>
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
         .quiz-container {
-          max-width: 760px;
+          max-width: 780px;
           margin: 0 auto;
         }
 
@@ -204,10 +411,16 @@ export default function QuizInteractive() {
         }
 
         .quiz-question {
-          font-size: 1.45rem;
+          font-size: 1.4rem;
           font-weight: 800;
           color: var(--color-obsidian);
           line-height: 1.3;
+        }
+
+        .quiz-contact-sub {
+          font-size: 0.95rem;
+          color: var(--color-creme-muted);
+          margin-top: 0.5rem;
         }
 
         .quiz-options-list {
@@ -225,7 +438,7 @@ export default function QuizInteractive() {
           border: 1px solid rgba(38, 22, 13, 0.12);
           border-radius: var(--radius-md);
           color: var(--color-obsidian);
-          font-size: 1rem;
+          font-size: 0.98rem;
           font-weight: 600;
           text-align: left;
           cursor: pointer;
@@ -253,8 +466,63 @@ export default function QuizInteractive() {
           background: var(--color-espresso);
         }
 
+        /* Form Controls */
+        .contact-form-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          text-align: left;
+        }
+
+        .form-group label {
+          font-size: 0.9rem;
+          font-weight: 700;
+          color: var(--color-obsidian);
+        }
+
+        .input-icon-wrapper {
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+
+        .input-icon {
+          position: absolute;
+          left: 1rem;
+          color: var(--color-creme-muted);
+        }
+
+        .form-input {
+          width: 100%;
+          padding: 0.9rem 1rem 0.9rem 2.8rem;
+          background: var(--color-creme-light);
+          border: 1px solid rgba(38, 22, 13, 0.18);
+          border-radius: var(--radius-md);
+          font-size: 1rem;
+          font-family: inherit;
+          color: var(--color-obsidian);
+          outline: none;
+          transition: border-color 0.2s ease;
+        }
+
+        .form-input:focus {
+          border-color: var(--color-espresso);
+          background: #FFFFFF;
+        }
+
+        .btn-submit-quiz {
+          width: 100%;
+          margin-top: 0.5rem;
+        }
+
         .quiz-back-btn {
-          margin-top: 1.75rem;
+          margin-top: 1.5rem;
           background: transparent;
           border: none;
           color: var(--color-creme-muted);
@@ -277,17 +545,31 @@ export default function QuizInteractive() {
           display: inline-flex;
           align-items: center;
           gap: 0.6rem;
-          font-size: 1rem;
+          font-size: 0.95rem;
           font-weight: 700;
+          padding: 0.4rem 1rem;
+          border-radius: 999px;
+          margin-bottom: 1.25rem;
+        }
+
+        .badge-success {
+          background: var(--color-creme-dark);
           color: var(--color-espresso);
-          margin-bottom: 1rem;
+          border: 1px solid rgba(38, 22, 13, 0.15);
+        }
+
+        .badge-warning {
+          background: rgba(220, 38, 38, 0.08);
+          color: #DC2626;
+          border: 1px solid rgba(220, 38, 38, 0.2);
         }
 
         .result-title {
-          font-size: 1.85rem;
+          font-size: 1.75rem;
           font-weight: 800;
           margin-bottom: 1rem;
           color: var(--color-obsidian);
+          line-height: 1.25;
         }
 
         .result-desc {
@@ -304,6 +586,17 @@ export default function QuizInteractive() {
           padding: 1.5rem;
           text-align: left;
           margin-bottom: 2rem;
+        }
+
+        .box-disqualified {
+          background: rgba(220, 38, 38, 0.04);
+          border-color: rgba(220, 38, 38, 0.15);
+        }
+
+        .text-disqualified-sub {
+          font-size: 0.92rem;
+          color: var(--color-creme-muted);
+          line-height: 1.55;
         }
 
         .result-box h4 {
@@ -354,7 +647,7 @@ export default function QuizInteractive() {
             padding: 1.75rem;
           }
           .quiz-question {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
           }
         }
       `}} />
