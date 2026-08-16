@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { HeartHandshake, ShieldCheck, Quote, ChevronLeft, ChevronRight, XCircle, CheckCircle2, Eye } from 'lucide-react';
+import { ShieldCheck, Quote, ChevronLeft, ChevronRight, XCircle, CheckCircle2, Eye } from 'lucide-react';
 
 const STORIES = [
   {
     id: 1,
-    name: "Natalia M.",
+    name: "Caso #1 • Natalia M.",
     age: "41 años",
-    role: "Escribana & Madre de 2 hijos",
+    role: "Escribana & Madre",
     location: "Coaching Online",
-    image: "/caso-1-transformacion.jpg",
+    image: "/casos_exito/caso1.jpeg",
     highlight: "De vivir inflamada y con dietas estrictas a perder 9 kg de grasa sosteniendo 3 días/semana.",
     quote: "Tenía dos jornadas superpuestas (trabajo + hijos) y vivía cansada, deshinchada a base de café y picoteando por ansiedad. Tomás me armó un plan de fuerza de 3 días que se adapta a mi caos. Eliminé la ansiedad y volví a ponerme la ropa que tenía guardada con total seguridad.",
     metrics: [
@@ -27,11 +27,11 @@ const STORIES = [
   },
   {
     id: 2,
-    name: "Dra. Andrea L.",
+    name: "Caso #2 • Dra. Andrea L.",
     age: "47 años",
-    role: "Bioquímica & Directora de Instituto",
+    role: "Bioquímica & Directora",
     location: "Coaching Online",
-    image: "/caso-2-transformacion.jpg",
+    image: "/casos_exito/caso2.jpeg",
     highlight: "Superó el miedo a lesionarse y logró abdomen plano y energía total.",
     quote: "Le tenía miedo a las pesas por temor a lesionarme la espalda. Tomás me enseñó la técnica segura de cada ejercicio paso a paso. Se me fue la inflamación constante, gané fuerza real y volví a sentirme atractiva y con postura erguida en mi trabajo.",
     metrics: [
@@ -45,16 +45,16 @@ const STORIES = [
     },
     after: {
       status: "Hoy (Adherencia & Fuerza)",
-      desc: "Entrena fuerza estructurada y simple. Logró tonicidad muscular, eliminó la celulitis e hinchazón y proyecta máxima seguridad en sus reuniones laborales."
+      desc: "Entrena fuerza estructurada y simple. Logró tonicidad muscular, eliminó la hinchazón y proyecta máxima seguridad en sus reuniones laborales."
     }
   },
   {
     id: 3,
-    name: "Carolina V.",
+    name: "Caso #3 • Carolina V.",
     age: "36 años",
     role: "Arquitecta & Emprendedora",
     location: "Coaching Online",
-    image: "/caso-2-transformacion.jpg",
+    image: "/casos_exito/caso3.jpeg",
     highlight: "Transformó su relación con el cuerpo y la fuerza personal.",
     quote: "El gimnasio siempre fue para mí un castigo para 'quemar calorías' por culpa. Con Tomás entendí que es el lugar donde voy a cumplirme la palabra a mí misma. Hoy tengo más energía que a los 25 años.",
     metrics: [
@@ -69,6 +69,53 @@ const STORIES = [
     after: {
       status: "Hoy (Adherencia & Fuerza)",
       desc: "Entrena fuerza simple y estructurada. Come de forma equilibrada sin culpa y ve el entrenamiento como su momento inviolable de desconexión."
+    }
+  },
+  {
+    id: 4,
+    name: "Caso #4 • Luciana S.",
+    age: "44 años",
+    role: "Abogada & Ejecutiva",
+    location: "Coaching Online",
+    image: "/casos_exito/caso4.jpeg",
+    highlight: "Redujo 10 cm de cintura y eliminó la inflamación crónica.",
+    quote: "Viajaba constantemente por trabajo y comía lo que encontraba. El programa de 90 Días me dio orden, sencillez y acompañamiento diario para sostener el hábito en hoteles o en casa.",
+    metrics: [
+      { label: "Cintura", value: "-10 cm" },
+      { label: "Pesadez Abdominal", value: "Eliminada" },
+      { label: "Adherencia", value: "Constante" }
+    ],
+    before: {
+      status: "Antes (Cansancio & Desorden)",
+      desc: "Vivía en constante desorden alimentario por viajes de trabajo. Sentía pesadez digestiva y falta de tono corporal."
+    },
+    after: {
+      status: "Hoy (Organización & Tono)",
+      desc: "Logró hábitos claros adaptables a viajes y trabajo. Recuperó su postura, abdomen desinflamado y vitalidad."
+    }
+  },
+  {
+    id: 5,
+    name: "Caso #5 • Mariana R.",
+    age: "39 años",
+    role: "Contadora & Consultora",
+    location: "Coaching Online",
+    beforeImage: "/casos_exito/caso5.jpeg",
+    afterImage: "/casos_exito/caso5.2.jpeg",
+    highlight: "Cambio radical de composición corporal en 90 Días (Antes y Después).",
+    quote: "Probé todas las dietas de moda y entrenamientos agotadores. Con Tomás aprendí que la clave es la fuerza progresiva y la constancia de 3 hs por semana.",
+    metrics: [
+      { label: "Grasa Corporal", value: "-8.5 kg" },
+      { label: "Tono Muscular", value: "+2.5 kg" },
+      { label: "Garantía Cumplida", value: "100% Exitoso" }
+    ],
+    before: {
+      status: "Antes (Efecto Rebote)",
+      desc: "Subía y bajaba de peso constantemente debido a dietas ultra restrictivas y rutinas de cardio sin estructura de fuerza."
+    },
+    after: {
+      status: "Hoy (Transformación Definitiva)",
+      desc: "Consiguió una figura fuerte, tonificada y un metabolismo activo que mantiene comiendo de todo sin culpa."
     }
   }
 ];
@@ -105,7 +152,7 @@ export default function TransformationSlider() {
       <div className="story-main-card">
         <div className="story-header">
           <div className="user-meta">
-            <div className="user-avatar">{current.name[0]}</div>
+            <div className="user-avatar">{current.name.split('•')[1]?.trim()[0] || 'C'}</div>
             <div>
               <h3 className="user-name">{current.name}</h3>
               <span className="user-info">{current.age} • {current.role} • {current.location}</span>
@@ -127,19 +174,42 @@ export default function TransformationSlider() {
           <span>{current.highlight}</span>
         </div>
 
-        {/* Before / After Photo Feature */}
+        {/* Before / After Photo Display */}
         <div className="transformation-image-container">
-          <div className="image-frame">
-            <img 
-              src={current.image} 
-              alt={`Transformación Antes y Después - ${current.name}`}
-              className="transformation-photo"
-            />
-            <div className="image-overlay-badge">
-              <Eye size={15} />
-              <span>Registro Real de Proceso</span>
+          {current.beforeImage && current.afterImage ? (
+            /* Split Before/After layout for Case 5 */
+            <div className="split-images-grid">
+              <div className="image-frame split-frame">
+                <span className="split-label label-before">ANTES</span>
+                <img 
+                  src={current.beforeImage} 
+                  alt={`Caso 5 - Antes - ${current.name}`}
+                  className="transformation-photo split-photo"
+                />
+              </div>
+              <div className="image-frame split-frame">
+                <span className="split-label label-after">DESPUÉS</span>
+                <img 
+                  src={current.afterImage} 
+                  alt={`Caso 5 - Después - ${current.name}`}
+                  className="transformation-photo split-photo"
+                />
+              </div>
             </div>
-          </div>
+          ) : (
+            /* Single combined image for Cases 1 to 4 */
+            <div className="image-frame">
+              <img 
+                src={current.image} 
+                alt={`Transformación Antes y Después - ${current.name}`}
+                className="transformation-photo"
+              />
+              <div className="image-overlay-badge">
+                <Eye size={15} />
+                <span>Registro Real de Proceso 100% Auténtico</span>
+              </div>
+            </div>
+          )}
         </div>
 
         <blockquote className="story-quote">
@@ -185,15 +255,15 @@ export default function TransformationSlider() {
 
         .story-tabs {
           display: flex;
-          gap: 1rem;
+          gap: 0.75rem;
           overflow-x: auto;
           padding-bottom: 0.5rem;
         }
 
         .story-tab-btn {
           flex: 1;
-          min-width: 200px;
-          padding: 1rem 1.25rem;
+          min-width: 170px;
+          padding: 0.9rem 1.1rem;
           background: #FFFFFF;
           border: 1px solid rgba(38, 22, 13, 0.12);
           border-radius: var(--radius-md);
@@ -219,11 +289,11 @@ export default function TransformationSlider() {
 
         .tab-name {
           font-weight: 700;
-          font-size: 1.05rem;
+          font-size: 0.95rem;
         }
 
         .tab-role {
-          font-size: 0.78rem;
+          font-size: 0.75rem;
           opacity: 0.85;
           margin-top: 2px;
         }
@@ -316,8 +386,12 @@ export default function TransformationSlider() {
         .transformation-image-container {
           margin-bottom: 2rem;
           border-radius: var(--radius-md);
-          overflow: hidden;
-          box-shadow: 0 10px 25px rgba(38, 22, 13, 0.1);
+        }
+
+        .split-images-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
         }
 
         .image-frame {
@@ -326,19 +400,49 @@ export default function TransformationSlider() {
           overflow: hidden;
           border-radius: var(--radius-md);
           border: 1px solid rgba(38, 22, 13, 0.12);
+          background: var(--color-creme);
+        }
+
+        .split-frame {
+          aspect-ratio: 4 / 5;
         }
 
         .transformation-photo {
           width: 100%;
           height: auto;
-          max-height: 420px;
-          object-fit: cover;
+          max-height: 480px;
+          object-fit: contain;
+          background: #000000;
           display: block;
           transition: transform 0.4s ease;
         }
 
-        .transformation-photo:hover {
-          transform: scale(1.02);
+        .split-photo {
+          height: 100%;
+          max-height: 100%;
+          object-fit: cover;
+        }
+
+        .split-label {
+          position: absolute;
+          top: 0.75rem;
+          left: 0.75rem;
+          padding: 0.3rem 0.75rem;
+          border-radius: var(--radius-full);
+          font-size: 0.75rem;
+          font-weight: 800;
+          letter-spacing: 0.05em;
+          z-index: 2;
+        }
+
+        .label-before {
+          background: rgba(220, 38, 38, 0.9);
+          color: #FFFFFF;
+        }
+
+        .label-after {
+          background: rgba(22, 163, 74, 0.9);
+          color: #FFFFFF;
         }
 
         .image-overlay-badge {
@@ -449,6 +553,9 @@ export default function TransformationSlider() {
         }
 
         @media (max-width: 768px) {
+          .split-images-grid {
+            grid-template-columns: 1fr;
+          }
           .comparison-grid {
             grid-template-columns: 1fr;
           }
