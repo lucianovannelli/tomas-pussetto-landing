@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { CheckCircle, XCircle, RotateCcw, MessageCircle, Sparkles, ShieldCheck, ArrowRight, User, Phone } from 'lucide-react';
+import { CheckCircle, XCircle, RotateCcw, MessageCircle, Sparkles, Calendar, ArrowRight, User, Phone } from 'lucide-react';
 import { evaluateLeadQualification, saveQuizLead } from '../utils/leadStorage';
+
+const CALENDLY_LINK = 'https://calendly.com/tomaspussetto43/reunion-de-consultoria-gratuita';
 
 const QUESTIONS = [
   {
@@ -105,7 +107,6 @@ export default function QuizInteractive() {
     if (currentStep < QUESTIONS.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      // Move to Contact step (Step 4 -> Contact)
       setCurrentStep(QUESTIONS.length);
     }
   };
@@ -114,11 +115,9 @@ export default function QuizInteractive() {
     e.preventDefault();
     if (!contactName.trim() || !contactPhone.trim()) return;
 
-    // Evaluate qualification criteria
     const qualResult = evaluateLeadQualification(answers);
     setQualification(qualResult);
 
-    // Get readable option text for storage
     const getOptionText = (qId) => {
       const q = QUESTIONS.find(item => item.id === qId);
       const opt = q?.options.find(o => o.value === answers[qId]);
@@ -140,7 +139,6 @@ export default function QuizInteractive() {
       rawAnswers: answers
     };
 
-    // Save lead to Database / Storage
     saveQuizLead(leadPayload);
     setIsCompleted(true);
   };
@@ -162,7 +160,7 @@ export default function QuizInteractive() {
     };
 
     const text = encodeURIComponent(
-      `Hola Tomás! Mi nombre es ${contactName}.\nRealicé el Test de Calificación en tu web:\n\n- Antigüedad: ${getOptionText(1)}\n- Prioridad / Urgencia: ${getOptionText(2)}\n- Disponibilidad Tiempo: ${getOptionText(3)}\n- Disposición Inversión: ${getOptionText(4)}\n\nMi perfil fue Calificado como APTO y quiero consultar disponibilidad de cupo.`
+      `Hola Tomás! Mi nombre es ${contactName}.\nRealicé el Test de Calificación en tu web:\n\n- Antigüedad: ${getOptionText(1)}\n- Prioridad / Urgencia: ${getOptionText(2)}\n- Disponibilidad Tiempo: ${getOptionText(3)}\n- Disposición Inversión: ${getOptionText(4)}\n\nMi perfil fue Calificado como APTO y quiero agendar mi llamada de consultoría.`
     );
     return `https://wa.me/5493410000000?text=${text}`;
   };
@@ -277,39 +275,49 @@ export default function QuizInteractive() {
           /* Result Screen */
           <div>
             {qualification?.isQualified ? (
-              /* QUALIFIED SCREEN */
+              /* QUALIFIED SCREEN WITH CALENDLY DIRECT ACTION */
               <div className="quiz-result result-qualified">
                 <div className="result-badge badge-success">
                   <CheckCircle size={28} color="#26160D" />
-                  <span>Perfil Calificado • Apto y Prioritario</span>
+                  <span>Perfil Calificado • Apto para Agendar</span>
                 </div>
 
                 <h3 className="result-title">
-                  ¡Felicitaciones, <span>{contactName}</span>! Estás lista para el Programa de 90 Días
+                  ¡Felicitaciones, <span>{contactName}</span>! Estás lista para agendar tu llamada
                 </h3>
 
                 <p className="result-desc">
-                  Hemos verificado tus respuestas. Cumplís con el nivel de <strong>urgencia, tiempo disponible y compromiso de inversión</strong> necesario para acceder al acompañamiento 1 a 1 de Tomás Pussetto.
+                  Tu perfil cumple con la urgencia, tiempo disponible y compromiso necesario. El siguiente paso es agendar tu <strong>Reunión de Consultoría Gratuita 1 a 1</strong> directamente en el calendario.
                 </p>
 
                 <div className="result-box">
-                  <h4>Resumen de tu diagnóstico:</h4>
+                  <h4>En esta llamada de 20 minutos con Tomás Pussetto:</h4>
                   <ul>
-                    <li>✓ Prioridad Alta: Lista para resolver tu cambio sin procrastinar.</li>
-                    <li>✓ Disponibilidad: Horarios organizados para 3 hs semanales de fuerza.</li>
-                    <li>✓ Inversión: Comprometida con un servicio profesional con garantía.</li>
+                    <li>✓ Analizaremos tu situación actual y metas concretas de masa y desinflamación.</li>
+                    <li>✓ Trazaremos la estructura exacta de entrenamiento de fuerza para tus horarios.</li>
+                    <li>✓ Confirmaremos la disponibilidad de cupo para tu plan de 90 Días.</li>
                   </ul>
                 </div>
 
                 <div className="result-actions">
                   <a 
+                    href={CALENDLY_LINK} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-lg btn-calendly-quiz"
+                  >
+                    <Calendar size={22} />
+                    <span>📅 Agendar mi Reunión de Consultoría Gratuita (Calendly)</span>
+                  </a>
+
+                  <a 
                     href={getWhatsAppMessage()} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="btn btn-primary btn-lg btn-whatsapp-quiz"
+                    className="btn btn-secondary btn-lg btn-whatsapp-sub"
                   >
-                    <MessageCircle size={22} />
-                    <span>Enviar mi diagnóstico a Tomás por WhatsApp</span>
+                    <MessageCircle size={20} />
+                    <span>O hablar directamente por WhatsApp</span>
                   </a>
 
                   <button onClick={handleReset} className="quiz-reset-btn">
@@ -335,9 +343,9 @@ export default function QuizInteractive() {
                 </p>
 
                 <div className="result-box box-disqualified">
-                  <h4>¿Por qué realizamos este filtro?</h4>
+                  <h4>¿Por qué no habilitamos el calendario?</h4>
                   <p className="text-disqualified-sub">
-                    Tomás Pussetto trabaja con un cupo reducido de alumnas para garantizar un seguimiento diario 24/7 de máxima calidad. Para asegurar que tengas éxito, el programa exige que el entrenamiento sea una prioridad real e impostergable en tu vida.
+                    Tomás Pussetto atiende llamadas de consultoría de forma 100% personalizada. Para garantizar una atención de máxima calidad, los turnos de agenda se reservan exclusivamente para personas que están listas para comenzar su proceso.
                   </p>
                 </div>
 
@@ -626,7 +634,14 @@ export default function QuizInteractive() {
           align-items: center;
         }
 
-        .btn-whatsapp-quiz {
+        .btn-calendly-quiz {
+          width: 100%;
+          padding: 1.15rem 1.5rem;
+          font-size: 1.05rem;
+          box-shadow: 0 8px 24px rgba(38, 22, 13, 0.25);
+        }
+
+        .btn-whatsapp-sub {
           width: 100%;
         }
 
@@ -648,6 +663,9 @@ export default function QuizInteractive() {
           }
           .quiz-question {
             font-size: 1.2rem;
+          }
+          .btn-calendly-quiz {
+            font-size: 0.95rem;
           }
         }
       `}} />
