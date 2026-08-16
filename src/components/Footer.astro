@@ -1,5 +1,5 @@
 ---
-import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
+import { Calendar, Instagram, Youtube, ArrowUp } from 'lucide-react';
 ---
 
 <footer class="footer">
@@ -17,13 +17,13 @@ import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
       </div>
 
       <a 
-        href="https://wa.me/5493410000000?text=Hola%20Tomás!%20Soy%20mujer%20profesional%20y%20quiero%20postular%20al%20Programa%20Online%20de%2090%20Días" 
+        href="https://calendly.com/tomaspussetto43/reunion-de-consultoria-gratuita" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="btn btn-primary btn-lg"
+        class="btn btn-footer-cta btn-lg"
       >
-        <MessageCircle size={22} />
-        <span>Postular al Programa 90 Días</span>
+        <Calendar size={22} />
+        <span>Agendar Consultoría en Calendly</span>
       </a>
     </div>
 
@@ -63,8 +63,8 @@ import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
             <span>YouTube</span>
           </a>
           <a href="https://wa.me/5493410000000" target="_blank" rel="noopener noreferrer" class="social-link">
-            <MessageCircle size={18} />
-            <span>WhatsApp Directo</span>
+            <Calendar size={18} />
+            <span>Calendly Directo</span>
           </a>
         </div>
       </div>
@@ -118,6 +118,20 @@ import { MessageCircle, Instagram, Youtube, ArrowUp } from 'lucide-react';
     font-size: 1.05rem;
     color: var(--color-creme-muted);
     max-width: 580px;
+  }
+
+  .btn-footer-cta {
+    background: var(--color-creme);
+    color: var(--color-espresso);
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .btn-footer-cta:hover {
+    background: #FFFFFF;
+    color: var(--color-obsidian);
+    transform: translateY(-2px);
   }
 
   .footer-main {
