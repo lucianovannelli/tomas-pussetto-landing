@@ -9,7 +9,7 @@ const STORIES = [
     role: "Escribana & Madre",
     location: "Coaching Online",
     image: "/casos_exito/caso1.jpeg",
-    highlight: "De vivir inflamada y con dietas strictly a perder 9 kg de grasa sosteniendo 3 días/semana.",
+    highlight: "De vivir inflamada y con dietas estrictas a perder 9 kg de grasa sosteniendo 3 días/semana.",
     quote: "Tenía dos jornadas superpuestas (trabajo + hijos) y vivía cansada, deshinchada a base de café y picoteando por ansiedad. Tomás me armó un plan de fuerza de 3 días que se adapta a mi caos. Eliminé la ansiedad y volví a ponerme la ropa que tenía guardada con total seguridad.",
     metrics: [
       { label: "Grasa & Inflamación", value: "-9 kg" },
@@ -40,7 +40,7 @@ const STORIES = [
       { label: "Energía Diaria", value: "100% Vital" }
     ],
     before: {
-      status: "Antes (Cansancio Constant)",
+      status: "Antes (Cansancio Constante)",
       desc: "Le daba vergüenza ir al gimnasio por no saber qué hacer. Vivía contracturada por el estrés profesional."
     },
     after: {
@@ -188,7 +188,7 @@ export default function TransformationSlider() {
                 {story.beforeImage && story.afterImage ? (
                   <div className="split-grid-images">
                     <div className="split-grid-item">
-                      <span className="split-label label-before">ANTES</span>
+                      {!story.hasPrivacyMask && <span className="split-label label-before">ANTES</span>}
                       {story.hasPrivacyMask && (
                         <div className="face-privacy-mask">
                           <Lock size={12} />
@@ -198,7 +198,7 @@ export default function TransformationSlider() {
                       <img src={story.beforeImage} alt={`${story.name} - Antes`} className="mobile-fit-photo" />
                     </div>
                     <div className="split-grid-item">
-                      <span className="split-label label-after">DESPUÉS</span>
+                      {!story.hasPrivacyMask && <span className="split-label label-after">DESPUÉS</span>}
                       {story.hasPrivacyMask && (
                         <div className="face-privacy-mask">
                           <Lock size={12} />
@@ -280,7 +280,7 @@ export default function TransformationSlider() {
               {STORIES[activeIndex].beforeImage && STORIES[activeIndex].afterImage ? (
                 <div className="split-images-grid">
                   <div className="image-frame split-frame">
-                    <span className="split-label label-before">ANTES</span>
+                    {!STORIES[activeIndex].hasPrivacyMask && <span className="split-label label-before">ANTES</span>}
                     {STORIES[activeIndex].hasPrivacyMask && (
                       <div className="face-privacy-mask">
                         <Lock size={14} />
@@ -294,7 +294,7 @@ export default function TransformationSlider() {
                     />
                   </div>
                   <div className="image-frame split-frame">
-                    <span className="split-label label-after">DESPUÉS</span>
+                    {!STORIES[activeIndex].hasPrivacyMask && <span className="split-label label-after">DESPUÉS</span>}
                     {STORIES[activeIndex].hasPrivacyMask && (
                       <div className="face-privacy-mask">
                         <Lock size={14} />
@@ -519,7 +519,7 @@ export default function TransformationSlider() {
           top: 3%;
           left: 50%;
           transform: translateX(-50%);
-          width: 48%;
+          width: 52%;
           height: 18%;
           background: rgba(245, 240, 232, 0.35);
           backdrop-filter: blur(28px) saturate(180%) brightness(1.1);
