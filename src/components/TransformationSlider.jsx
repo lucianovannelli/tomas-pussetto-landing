@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldCheck, Quote, ChevronLeft, ChevronRight, XCircle, CheckCircle2, Eye } from 'lucide-react';
+import { ShieldCheck, Quote, ChevronLeft, ChevronRight, XCircle, CheckCircle2, Eye, Lock, Grid, Layers } from 'lucide-react';
 
 const STORIES = [
   {
@@ -17,12 +17,12 @@ const STORIES = [
       { label: "Frecuencia", value: "3 Días/Sem" }
     ],
     before: {
-      status: "Antes (Ciclo de Culpa & Restricción)",
-      desc: "Hacía dietas de hambre y cardio agotador. A las 3 semanas la carga laboral la desbordaba, sentía culpa por no cumplir, comía por ansiedad de noche y abandonaba 4 meses."
+      status: "Antes (Ciclo de Culpa)",
+      desc: "Hacía dietas de hambre y cardio agotador. A las 3 semanas la carga laboral la desbordaba, comía por ansiedad y abandonaba."
     },
     after: {
       status: "Hoy (Adherencia & Fuerza)",
-      desc: "Entrena 3 sesiones semanales de 50 minutos adaptadas a su agenda cambiante. Come de forma equilibrada sin culpa y recuperó su tono muscular, postura e imagen profesional."
+      desc: "Entrena 3 sesiones semanales de 50 minutos adaptadas a su agenda cambiante. Recuperó tono muscular e imagen profesional."
     }
   },
   {
@@ -40,12 +40,12 @@ const STORIES = [
       { label: "Energía Diaria", value: "100% Vital" }
     ],
     before: {
-      status: "Antes (Ciclo de Culpa & Restricción)",
-      desc: "Le daba vergüenza ir al gimnasio por no saber qué hacer. Vivía contracturada por el estrés profesional y con desgano constante."
+      status: "Antes (Cansancio Constant)",
+      desc: "Le daba vergüenza ir al gimnasio por no saber qué hacer. Vivía contracturada por el estrés profesional."
     },
     after: {
-      status: "Hoy (Adherencia & Fuerza)",
-      desc: "Entrena fuerza estructurada y simple. Logró tonicidad muscular, eliminó la hinchazón y proyecta máxima seguridad en sus reuniones laborales."
+      status: "Hoy (Tono & Postura)",
+      desc: "Entrena fuerza estructurada y simple. Logró tonicidad muscular, eliminó la hinchazón y proyecta máxima seguridad."
     }
   },
   {
@@ -63,12 +63,12 @@ const STORIES = [
       { label: "Nivel de Estrés", value: "-60%" }
     ],
     before: {
-      status: "Antes (Ciclo de Culpa & Restricción)",
-      desc: "Hacía rutinas infinitas de cardio agotador. No lograba masa muscular ni fuerza, y vivía con miedo a los carbohidratos."
+      status: "Antes (Cardio Excesivo)",
+      desc: "Hacía rutinas infinitas de cardio agotador. No lograba masa muscular ni fuerza, y vivía con miedo a la comida."
     },
     after: {
-      status: "Hoy (Adherencia & Fuerza)",
-      desc: "Entrena fuerza simple y estructurada. Come de forma equilibrada sin culpa y ve el entrenamiento como su momento inviolable de desconexión."
+      status: "Hoy (Adherencia Real)",
+      desc: "Entrena fuerza simple y estructurada. Come de forma equilibrada sin culpa y ve el entrenamiento como su desconexión."
     }
   },
   {
@@ -86,12 +86,12 @@ const STORIES = [
       { label: "Adherencia", value: "Constante" }
     ],
     before: {
-      status: "Antes (Cansancio & Desorden)",
-      desc: "Vivía en constante desorden alimentario por viajes de trabajo. Sentía pesadez digestiva y falta de tono corporal."
+      status: "Antes (Desorden por Viajes)",
+      desc: "Vivía en constante desorden alimentario por viajes de trabajo. Sentía pesadez digestiva y falta de tono."
     },
     after: {
-      status: "Hoy (Organización & Tono)",
-      desc: "Logró hábitos claros adaptables a viajes y trabajo. Recuperó su postura, abdomen desinflamado y vitalidad."
+      status: "Hoy (Organización Total)",
+      desc: "Logró hábitos claros adaptables a viajes. Recuperó su postura, abdomen desinflamado y alta energía diaria."
     }
   },
   {
@@ -102,16 +102,17 @@ const STORIES = [
     location: "Coaching Online",
     beforeImage: "/casos_exito/caso5.jpeg",
     afterImage: "/casos_exito/caso5.2.jpeg",
-    highlight: "Cambio radical de composición corporal en 90 Días (Antes y Después).",
+    hasPrivacyMask: true,
+    highlight: "Cambio radical de composición corporal en 90 Días (Privacidad Protegida).",
     quote: "Probé todas las dietas de moda y entrenamientos agotadores. Con Tomás aprendí que la clave es la fuerza progresiva y la constancia de 3 hs por semana.",
     metrics: [
       { label: "Grasa Corporal", value: "-8.5 kg" },
       { label: "Tono Muscular", value: "+2.5 kg" },
-      { label: "Garantía Cumplida", value: "100% Exitoso" }
+      { label: "Resultado", value: "Garantizado" }
     ],
     before: {
       status: "Antes (Efecto Rebote)",
-      desc: "Subía y bajaba de peso constantemente debido a dietas ultra restrictivas y rutinas de cardio sin estructura de fuerza."
+      desc: "Subía y bajaba de peso constantemente debido a dietas ultra restrictivas y rutinas de cardio sin fuerza."
     },
     after: {
       status: "Hoy (Transformación Definitiva)",
@@ -121,8 +122,8 @@ const STORIES = [
 ];
 
 export default function TransformationSlider() {
+  const [viewMode, setViewMode] = useState('GRID'); // GRID (Desktop Multi-Card) or SINGLE
   const [activeIndex, setActiveIndex] = useState(0);
-  const current = STORIES[activeIndex];
 
   const handlePrev = () => {
     setActiveIndex((prev) => (prev === 0 ? STORIES.length - 1 : prev - 1));
@@ -134,177 +135,490 @@ export default function TransformationSlider() {
 
   return (
     <div className="stories-slider-wrapper">
-      {/* Selector Tabs */}
-      <div className="story-tabs">
-        {STORIES.map((story, idx) => (
-          <button
-            key={story.id}
-            onClick={() => setActiveIndex(idx)}
-            className={`story-tab-btn ${idx === activeIndex ? 'active' : ''}`}
+      {/* View Toggle Bar for Desktop */}
+      <div className="slider-controls-bar">
+        <div className="view-toggle-buttons">
+          <button 
+            onClick={() => setViewMode('GRID')} 
+            className={`toggle-btn ${viewMode === 'GRID' ? 'active' : ''}`}
           >
-            <span className="tab-name">{story.name}</span>
-            <span className="tab-role">{story.role}</span>
+            <Grid size={16} />
+            <span>Ver Todos los Casos</span>
           </button>
-        ))}
-      </div>
+          <button 
+            onClick={() => setViewMode('SINGLE')} 
+            className={`toggle-btn ${viewMode === 'SINGLE' ? 'active' : ''}`}
+          >
+            <Layers size={16} />
+            <span>Ver Detalle Individual</span>
+          </button>
+        </div>
 
-      {/* Active Story Card */}
-      <div className="story-main-card">
-        <div className="story-header">
-          <div className="user-meta">
-            <div className="user-avatar">{current.name.split('•')[1]?.trim()[0] || 'C'}</div>
-            <div>
-              <h3 className="user-name">{current.name}</h3>
-              <span className="user-info">{current.age} • {current.role} • {current.location}</span>
-            </div>
-          </div>
-
+        {viewMode === 'SINGLE' && (
           <div className="story-controls">
             <button onClick={handlePrev} className="control-btn" aria-label="Anterior">
               <ChevronLeft size={20} />
             </button>
+            <span className="control-counter">{activeIndex + 1} de {STORIES.length}</span>
             <button onClick={handleNext} className="control-btn" aria-label="Siguiente">
               <ChevronRight size={20} />
             </button>
           </div>
-        </div>
+        )}
+      </div>
 
-        <div className="story-highlight-badge">
-          <ShieldCheck size={18} color="#26160D" />
-          <span>{current.highlight}</span>
-        </div>
-
-        {/* Before / After Photo Display */}
-        <div className="transformation-image-container">
-          {current.beforeImage && current.afterImage ? (
-            /* Split Before/After layout for Case 5 */
-            <div className="split-images-grid">
-              <div className="image-frame split-frame">
-                <span className="split-label label-before">ANTES</span>
-                <img 
-                  src={current.beforeImage} 
-                  alt={`Caso 5 - Antes - ${current.name}`}
-                  className="transformation-photo split-photo"
-                />
+      {viewMode === 'GRID' ? (
+        /* MULTI-CARD GRID VIEW (Optimized for Desktop Mobile-Format Photos) */
+        <div className="stories-multi-grid">
+          {STORIES.map((story) => (
+            <div key={story.id} className="grid-story-card brand-card-light">
+              <div className="card-top-header">
+                <div className="user-meta-compact">
+                  <div className="user-avatar-sm">{story.name.split('•')[1]?.trim()[0] || 'C'}</div>
+                  <div>
+                    <h3 className="user-name-sm">{story.name}</h3>
+                    <span className="user-role-sm">{story.role}</span>
+                  </div>
+                </div>
+                <span className="location-chip">{story.location}</span>
               </div>
-              <div className="image-frame split-frame">
-                <span className="split-label label-after">DESPUÉS</span>
-                <img 
-                  src={current.afterImage} 
-                  alt={`Caso 5 - Después - ${current.name}`}
-                  className="transformation-photo split-photo"
-                />
+
+              {/* Image Frame with Mobile Aspect Ratio */}
+              <div className="grid-image-container">
+                {story.beforeImage && story.afterImage ? (
+                  <div className="split-grid-images">
+                    <div className="split-grid-item">
+                      <span className="split-label label-before">ANTES</span>
+                      {story.hasPrivacyMask && (
+                        <div className="face-privacy-mask">
+                          <Lock size={12} />
+                          <span>Privacidad</span>
+                        </div>
+                      )}
+                      <img src={story.beforeImage} alt={`${story.name} - Antes`} className="mobile-fit-photo" />
+                    </div>
+                    <div className="split-grid-item">
+                      <span className="split-label label-after">DESPUÉS</span>
+                      {story.hasPrivacyMask && (
+                        <div className="face-privacy-mask">
+                          <Lock size={12} />
+                          <span>Privacidad</span>
+                        </div>
+                      )}
+                      <img src={story.afterImage} alt={`${story.name} - Después`} className="mobile-fit-photo" />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="single-grid-image">
+                    {story.hasPrivacyMask && (
+                      <div className="face-privacy-mask">
+                        <Lock size={12} />
+                        <span>Privacidad Protegida</span>
+                      </div>
+                    )}
+                    <img src={story.image} alt={story.name} className="mobile-fit-photo" />
+                    <div className="image-overlay-badge-sm">
+                      <Eye size={13} />
+                      <span>Antes y Después</span>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          ) : (
-            /* Single combined image for Cases 1 to 4 */
-            <div className="image-frame">
-              <img 
-                src={current.image} 
-                alt={`Transformación Antes y Después - ${current.name}`}
-                className="transformation-photo"
-              />
-              <div className="image-overlay-badge">
-                <Eye size={15} />
-                <span>Registro Real de Proceso 100% Auténtico</span>
+
+              <div className="grid-highlight">
+                <ShieldCheck size={16} color="#26160D" />
+                <span>{story.highlight}</span>
               </div>
-            </div>
-          )}
-        </div>
 
-        <blockquote className="story-quote">
-          <Quote size={28} className="quote-icon" />
-          <p>"{current.quote}"</p>
-        </blockquote>
+              <p className="grid-quote">"{story.quote}"</p>
 
-        {/* Before & After Detailed Breakdown */}
-        <div className="comparison-grid">
-          <div className="comp-box comp-before">
-            <span className="comp-tag tag-before">
-              <XCircle size={15} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
-              {current.before.status}
-            </span>
-            <p>{current.before.desc}</p>
-          </div>
-          <div className="comp-box comp-after">
-            <span className="comp-tag tag-after">
-              <CheckCircle2 size={15} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
-              {current.after.status}
-            </span>
-            <p>{current.after.desc}</p>
-          </div>
-        </div>
-
-        {/* Metrics Row */}
-        <div className="metrics-row">
-          {current.metrics.map((m, idx) => (
-            <div key={idx} className="metric-badge">
-              <span className="m-val">{m.value}</span>
-              <span className="m-lbl">{m.label}</span>
+              <div className="grid-metrics">
+                {story.metrics.map((m, idx) => (
+                  <div key={idx} className="metric-chip">
+                    <span className="m-chip-val">{m.value}</span>
+                    <span className="m-chip-lbl">{m.label}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>
-      </div>
+      ) : (
+        /* SINGLE DETAILED VIEW */
+        <div>
+          {/* Selector Tabs */}
+          <div className="story-tabs">
+            {STORIES.map((story, idx) => (
+              <button
+                key={story.id}
+                onClick={() => setActiveIndex(idx)}
+                className={`story-tab-btn ${idx === activeIndex ? 'active' : ''}`}
+              >
+                <span className="tab-name">{story.name}</span>
+                <span className="tab-role">{story.role}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="story-main-card brand-card-light">
+            <div className="story-header">
+              <div className="user-meta">
+                <div className="user-avatar">{STORIES[activeIndex].name.split('•')[1]?.trim()[0] || 'C'}</div>
+                <div>
+                  <h3 className="user-name">{STORIES[activeIndex].name}</h3>
+                  <span className="user-info">{STORIES[activeIndex].age} • {STORIES[activeIndex].role} • {STORIES[activeIndex].location}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="story-highlight-badge">
+              <ShieldCheck size={18} color="#26160D" />
+              <span>{STORIES[activeIndex].highlight}</span>
+            </div>
+
+            <div className="transformation-image-container">
+              {STORIES[activeIndex].beforeImage && STORIES[activeIndex].afterImage ? (
+                <div className="split-images-grid">
+                  <div className="image-frame split-frame">
+                    <span className="split-label label-before">ANTES</span>
+                    {STORIES[activeIndex].hasPrivacyMask && (
+                      <div className="face-privacy-mask">
+                        <Lock size={14} />
+                        <span>Privacidad Protegida</span>
+                      </div>
+                    )}
+                    <img 
+                      src={STORIES[activeIndex].beforeImage} 
+                      alt={`Caso 5 - Antes - ${STORIES[activeIndex].name}`}
+                      className="transformation-photo split-photo"
+                    />
+                  </div>
+                  <div className="image-frame split-frame">
+                    <span className="split-label label-after">DESPUÉS</span>
+                    {STORIES[activeIndex].hasPrivacyMask && (
+                      <div className="face-privacy-mask">
+                        <Lock size={14} />
+                        <span>Privacidad Protegida</span>
+                      </div>
+                    )}
+                    <img 
+                      src={STORIES[activeIndex].afterImage} 
+                      alt={`Caso 5 - Después - ${STORIES[activeIndex].name}`}
+                      className="transformation-photo split-photo"
+                    />
+                  </div>
+                </div>
+              ) : (
+                <div className="image-frame">
+                  {STORIES[activeIndex].hasPrivacyMask && (
+                    <div className="face-privacy-mask">
+                      <Lock size={14} />
+                      <span>Privacidad Protegida</span>
+                    </div>
+                  )}
+                  <img 
+                    src={STORIES[activeIndex].image} 
+                    alt={`Transformación Antes y Después - ${STORIES[activeIndex].name}`}
+                    className="transformation-photo"
+                  />
+                  <div className="image-overlay-badge">
+                    <Eye size={15} />
+                    <span>Registro Real 100% Auténtico</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <blockquote className="story-quote">
+              <Quote size={28} className="quote-icon" />
+              <p>"{STORIES[activeIndex].quote}"</p>
+            </blockquote>
+
+            <div className="comparison-grid">
+              <div className="comp-box comp-before">
+                <span className="comp-tag tag-before">
+                  <XCircle size={15} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
+                  {STORIES[activeIndex].before.status}
+                </span>
+                <p>{STORIES[activeIndex].before.desc}</p>
+              </div>
+              <div className="comp-box comp-after">
+                <span className="comp-tag tag-after">
+                  <CheckCircle2 size={15} style={{ display: 'inline', marginRight: '6px', verticalAlign: 'middle' }} />
+                  {STORIES[activeIndex].after.status}
+                </span>
+                <p>{STORIES[activeIndex].after.desc}</p>
+              </div>
+            </div>
+
+            <div className="metrics-row">
+              {STORIES[activeIndex].metrics.map((m, idx) => (
+                <div key={idx} className="metric-badge">
+                  <span className="m-val">{m.value}</span>
+                  <span className="m-lbl">{m.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       <style dangerouslySetInnerHTML={{ __html: `
         .stories-slider-wrapper {
           display: flex;
           flex-direction: column;
-          gap: 1.5rem;
+          gap: 1.75rem;
         }
 
+        /* Controls & View Toggle */
+        .slider-controls-bar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1rem;
+        }
+
+        .view-toggle-buttons {
+          display: flex;
+          gap: 0.5rem;
+          background: var(--color-creme-dark);
+          padding: 0.3rem;
+          border-radius: var(--radius-full);
+          border: 1px solid var(--border-light);
+        }
+
+        .toggle-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          padding: 0.45rem 1rem;
+          border-radius: var(--radius-full);
+          border: none;
+          background: transparent;
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: var(--color-espresso);
+          cursor: pointer;
+          transition: all 0.2s ease;
+          font-family: inherit;
+        }
+
+        .toggle-btn.active {
+          background: #FFFFFF;
+          color: var(--color-obsidian);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Multi Card Grid (Desktop Optimization) */
+        .stories-multi-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+
+        .grid-story-card {
+          background: #FFFFFF;
+          border: 1px solid var(--border-light);
+          border-radius: var(--radius-lg);
+          padding: 1.75rem;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 12px 30px rgba(38, 22, 13, 0.05);
+        }
+
+        .card-top-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 1.25rem;
+        }
+
+        .user-meta-compact {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+        }
+
+        .user-avatar-sm {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: var(--color-espresso);
+          color: var(--color-creme);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 800;
+          font-size: 1rem;
+        }
+
+        .user-name-sm {
+          font-size: 1.05rem;
+          font-weight: 800;
+          color: var(--color-obsidian);
+        }
+
+        .user-role-sm {
+          font-size: 0.78rem;
+          color: var(--color-creme-muted);
+        }
+
+        .location-chip {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: var(--color-espresso);
+          background: var(--color-creme);
+          padding: 0.25rem 0.65rem;
+          border-radius: var(--radius-full);
+          border: 1px solid var(--border-light);
+        }
+
+        /* Mobile Fit Image Container in Grid */
+        .grid-image-container {
+          width: 100%;
+          border-radius: var(--radius-md);
+          overflow: hidden;
+          background: #1C1A17;
+          margin-bottom: 1.25rem;
+          border: 1px solid var(--border-light);
+        }
+
+        .single-grid-image {
+          position: relative;
+          width: 100%;
+          max-height: 380px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #000000;
+        }
+
+        .split-grid-images {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 4px;
+          background: #000000;
+        }
+
+        .split-grid-item {
+          position: relative;
+          aspect-ratio: 9 / 14;
+        }
+
+        .mobile-fit-photo {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          max-height: 380px;
+          display: block;
+        }
+
+        /* Face Privacy Mask Overlay */
+        .face-privacy-mask {
+          position: absolute;
+          top: 6%;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 48%;
+          height: 18%;
+          background: rgba(28, 26, 23, 0.95);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(245, 240, 232, 0.3);
+          border-radius: var(--radius-sm);
+          color: #F5F0E8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.35rem;
+          font-size: 0.72rem;
+          font-weight: 700;
+          z-index: 5;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+        }
+
+        .grid-highlight {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.88rem;
+          font-weight: 700;
+          color: var(--color-espresso);
+          background: var(--color-creme-dark);
+          padding: 0.5rem 0.85rem;
+          border-radius: var(--radius-md);
+          margin-bottom: 1rem;
+        }
+
+        .grid-quote {
+          font-size: 0.92rem;
+          font-style: italic;
+          color: var(--color-obsidian);
+          line-height: 1.5;
+          margin-bottom: 1.25rem;
+        }
+
+        .grid-metrics {
+          display: flex;
+          gap: 0.5rem;
+          margin-top: auto;
+          padding-top: 1rem;
+          border-top: 1px solid var(--border-light);
+        }
+
+        .metric-chip {
+          flex: 1;
+          background: var(--color-creme);
+          padding: 0.5rem;
+          border-radius: var(--radius-sm);
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .m-chip-val {
+          font-size: 0.95rem;
+          font-weight: 800;
+          color: var(--color-espresso);
+        }
+
+        .m-chip-lbl {
+          font-size: 0.7rem;
+          color: var(--color-creme-muted);
+        }
+
+        /* Single View Styles */
         .story-tabs {
           display: flex;
           gap: 0.75rem;
           overflow-x: auto;
           padding-bottom: 0.5rem;
+          margin-bottom: 1.25rem;
         }
 
         .story-tab-btn {
           flex: 1;
-          min-width: 170px;
-          padding: 0.9rem 1.1rem;
+          min-width: 160px;
+          padding: 0.85rem 1rem;
           background: #FFFFFF;
-          border: 1px solid rgba(38, 22, 13, 0.12);
+          border: 1px solid var(--border-light);
           border-radius: var(--radius-md);
           display: flex;
           flex-direction: column;
-          align-items: flex-start;
           cursor: pointer;
-          transition: all 0.25s ease;
-          color: var(--color-creme-muted);
           font-family: inherit;
-        }
-
-        .story-tab-btn:hover {
-          background: var(--color-creme-dark);
-          border-color: var(--color-espresso);
         }
 
         .story-tab-btn.active {
           background: var(--color-espresso);
-          border-color: var(--color-espresso);
           color: var(--color-creme);
         }
 
-        .tab-name {
-          font-weight: 700;
-          font-size: 0.95rem;
-        }
-
-        .tab-role {
-          font-size: 0.75rem;
-          opacity: 0.85;
-          margin-top: 2px;
-        }
-
-        /* Main Card */
         .story-main-card {
           padding: 2.5rem;
           background: #FFFFFF;
-          border: 1px solid rgba(38, 22, 13, 0.12);
+          border: 1px solid var(--border-light);
           border-radius: var(--radius-lg);
-          box-shadow: 0 15px 35px rgba(38, 22, 13, 0.06);
         }
 
         .story-header {
@@ -325,12 +639,12 @@ export default function TransformationSlider() {
           height: 52px;
           border-radius: 50%;
           background: var(--color-espresso);
+          color: var(--color-creme);
           display: flex;
           align-items: center;
           justify-content: center;
           font-weight: 800;
           font-size: 1.3rem;
-          color: var(--color-creme);
         }
 
         .user-name {
@@ -346,26 +660,27 @@ export default function TransformationSlider() {
 
         .story-controls {
           display: flex;
+          align-items: center;
           gap: 0.5rem;
         }
 
+        .control-counter {
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: var(--color-espresso);
+        }
+
         .control-btn {
-          width: 40px;
-          height: 40px;
+          width: 36px;
+          height: 36px;
           border-radius: 50%;
           background: var(--color-creme-light);
-          border: 1px solid rgba(38, 22, 13, 0.15);
+          border: 1px solid var(--border-light);
           color: var(--color-obsidian);
           display: flex;
           align-items: center;
           justify-content: center;
           cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        .control-btn:hover {
-          background: var(--color-espresso);
-          color: var(--color-creme);
         }
 
         .story-highlight-badge {
@@ -374,7 +689,7 @@ export default function TransformationSlider() {
           gap: 0.6rem;
           padding: 0.5rem 1rem;
           background: var(--color-creme-dark);
-          border: 1px solid rgba(38, 22, 13, 0.12);
+          border: 1px solid var(--border-light);
           border-radius: var(--radius-full);
           font-size: 0.95rem;
           font-weight: 700;
@@ -382,10 +697,8 @@ export default function TransformationSlider() {
           margin-bottom: 1.5rem;
         }
 
-        /* Transformation Image Styling */
         .transformation-image-container {
           margin-bottom: 2rem;
-          border-radius: var(--radius-md);
         }
 
         .split-images-grid {
@@ -399,12 +712,8 @@ export default function TransformationSlider() {
           width: 100%;
           overflow: hidden;
           border-radius: var(--radius-md);
-          border: 1px solid rgba(38, 22, 13, 0.12);
-          background: var(--color-creme);
-        }
-
-        .split-frame {
-          aspect-ratio: 4 / 5;
+          background: #000000;
+          border: 1px solid var(--border-light);
         }
 
         .transformation-photo {
@@ -412,15 +721,7 @@ export default function TransformationSlider() {
           height: auto;
           max-height: 480px;
           object-fit: contain;
-          background: #000000;
           display: block;
-          transition: transform 0.4s ease;
-        }
-
-        .split-photo {
-          height: 100%;
-          max-height: 100%;
-          object-fit: cover;
         }
 
         .split-label {
@@ -431,45 +732,36 @@ export default function TransformationSlider() {
           border-radius: var(--radius-full);
           font-size: 0.75rem;
           font-weight: 800;
-          letter-spacing: 0.05em;
           z-index: 2;
         }
 
-        .label-before {
-          background: rgba(220, 38, 38, 0.9);
-          color: #FFFFFF;
-        }
+        .label-before { background: rgba(220, 38, 38, 0.9); color: #FFF; }
+        .label-after { background: rgba(22, 163, 74, 0.9); color: #FFF; }
 
-        .label-after {
-          background: rgba(22, 163, 74, 0.9);
-          color: #FFFFFF;
-        }
-
-        .image-overlay-badge {
+        .image-overlay-badge, .image-overlay-badge-sm {
           position: absolute;
-          bottom: 1rem;
-          right: 1rem;
+          bottom: 0.75rem;
+          right: 0.75rem;
           display: inline-flex;
           align-items: center;
           gap: 0.4rem;
           background: rgba(245, 240, 232, 0.92);
           backdrop-filter: blur(10px);
-          border: 1px solid rgba(38, 22, 13, 0.15);
           color: var(--color-obsidian);
-          padding: 0.4rem 0.85rem;
+          padding: 0.35rem 0.75rem;
           border-radius: var(--radius-full);
-          font-size: 0.8rem;
+          font-size: 0.78rem;
           font-weight: 700;
         }
 
         .story-quote {
           position: relative;
-          font-size: 1.15rem;
+          font-size: 1.1rem;
           font-style: italic;
           color: var(--color-obsidian);
           line-height: 1.6;
           margin-bottom: 2rem;
-          padding-left: 2.5rem;
+          padding-left: 2.2rem;
         }
 
         .quote-icon {
@@ -497,13 +789,11 @@ export default function TransformationSlider() {
         .comp-before {
           background: rgba(239, 68, 68, 0.08);
           border: 1px solid rgba(239, 68, 68, 0.2);
-          color: #1C1A17;
         }
 
         .comp-after {
           background: var(--color-creme);
-          border: 1px solid rgba(38, 22, 13, 0.15);
-          color: var(--color-obsidian);
+          border: 1px solid var(--border-light);
         }
 
         .comp-tag {
@@ -513,57 +803,36 @@ export default function TransformationSlider() {
           margin-bottom: 0.5rem;
         }
 
-        .tag-before {
-          color: #DC2626;
-        }
-
-        .tag-after {
-          color: var(--color-espresso);
-        }
+        .tag-before { color: #DC2626; }
+        .tag-after { color: var(--color-espresso); }
 
         .metrics-row {
           display: flex;
           gap: 1rem;
           padding-top: 1.5rem;
-          border-top: 1px solid rgba(38, 22, 13, 0.1);
+          border-top: 1px solid var(--border-light);
         }
 
         .metric-badge {
           flex: 1;
           padding: 0.85rem;
-          background: var(--color-creme-light);
-          border: 1px solid rgba(38, 22, 13, 0.08);
+          background: var(--color-creme);
           border-radius: var(--radius-sm);
+          text-align: center;
           display: flex;
           flex-direction: column;
-          align-items: center;
-          text-align: center;
         }
 
-        .m-val {
-          font-size: 1.1rem;
-          font-weight: 800;
-          color: var(--color-espresso);
-        }
+        .m-val { font-size: 1.1rem; font-weight: 800; color: var(--color-espresso); }
+        .m-lbl { font-size: 0.75rem; color: var(--color-creme-muted); }
 
-        .m-lbl {
-          font-size: 0.75rem;
-          color: var(--color-creme-muted);
-          margin-top: 2px;
-        }
-
-        @media (max-width: 768px) {
-          .split-images-grid {
+        @media (max-width: 900px) {
+          .stories-multi-grid {
             grid-template-columns: 1fr;
           }
-          .comparison-grid {
-            grid-template-columns: 1fr;
-          }
-          .metrics-row {
-            flex-wrap: wrap;
-          }
-          .metric-badge {
-            min-width: 45%;
+          .slider-controls-bar {
+            flex-direction: column;
+            align-items: flex-start;
           }
         }
       `}} />
